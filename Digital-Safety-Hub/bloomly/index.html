@@ -1,0 +1,940 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Bloomly | Flowers, Gifts & Moments</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap"
+        rel="stylesheet"
+    >
+</head>
+
+<body>
+
+    <!-- ================= NAVBAR ================= -->
+
+    <header class="navbar">
+
+        <div class="nav-container">
+
+            <a href="#" class="logo">
+                bloom<span>ly</span>
+            </a>
+
+            <nav class="nav-links" id="navLinks">
+                <a href="#flowers">Flowers</a>
+                <a href="#gifts">Gifts</a>
+                <a href="#occasions">Occasions</a>
+                <a href="#collections">Collections</a>
+            </nav>
+
+            <div class="nav-actions">
+
+                <button class="icon-btn" id="searchBtn" aria-label="Search">
+                    ⌕
+                </button>
+
+                <button class="icon-btn" id="cartBtn" aria-label="Cart">
+                    ♡
+                    <span class="cart-count" id="cartCount">0</span>
+                </button>
+
+                <button class="icon-btn" id="themeBtn" aria-label="Theme">
+                    ☾
+                </button>
+
+                <button class="menu-btn" id="menuBtn">
+                    ☰
+                </button>
+
+            </div>
+
+        </div>
+
+    </header>
+
+
+    <!-- ================= SEARCH PANEL ================= -->
+
+    <div class="search-panel" id="searchPanel">
+
+        <div class="search-inner">
+
+            <input
+                type="text"
+                id="searchInput"
+                placeholder="Search flowers, cakes, gifts..."
+            >
+
+            <button id="closeSearch">
+                ✕
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <main>
+
+        <!-- ================= HERO ================= -->
+
+        <section class="hero">
+
+            <div class="hero-content">
+
+                <span class="eyebrow">
+                    MADE FOR EVERY MOMENT
+                </span>
+
+                <h1>
+                    Send a little
+                    <em>happiness.</em>
+                </h1>
+
+                <p>
+                    Thoughtful flowers, beautiful gifts and sweet surprises
+                    delivered to make every occasion memorable.
+                </p>
+
+                <div class="hero-buttons">
+
+                    <a href="#flowers" class="primary-btn">
+                        Explore Flowers
+                        <span>→</span>
+                    </a>
+
+                    <a href="#gifts" class="outline-btn">
+                        Discover Gifts
+                    </a>
+
+                </div>
+
+                <div class="hero-trust">
+
+                    <div>
+                        <strong>10K+</strong>
+                        <span>Happy customers</span>
+                    </div>
+
+                    <div class="divider"></div>
+
+                    <div>
+                        <strong>Same Day</strong>
+                        <span>Delivery available</span>
+                    </div>
+
+                    <div class="divider"></div>
+
+                    <div>
+                        <strong>Fresh</strong>
+                        <span>Handpicked flowers</span>
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="hero-visual">
+
+                <div class="hero-circle"></div>
+
+                <div class="flower-card-main">
+
+                    <div class="flower-image rose-image">
+                        <span>🌹</span>
+                    </div>
+
+                    <div class="flower-info">
+
+                        <div>
+                            <span class="small-label">
+                                BESTSELLER
+                            </span>
+
+                            <h3>
+                                Blush Rose Bouquet
+                            </h3>
+                        </div>
+
+                        <strong>
+                            ₹899
+                        </strong>
+
+                    </div>
+
+                </div>
+
+
+                <div class="floating-note">
+                    <span>✦</span>
+                    Made with love
+                </div>
+
+
+                <div class="floating-delivery">
+
+                    <span class="delivery-icon">
+                        ✓
+                    </span>
+
+                    <div>
+                        <strong>Delivered today</strong>
+                        <small>Chennai · 4:30 PM</small>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= OCCASIONS ================= -->
+
+        <section class="section" id="occasions">
+
+            <div class="section-heading">
+
+                <span class="section-label">
+                    SHOP BY OCCASION
+                </span>
+
+                <h2>
+                    Something special for every feeling.
+                </h2>
+
+                <p>
+                    Find a thoughtful surprise for the moments that matter.
+                </p>
+
+            </div>
+
+
+            <div class="occasion-grid">
+
+                <button class="occasion-card" data-category="Birthday">
+                    <span>🎂</span>
+                    <strong>Birthday</strong>
+                    <small>Make their day</small>
+                </button>
+
+                <button class="occasion-card" data-category="Love">
+                    <span>💐</span>
+                    <strong>Love</strong>
+                    <small>Say it beautifully</small>
+                </button>
+
+                <button class="occasion-card" data-category="Anniversary">
+                    <span>💍</span>
+                    <strong>Anniversary</strong>
+                    <small>Celebrate together</small>
+                </button>
+
+                <button class="occasion-card" data-category="Thank You">
+                    <span>💛</span>
+                    <strong>Thank You</strong>
+                    <small>Show your gratitude</small>
+                </button>
+
+                <button class="occasion-card" data-category="Congratulations">
+                    <span>🎉</span>
+                    <strong>Congratulations</strong>
+                    <small>Celebrate success</small>
+                </button>
+
+                <button class="occasion-card" data-category="Just Because">
+                    <span>🌷</span>
+                    <strong>Just Because</strong>
+                    <small>Surprise them</small>
+                </button>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= FLOWERS ================= -->
+
+        <section class="section products-section" id="flowers">
+
+            <div class="section-top">
+
+                <div>
+
+                    <span class="section-label">
+                        FRESH FROM THE STUDIO
+                    </span>
+
+                    <h2>
+                        Flowers they'll remember.
+                    </h2>
+
+                </div>
+
+                <a href="#" class="view-link">
+                    View all →
+                </a>
+
+            </div>
+
+
+            <div class="product-grid">
+
+                <article class="product-card">
+
+                    <div class="product-image pink">
+
+                        <span class="product-badge">
+                            Bestseller
+                        </span>
+
+                        <button
+                            class="heart-btn"
+                            data-product="Blush Rose Bouquet"
+                        >
+                            ♡
+                        </button>
+
+                        <div class="flower-art">
+                            🌹
+                        </div>
+
+                    </div>
+
+                    <div class="product-details">
+
+                        <span>
+                            ROSES
+                        </span>
+
+                        <h3>
+                            Blush Rose Bouquet
+                        </h3>
+
+                        <div class="product-bottom">
+
+                            <strong>
+                                ₹899
+                            </strong>
+
+                            <button
+                                class="add-btn"
+                                data-product="Blush Rose Bouquet"
+                                data-price="899"
+                            >
+                                Add +
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                </article>
+
+
+                <article class="product-card">
+
+                    <div class="product-image cream">
+
+                        <button
+                            class="heart-btn"
+                            data-product="Sunshine Garden"
+                        >
+                            ♡
+                        </button>
+
+                        <div class="flower-art">
+                            🌻
+                        </div>
+
+                    </div>
+
+                    <div class="product-details">
+
+                        <span>
+                            SUNFLOWERS
+                        </span>
+
+                        <h3>
+                            Sunshine Garden
+                        </h3>
+
+                        <div class="product-bottom">
+
+                            <strong>
+                                ₹749
+                            </strong>
+
+                            <button
+                                class="add-btn"
+                                data-product="Sunshine Garden"
+                                data-price="749"
+                            >
+                                Add +
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                </article>
+
+
+                <article class="product-card">
+
+                    <div class="product-image lavender">
+
+                        <span class="product-badge">
+                            New
+                        </span>
+
+                        <button
+                            class="heart-btn"
+                            data-product="Lavender Dreams"
+                        >
+                            ♡
+                        </button>
+
+                        <div class="flower-art">
+                            💜
+                        </div>
+
+                    </div>
+
+                    <div class="product-details">
+
+                        <span>
+                            PREMIUM
+                        </span>
+
+                        <h3>
+                            Lavender Dreams
+                        </h3>
+
+                        <div class="product-bottom">
+
+                            <strong>
+                                ₹1,099
+                            </strong>
+
+                            <button
+                                class="add-btn"
+                                data-product="Lavender Dreams"
+                                data-price="1099"
+                            >
+                                Add +
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                </article>
+
+
+                <article class="product-card">
+
+                    <div class="product-image peach">
+
+                        <button
+                            class="heart-btn"
+                            data-product="Peachy Petals"
+                        >
+                            ♡
+                        </button>
+
+                        <div class="flower-art">
+                            🌷
+                        </div>
+
+                    </div>
+
+                    <div class="product-details">
+
+                        <span>
+                            TULIPS
+                        </span>
+
+                        <h3>
+                            Peachy Petals
+                        </h3>
+
+                        <div class="product-bottom">
+
+                            <strong>
+                                ₹999
+                            </strong>
+
+                            <button
+                                class="add-btn"
+                                data-product="Peachy Petals"
+                                data-price="999"
+                            >
+                                Add +
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                </article>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= OFFER BANNER ================= -->
+
+        <section class="offer-section">
+
+            <div class="offer-content">
+
+                <span class="section-label">
+                    TODAY'S LITTLE SURPRISE
+                </span>
+
+                <h2>
+                    Add a little sweetness
+                    to their day.
+                </h2>
+
+                <p>
+                    Get a complimentary message card with every
+                    order above ₹999.
+                </p>
+
+                <button class="light-btn" id="offerBtn">
+                    Shop the collection →
+                </button>
+
+            </div>
+
+            <div class="offer-visual">
+                <div class="gift-box">
+                    🎁
+                </div>
+
+                <div class="sparkle one">✦</div>
+                <div class="sparkle two">✧</div>
+                <div class="sparkle three">✦</div>
+            </div>
+
+        </section>
+
+
+        <!-- ================= GIFTS ================= -->
+
+        <section class="section" id="gifts">
+
+            <div class="section-heading">
+
+                <span class="section-label">
+                    BEYOND FLOWERS
+                </span>
+
+                <h2>
+                    Gifts with a personal touch.
+                </h2>
+
+                <p>
+                    Because sometimes flowers need a little company.
+                </p>
+
+            </div>
+
+
+            <div class="gift-grid">
+
+                <article class="gift-card">
+
+                    <div class="gift-icon">
+                        🍫
+                    </div>
+
+                    <div>
+                        <span>FOR FOODIES</span>
+                        <h3>Sweet Treats</h3>
+                        <p>Chocolates, cakes and delicious surprises.</p>
+                    </div>
+
+                    <button data-gift="Sweet Treats">
+                        Explore →
+                    </button>
+
+                </article>
+
+
+                <article class="gift-card">
+
+                    <div class="gift-icon">
+                        🧸
+                    </div>
+
+                    <div>
+                        <span>FOR SOMEONE SPECIAL</span>
+                        <h3>Cute & Cozy</h3>
+                        <p>Plush companions and thoughtful keepsakes.</p>
+                    </div>
+
+                    <button data-gift="Cute & Cozy">
+                        Explore →
+                    </button>
+
+                </article>
+
+
+                <article class="gift-card">
+
+                    <div class="gift-icon">
+                        🕯️
+                    </div>
+
+                    <div>
+                        <span>FOR HOME LOVERS</span>
+                        <h3>Home & Living</h3>
+                        <p>Beautiful pieces for their favourite space.</p>
+                    </div>
+
+                    <button data-gift="Home & Living">
+                        Explore →
+                    </button>
+
+                </article>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= COLLECTION ================= -->
+
+        <section class="collection-section" id="collections">
+
+            <div class="collection-text">
+
+                <span class="section-label">
+                    THE BLOOMLY COLLECTION
+                </span>
+
+                <h2>
+                    Beautiful things,
+                    thoughtfully chosen.
+                </h2>
+
+                <p>
+                    From first dates to new beginnings, tiny surprises
+                    to big celebrations — we're here for all of it.
+                </p>
+
+                <a href="#flowers" class="dark-btn">
+                    Explore collection →
+                </a>
+
+            </div>
+
+
+            <div class="collection-collage">
+
+                <div class="collage-card card-one">
+                    🌸
+                </div>
+
+                <div class="collage-card card-two">
+                    🎁
+                </div>
+
+                <div class="collage-card card-three">
+                    🧁
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= WHY BLOOMLY ================= -->
+
+        <section class="section">
+
+            <div class="section-heading">
+
+                <span class="section-label">
+                    WHY BLOOMLY
+                </span>
+
+                <h2>
+                    Little details. Big feelings.
+                </h2>
+
+            </div>
+
+
+            <div class="benefits">
+
+                <div class="benefit">
+
+                    <div>🌿</div>
+
+                    <h3>
+                        Freshly picked
+                    </h3>
+
+                    <p>
+                        Our flowers are selected for freshness and beauty.
+                    </p>
+
+                </div>
+
+
+                <div class="benefit">
+
+                    <div>🚚</div>
+
+                    <h3>
+                        Reliable delivery
+                    </h3>
+
+                    <p>
+                        Carefully packed and delivered when it matters.
+                    </p>
+
+                </div>
+
+
+                <div class="benefit">
+
+                    <div>💌</div>
+
+                    <h3>
+                        Made personal
+                    </h3>
+
+                    <p>
+                        Add your own message and make every gift yours.
+                    </p>
+
+                </div>
+
+
+                <div class="benefit">
+
+                    <div>✨</div>
+
+                    <h3>
+                        Beautifully packed
+                    </h3>
+
+                    <p>
+                        Every order is designed to feel like a celebration.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= NEWSLETTER ================= -->
+
+        <section class="newsletter">
+
+            <div>
+
+                <span class="section-label">
+                    STAY IN THE LOOP
+                </span>
+
+                <h2>
+                    A little joy,
+                    straight to your inbox.
+                </h2>
+
+            </div>
+
+
+            <form id="newsletterForm">
+
+                <input
+                    type="email"
+                    id="emailInput"
+                    placeholder="Your email address"
+                    required
+                >
+
+                <button type="submit">
+                    Subscribe →
+                </button>
+
+            </form>
+
+        </section>
+
+    </main>
+
+
+    <!-- ================= FOOTER ================= -->
+
+    <footer>
+
+        <div class="footer-container">
+
+            <div class="footer-brand">
+
+                <a href="#" class="logo">
+                    bloom<span>ly</span>
+                </a>
+
+                <p>
+                    Flowers, gifts and little moments
+                    that make life sweeter.
+                </p>
+
+                <div class="socials">
+                    <a href="#">ig</a>
+                    <a href="#">fb</a>
+                    <a href="#">in</a>
+                </div>
+
+            </div>
+
+
+            <div class="footer-column">
+
+                <strong>Shop</strong>
+
+                <a href="#flowers">Flowers</a>
+                <a href="#gifts">Gifts</a>
+                <a href="#occasions">Occasions</a>
+                <a href="#collections">Collections</a>
+
+            </div>
+
+
+            <div class="footer-column">
+
+                <strong>Help</strong>
+
+                <a href="#">Delivery</a>
+                <a href="#">Track Order</a>
+                <a href="#">Contact Us</a>
+                <a href="#">FAQs</a>
+
+            </div>
+
+
+            <div class="footer-column">
+
+                <strong>Company</strong>
+
+                <a href="#">About Bloomly</a>
+                <a href="#">Careers</a>
+                <a href="#">Our Stories</a>
+                <a href="#">Privacy</a>
+
+            </div>
+
+        </div>
+
+
+        <div class="footer-bottom">
+
+            <span>
+                © 2026 Bloomly. Made for meaningful moments.
+            </span>
+
+            <span>
+                Chennai · India
+            </span>
+
+        </div>
+
+    </footer>
+
+
+    <!-- ================= CART DRAWER ================= -->
+
+    <aside class="cart-drawer" id="cartDrawer">
+
+        <div class="cart-header">
+
+            <div>
+                <span class="section-label">
+                    YOUR BAG
+                </span>
+
+                <h2>
+                    Little joys
+                </h2>
+            </div>
+
+            <button id="closeCart">
+                ✕
+            </button>
+
+        </div>
+
+
+        <div class="cart-items" id="cartItems">
+
+            <div class="empty-cart">
+                <span>🌷</span>
+                <h3>Your bag is empty</h3>
+                <p>Add something beautiful.</p>
+            </div>
+
+        </div>
+
+
+        <div class="cart-footer">
+
+            <div class="cart-total">
+
+                <span>Total</span>
+
+                <strong id="cartTotal">
+                    ₹0
+                </strong>
+
+            </div>
+
+            <button class="checkout-btn" id="checkoutBtn">
+                Proceed to Checkout →
+            </button>
+
+        </div>
+
+    </aside>
+
+
+    <div class="overlay" id="overlay"></div>
+
+
+    <!-- ================= TOAST ================= -->
+
+    <div class="toast" id="toast">
+
+        <span>✓</span>
+
+        <p id="toastMessage">
+            Done
+        </p>
+
+    </div>
+
+
+    <script src="script.js"></script>
+
+</body>
+</html>
