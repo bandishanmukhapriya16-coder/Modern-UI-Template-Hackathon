@@ -1,61 +1,59 @@
-const body = document.body;
-
 const themeToggle = document.getElementById("themeToggle");
 const menuBtn = document.getElementById("menuBtn");
 const navLinks = document.getElementById("navLinks");
 
 const resumeFile = document.getElementById("resumeFile");
-const uploadStatus = document.getElementById("uploadStatus");
+const fileName = document.getElementById("fileName");
+
 const analyzeBtn = document.getElementById("analyzeBtn");
+const resumeText = document.getElementById("resumeText");
 
 const scoreValue = document.getElementById("scoreValue");
+const progressFill = document.getElementById("progressFill");
 
 const toast = document.getElementById("toast");
-const toastMessage = document.getElementById("toastMessage");
 
 
-// =========================================
-// Toast
-// =========================================
+// ============================
+// MOBILE MENU
+// ============================
 
-function showToast(message) {
+menuBtn.addEventListener("click", () => {
 
-    toastMessage.textContent = message;
+    navLinks.classList.toggle("active");
 
-    toast.classList.add("show");
+    menuBtn.textContent =
+        navLinks.classList.contains("active")
+            ? "×"
+            : "☰";
+});
 
-    setTimeout(() => {
-        toast.classList.remove("show");
-    }, 2600);
-}
+
+// Close mobile menu after clicking a link
+
+document.querySelectorAll(".nav-links a").forEach(link => {
+
+    link.addEventListener("click", () => {
+        navLinks.classList.remove("active");
+        menuBtn.textContent = "☰";
+    });
+
+});
 
 
-// =========================================
-// Theme
-// =========================================
-
-const savedTheme = localStorage.getItem("resumeai-theme");
-
-if (savedTheme === "dark") {
-
-    body.classList.add("dark");
-
-    themeToggle.textContent = "🌙";
-}
-
+// ============================
+// DARK MODE
+// ============================
 
 themeToggle.addEventListener("click", () => {
 
-    body.classList.toggle("dark");
+    document.body.classList.toggle("dark");
 
-    const isDark = body.classList.contains("dark");
+    const isDark = document.body.classList.contains("dark");
 
-    themeToggle.textContent = isDark ? "🌙" : "☀️";
+    themeToggle.textContent = isDark ? "☀" : "☾";
 
-    localStorage.setItem(
-        "resumeai-theme",
-        isDark ? "dark" : "light"
-    );
+    localStorage.setItem("resume-theme", isDark ? "dark" : "light");
 
     showToast(
         isDark
@@ -65,311 +63,201 @@ themeToggle.addEventListener("click", () => {
 });
 
 
-// =========================================
-// Mobile Navigation
-// =========================================
+// Remember theme
 
-menuBtn.addEventListener("click", () => {
+const savedTheme = localStorage.getItem("resume-theme");
 
-    navLinks.classList.toggle("open");
-
-    menuBtn.textContent =
-        navLinks.classList.contains("open")
-            ? "✕"
-            : "☰";
-});
+if (savedTheme === "dark") {
+    document.body.classList.add("dark");
+    themeToggle.textContent = "☀";
+}
 
 
-document.querySelectorAll(".nav-links a").forEach(link => {
-
-    link.addEventListener("click", () => {
-
-        navLinks.classList.remove("open");
-
-        menuBtn.textContent = "☰";
-
-    });
-
-});
-
-
-// =========================================
-// Resume File Selection
-// =========================================
+// ============================
+// FILE UPLOAD
+// ============================
 
 resumeFile.addEventListener("change", () => {
 
     const file = resumeFile.files[0];
 
     if (!file) {
-
-        uploadStatus.textContent = "No file selected";
-
+        fileName.textContent = "No file selected";
         return;
     }
 
-
-    const maxSize = 5 * 1024 * 1024;
-
-    if (file.size > maxSize) {
-
-        uploadStatus.textContent =
-            "File is larger than 5 MB";
-
-        showToast("Please choose a file under 5 MB");
-
-        resumeFile.value = "";
-
-        return;
-    }
-
-
-    const fileName = file.name;
-
-    uploadStatus.textContent =
-        `Selected: ${fileName}`;
+    fileName.textContent = `Selected: ${file.name}`;
 
     showToast("Resume selected successfully");
 });
 
 
-// =========================================
-// Resume Analysis Simulation
-// =========================================
+// ============================
+// ANALYZE RESUME
+// ============================
 
 analyzeBtn.addEventListener("click", () => {
 
-    if (!resumeFile.files.length) {
+    const hasFile = resumeFile.files.length > 0;
+    const hasText = resumeText.value.trim().length > 0;
 
-        showToast("Please choose your resume first");
+    if (!hasFile && !hasText) {
+
+        showToast("Upload a resume or paste your resume text first.");
 
         return;
     }
-
 
     analyzeBtn.disabled = true;
 
-    analyzeBtn.innerHTML =
-        "Analyzing resume... <span>✦</span>";
+    analyzeBtn.innerHTML = `
+        Analyzing...
+        <span>⌛</span>
+    `;
 
 
-    showToast("AI analysis started");
+    let score = 78;
+
+    // Simple front-end simulation based on input length
+
+    if (hasText) {
+
+        const words = resumeText.value.trim().split(/\s+/).length;
+
+        if (words > 80) {
+            score += 5;
+        }
+
+        if (words > 180) {
+            score += 4;
+        }
+
+        if (resumeText.value.toLowerCase().includes("skills")) {
+            score += 2;
+        }
+
+        if (resumeText.value.toLowerCase().includes("experience")) {
+            score += 2;
+        }
+    }
+
+    score = Math.min(score, 96);
 
 
     setTimeout(() => {
 
-        scoreValue.textContent = "88";
-
-        showToast("Content analysis completed");
-
-    }, 900);
-
-
-    setTimeout(() => {
-
-        scoreValue.textContent = "91";
-
-        showToast("Keyword analysis completed");
-
-    }, 1700);
-
-
-    setTimeout(() => {
-
-        scoreValue.textContent = "93";
-
-    }, 2400);
-
-
-    setTimeout(() => {
+        animateScore(score);
 
         analyzeBtn.disabled = false;
 
-        analyzeBtn.innerHTML =
-            "Analyze again <span>✦</span>";
+        analyzeBtn.innerHTML = `
+            Analyze Again
+            <span>→</span>
+        `;
 
-        showToast(
-            "Resume analysis completed successfully"
-        );
+        showToast("Resume analysis completed.");
 
-    }, 2800);
-
+    }, 1200);
 });
 
 
-// =========================================
-// Feature Card Interactions
-// =========================================
+// ============================
+// SCORE ANIMATION
+// ============================
 
-document.querySelectorAll(".feature-card a").forEach(link => {
+function animateScore(targetScore) {
 
-    link.addEventListener("click", () => {
+    let current = 0;
 
-        showToast("Opening resume analysis section");
+    const interval = setInterval(() => {
 
-    });
+        current += 1;
 
-});
+        scoreValue.textContent = current;
 
+        progressFill.style.width = `${current}%`;
 
-// =========================================
-// Upload Area Drag & Drop
-// =========================================
-
-const uploadCard = document.querySelector(".upload-card");
-
-uploadCard.addEventListener("dragover", event => {
-
-    event.preventDefault();
-
-    uploadCard.style.borderColor = "var(--primary)";
-
-});
-
-
-uploadCard.addEventListener("dragleave", () => {
-
-    uploadCard.style.borderColor = "";
-
-});
-
-
-uploadCard.addEventListener("drop", event => {
-
-    event.preventDefault();
-
-    uploadCard.style.borderColor = "";
-
-    const files = event.dataTransfer.files;
-
-    if (!files.length) {
-        return;
-    }
-
-    const file = files[0];
-
-    const allowedTypes = [
-        "application/pdf",
-        "application/msword",
-        "application/vnd.openxmlformats-officedocument.wordprocessingml.document"
-    ];
-
-    if (!allowedTypes.includes(file.type)) {
-
-        showToast("Please upload a PDF or DOCX file");
-
-        return;
-    }
-
-
-    if (file.size > 5 * 1024 * 1024) {
-
-        showToast("File must be under 5 MB");
-
-        return;
-    }
-
-
-    uploadStatus.textContent =
-        `Selected: ${file.name}`;
-
-    showToast("Resume added successfully");
-});
-
-
-// =========================================
-// Smooth Section Navigation
-// =========================================
-
-document.querySelectorAll('a[href^="#"]').forEach(link => {
-
-    link.addEventListener("click", event => {
-
-        const targetId =
-            link.getAttribute("href");
-
-        if (
-            targetId === "#" ||
-            !document.querySelector(targetId)
-        ) {
-            return;
+        if (current >= targetScore) {
+            clearInterval(interval);
         }
 
-        event.preventDefault();
+    }, 15);
+}
 
-        document
-            .querySelector(targetId)
-            .scrollIntoView({
-                behavior: "smooth",
-                block: "start"
-            });
 
-    });
+// ============================
+// TOAST
+// ============================
 
+function showToast(message) {
+
+    toast.textContent = message;
+
+    toast.classList.add("show");
+
+    setTimeout(() => {
+        toast.classList.remove("show");
+    }, 2800);
+}
+
+
+// ============================
+// SCROLL REVEAL
+// ============================
+
+const revealElements = document.querySelectorAll(
+    ".feature-card, .tip-card, .step, .insight-content, .upload-card, .result-card"
+);
+
+const revealObserver = new IntersectionObserver(
+    entries => {
+
+        entries.forEach(entry => {
+
+            if (entry.isIntersecting) {
+
+                entry.target.style.opacity = "1";
+                entry.target.style.transform = "translateY(0)";
+
+                revealObserver.unobserve(entry.target);
+            }
+
+        });
+
+    },
+    {
+        threshold: 0.12
+    }
+);
+
+
+revealElements.forEach(element => {
+
+    element.style.opacity = "0";
+    element.style.transform = "translateY(20px)";
+    element.style.transition =
+        "opacity 0.6s ease, transform 0.6s ease";
+
+    revealObserver.observe(element);
 });
 
 
-// =========================================
-// Keyboard Shortcuts
-// =========================================
+// ============================
+// KEYBOARD SHORTCUT
+// ============================
 
 document.addEventListener("keydown", event => {
 
-    const activeElement =
-        document.activeElement.tagName;
-
     if (
-        activeElement === "INPUT" ||
-        activeElement === "TEXTAREA"
+        event.key.toLowerCase() === "r" &&
+        !event.ctrlKey &&
+        !event.altKey &&
+        document.activeElement.tagName !== "TEXTAREA" &&
+        document.activeElement.tagName !== "INPUT"
     ) {
-        return;
+        document.getElementById("checker").scrollIntoView({
+            behavior: "smooth"
+        });
     }
-
-
-    // C = Resume Checker
-    if (event.key.toLowerCase() === "c") {
-
-        document
-            .getElementById("checker")
-            .scrollIntoView({
-                behavior: "smooth"
-            });
-    }
-
-
-    // F = Features
-    if (event.key.toLowerCase() === "f") {
-
-        document
-            .getElementById("features")
-            .scrollIntoView({
-                behavior: "smooth"
-            });
-    }
-
-
-    // T = Theme
-    if (event.key.toLowerCase() === "t") {
-
-        themeToggle.click();
-
-    }
-
-});
-
-
-// =========================================
-// Initial Page Message
-// =========================================
-
-window.addEventListener("load", () => {
-
-    setTimeout(() => {
-
-        showToast(
-            "Welcome to ResumeAI ✦"
-        );
-
-    }, 800);
 
 });
