@@ -1,645 +1,382 @@
-/* =========================================================
-   STELLERIUM — STAR MAP
-   JAVASCRIPT
-========================================================= */
+// ========================================
+// STELLERIUM - INTERACTIVE STAR MAP
+// ========================================
 
 
-/* =========================================================
-   THEME TOGGLE
-========================================================= */
+// ========================================
+// MOBILE NAVIGATION
+// ========================================
 
-const themeToggle = document.getElementById("themeToggle");
-const themeIcon = document.getElementById("themeIcon");
+const menuBtn =
+    document.getElementById("menuBtn");
 
-const savedTheme = localStorage.getItem("stellerium-theme");
+const navLinks =
+    document.getElementById("navLinks");
 
-if (savedTheme === "dark") {
-    document.body.classList.add("dark-mode");
 
-    if (themeIcon) {
-        themeIcon.textContent = "☀";
-    }
-}
+menuBtn.addEventListener("click", () => {
 
-if (themeToggle) {
+    navLinks.classList.toggle("active");
 
-    themeToggle.addEventListener("click", () => {
+});
 
-        document.body.classList.toggle("dark-mode");
 
-        const isDark =
-            document.body.classList.contains("dark-mode");
+// Close mobile menu after clicking link
 
-        if (isDark) {
+document
+    .querySelectorAll(".nav-links a")
+    .forEach(link => {
 
-            localStorage.setItem(
-                "stellerium-theme",
-                "dark"
-            );
+        link.addEventListener("click", () => {
 
-            themeIcon.textContent = "☀";
+            navLinks.classList.remove("active");
 
-        } else {
-
-            localStorage.setItem(
-                "stellerium-theme",
-                "light"
-            );
-
-            themeIcon.textContent = "☾";
-        }
+        });
 
     });
 
+
+// ========================================
+// THEME SWITCHER
+// ========================================
+
+const themeBtn =
+    document.getElementById("themeBtn");
+
+
+themeBtn.addEventListener("click", () => {
+
+    document.body.classList.toggle("light");
+
+
+    if (
+        document.body.classList.contains("light")
+    ) {
+
+        themeBtn.textContent = "☀";
+
+        localStorage.setItem(
+            "stellerium-theme",
+            "light"
+        );
+
+    } else {
+
+        themeBtn.textContent = "☾";
+
+        localStorage.setItem(
+            "stellerium-theme",
+            "dark"
+        );
+
+    }
+
+});
+
+
+// Load saved theme
+
+const savedTheme =
+    localStorage.getItem(
+        "stellerium-theme"
+    );
+
+
+if (savedTheme === "light") {
+
+    document.body.classList.add("light");
+
+    themeBtn.textContent = "☀";
+
 }
 
 
-/* =========================================================
-   TOAST MESSAGE
-========================================================= */
+// ========================================
+// TOAST NOTIFICATION
+// ========================================
 
-const toast = document.getElementById("toast");
-const toastMessage = document.getElementById("toastMessage");
+const toast =
+    document.getElementById("toast");
+
+
+const toastText =
+    document.getElementById("toastText");
+
 
 let toastTimer;
 
+
 function showToast(message) {
 
-    if (!toast || !toastMessage) {
-        return;
-    }
-
-    toastMessage.textContent = message;
+    toastText.textContent = message;
 
     toast.classList.add("show");
 
+
     clearTimeout(toastTimer);
+
 
     toastTimer = setTimeout(() => {
 
         toast.classList.remove("show");
 
-    }, 2800);
+    }, 3000);
 
 }
 
 
-/* =========================================================
-   STAR MAP CONTROLS
-========================================================= */
-
-const heroMap = document.querySelector(".hero-map");
-
-const zoomInButton =
-    document.getElementById("zoomIn");
-
-const zoomOutButton =
-    document.getElementById("zoomOut");
-
-const resetMapButton =
-    document.getElementById("resetMap");
-
-let mapScale = 1;
-
-let mapRotation = 0;
-
-
-function updateMap() {
-
-    if (!heroMap) {
-        return;
-    }
-
-    heroMap.style.transform =
-        `scale(${mapScale}) rotate(${mapRotation}deg)`;
-
-}
-
-
-if (zoomInButton) {
-
-    zoomInButton.addEventListener("click", () => {
-
-        if (mapScale < 1.25) {
-
-            mapScale += 0.05;
-
-            updateMap();
-
-            showToast("Sky map zoomed in");
-
-        }
-
-    });
-
-}
-
-
-if (zoomOutButton) {
-
-    zoomOutButton.addEventListener("click", () => {
-
-        if (mapScale > 0.85) {
-
-            mapScale -= 0.05;
-
-            updateMap();
-
-            showToast("Sky map zoomed out");
-
-        }
-
-    });
-
-}
-
-
-if (resetMapButton) {
-
-    resetMapButton.addEventListener("click", () => {
-
-        mapScale = 1;
-
-        mapRotation = 0;
-
-        updateMap();
-
-        showToast("Sky map reset");
-
-    });
-
-}
-
-
-/* =========================================================
-   SEARCH
-========================================================= */
-
-const searchInput =
-    document.getElementById("starSearch");
-
-const searchButton =
-    document.getElementById("searchButton");
-
-const searchResult =
-    document.getElementById("searchResult");
-
-
-const astronomyObjects = {
-
-    orion: {
-        title: "Orion",
-        description:
-            "Orion is one of the most recognizable constellations in the night sky."
-    },
-
-    mars: {
-        title: "Mars",
-        description:
-            "Mars is the fourth planet from the Sun and is often called the Red Planet."
-    },
-
-    sirius: {
-        title: "Sirius",
-        description:
-            "Sirius is the brightest star in the night sky as seen from Earth."
-    },
-
-    andromeda: {
-        title: "Andromeda",
-        description:
-            "Andromeda is a constellation associated with the famous Andromeda Galaxy."
-    },
-
-    earth: {
-        title: "Earth",
-        description:
-            "Earth is the third planet from the Sun and our home world."
-    },
-
-    jupiter: {
-        title: "Jupiter",
-        description:
-            "Jupiter is the largest planet in our solar system."
-    },
-
-    saturn: {
-        title: "Saturn",
-        description:
-            "Saturn is a gas giant famous for its spectacular rings."
-    },
-
-    venus: {
-        title: "Venus",
-        description:
-            "Venus is the second planet from the Sun and has an extremely thick atmosphere."
-    },
-
-    neptune: {
-        title: "Neptune",
-        description:
-            "Neptune is the eighth planet from the Sun and a distant ice giant."
-    }
-
-};
-
-
-function searchSky() {
-
-    if (!searchInput || !searchResult) {
-        return;
-    }
-
-    const query =
-        searchInput.value
-            .trim()
-            .toLowerCase();
-
-    if (!query) {
-
-        searchResult.textContent =
-            "Please enter a star, planet or constellation.";
-
-        return;
-    }
-
-
-    const result =
-        Object.keys(astronomyObjects)
-            .find((item) =>
-                item.includes(query)
-            );
-
-
-    if (result) {
-
-        searchResult.innerHTML =
-            `<strong>${astronomyObjects[result].title}</strong>
-             — ${astronomyObjects[result].description}`;
-
-        showToast(
-            `Found ${astronomyObjects[result].title}`
-        );
-
-    } else {
-
-        searchResult.textContent =
-            `No object found for "${searchInput.value}". Try Orion, Mars, Sirius or Andromeda.`;
-
-        showToast("No matching sky object found");
-
-    }
-
-}
-
-
-if (searchButton) {
-
-    searchButton.addEventListener(
-        "click",
-        searchSky
-    );
-
-}
-
-
-if (searchInput) {
-
-    searchInput.addEventListener(
-        "keydown",
-        (event) => {
-
-            if (event.key === "Enter") {
-
-                searchSky();
-
-            }
-
-        }
-    );
-
-}
-
-
-/* =========================================================
-   SKY LOCATION BUTTON
-========================================================= */
-
-const locationButton =
-    document.getElementById("locationButton");
-
-if (locationButton) {
-
-    locationButton.addEventListener(
-        "click",
-        () => {
-
-            showToast(
-                "Your sky view is ready to explore"
-            );
-
-        }
-    );
-
-}
-
-
-/* =========================================================
-   EVENT REMINDERS
-========================================================= */
-
-const eventButtons =
-    document.querySelectorAll(".event-button");
-
-
-eventButtons.forEach((button) => {
-
-    button.addEventListener("click", () => {
-
-        const eventCard =
-            button.closest(".event-card");
-
-        if (!eventCard) {
-            return;
-        }
-
-        const eventName =
-            eventCard.querySelector("h3");
-
-        if (!eventName) {
-            return;
-        }
-
-        const eventTitle =
-            eventName.textContent.trim();
-
-
-        if (button.classList.contains("saved")) {
-
-            button.classList.remove("saved");
-
-            button.textContent =
-                "Add reminder";
-
-            showToast(
-                `Reminder removed for ${eventTitle}`
-            );
-
-        } else {
-
-            button.classList.add("saved");
-
-            button.textContent =
-                "✓ Reminder added";
-
-            showToast(
-                `Reminder added for ${eventTitle}`
-            );
-
-        }
-
-    });
-
-});
-
-
-/* =========================================================
-   SMOOTH NAVIGATION
-========================================================= */
-
-const navigationLinks =
-    document.querySelectorAll(
-        'a[href^="#"]'
-    );
-
-
-navigationLinks.forEach((link) => {
-
-    link.addEventListener(
-        "click",
-        function (event) {
-
-            const targetId =
-                this.getAttribute("href");
-
-            if (
-                !targetId ||
-                targetId === "#"
-            ) {
-                return;
-            }
-
-
-            const target =
-                document.querySelector(targetId);
-
-
-            if (target) {
-
-                event.preventDefault();
-
-                target.scrollIntoView({
-                    behavior: "smooth",
-                    block: "start"
-                });
-
-            }
-
-        }
-    );
-
-});
-
-
-/* =========================================================
-   BACK TO TOP
-========================================================= */
-
-const backToTop =
-    document.getElementById("backToTop");
-
-
-window.addEventListener("scroll", () => {
-
-    if (!backToTop) {
-        return;
-    }
-
-    if (window.scrollY > 600) {
-
-        backToTop.classList.add("show");
-
-    } else {
-
-        backToTop.classList.remove("show");
-
-    }
-
-});
-
-
-if (backToTop) {
-
-    backToTop.addEventListener(
-        "click",
-        () => {
-
-            window.scrollTo({
-                top: 0,
+// ========================================
+// EXPLORE BUTTON
+// ========================================
+
+document
+    .getElementById("exploreBtn")
+    .addEventListener("click", () => {
+
+        document
+            .getElementById("explore")
+            .scrollIntoView({
                 behavior: "smooth"
             });
 
-        }
+
+        showToast(
+            "Sky explorer opened ✦"
+        );
+
+    });
+
+
+// ========================================
+// START EXPLORING
+// ========================================
+
+document
+    .getElementById("startBtn")
+    .addEventListener("click", () => {
+
+        document
+            .getElementById("constellations")
+            .scrollIntoView({
+                behavior: "smooth"
+            });
+
+
+        showToast(
+            "Welcome to the constellation map ✦"
+        );
+
+    });
+
+
+// ========================================
+// LOCATION BUTTON
+// ========================================
+
+document
+    .getElementById("locationBtn")
+    .addEventListener("click", () => {
+
+        const locationStatus =
+            document.getElementById(
+                "locationStatus"
+            );
+
+
+        locationStatus.innerHTML =
+            `
+            <span class="status-dot"></span>
+            Location detected • Chennai, India
+            `;
+
+
+        showToast(
+            "Sky view updated for your location"
+        );
+
+    });
+
+
+// ========================================
+// REFRESH SKY
+// ========================================
+
+document
+    .getElementById("refreshBtn")
+    .addEventListener("click", () => {
+
+        showToast(
+            "Night sky data refreshed ✦"
+        );
+
+
+        const stars =
+            document.querySelectorAll(
+                ".map-star"
+            );
+
+
+        stars.forEach(star => {
+
+            star.style.transform =
+                `scale(${0.8 + Math.random() * 0.6})`;
+
+        });
+
+    });
+
+
+// ========================================
+// OBJECT BUTTONS
+// ========================================
+
+const objectButtons =
+    document.querySelectorAll(
+        "[data-object]"
     );
+
+
+objectButtons.forEach(button => {
+
+    button.addEventListener("click", () => {
+
+        const object =
+            button.getAttribute(
+                "data-object"
+            );
+
+
+        showToast(
+            `Exploring ${object} ✦`
+        );
+
+    });
+
+});
+
+
+// ========================================
+// CONSTELLATION DETAILS
+// ========================================
+
+document
+    .getElementById("constellationBtn")
+    .addEventListener("click", () => {
+
+        showToast(
+            "Orion contains some of the most recognizable stars in the sky."
+        );
+
+    });
+
+
+// ========================================
+// LIVE UTC TIME
+// ========================================
+
+function updateTime() {
+
+    const now =
+        new Date();
+
+
+    const hours =
+        String(
+            now.getUTCHours()
+        ).padStart(2, "0");
+
+
+    const minutes =
+        String(
+            now.getUTCMinutes()
+        ).padStart(2, "0");
+
+
+    document
+        .getElementById("mapTime")
+        .textContent =
+        `${hours}:${minutes} UTC`;
 
 }
 
 
-/* =========================================================
-   NAVBAR SCROLL EFFECT
-========================================================= */
-
-const navbar =
-    document.querySelector(".navbar");
+updateTime();
 
 
-window.addEventListener("scroll", () => {
-
-    if (!navbar) {
-        return;
-    }
-
-    if (window.scrollY > 40) {
-
-        navbar.style.borderBottom =
-            "1px solid var(--border)";
-
-    } else {
-
-        navbar.style.borderBottom =
-            "1px solid transparent";
-
-    }
-
-});
+setInterval(
+    updateTime,
+    60000
+);
 
 
-/* =========================================================
-   PLANET CARD INTERACTION
-========================================================= */
+// ========================================
+// STAR MAP INTERACTION
+// ========================================
 
-const planetCards =
-    document.querySelectorAll(".planet-card");
-
-
-planetCards.forEach((card) => {
-
-    card.addEventListener("click", () => {
-
-        const planetName =
-            card.querySelector("h3");
-
-        if (!planetName) {
-            return;
-        }
-
-        showToast(
-            `Exploring ${planetName.textContent.trim()}`
-        );
-
-    });
-
-});
-
-
-/* =========================================================
-   CONSTELLATION CARD INTERACTION
-========================================================= */
-
-const constellationCards =
+const mapStars =
     document.querySelectorAll(
-        ".constellation-card"
+        ".map-star"
     );
 
 
-constellationCards.forEach((card) => {
+mapStars.forEach((star, index) => {
 
-    card.addEventListener("click", () => {
+    star.addEventListener(
+        "click",
+        () => {
 
-        const constellationName =
-            card.querySelector("h3");
+            showToast(
+                `Star ${index + 1} selected ✦`
+            );
 
-        if (!constellationName) {
-            return;
+
+            star.style.transform =
+                "scale(2)";
+
+
+            setTimeout(() => {
+
+                star.style.transform =
+                    "scale(1)";
+
+            }, 600);
+
         }
-
-        showToast(
-            `Viewing ${constellationName.textContent.trim()}`
-        );
-
-    });
-
-});
-
-
-/* =========================================================
-   EXPLORE CARD INTERACTION
-========================================================= */
-
-const exploreCards =
-    document.querySelectorAll(
-        ".explore-card"
     );
 
-
-exploreCards.forEach((card) => {
-
-    card.addEventListener("mouseenter", () => {
-
-        card.style.cursor = "pointer";
-
-    });
-
 });
 
 
-/* =========================================================
-   KEYBOARD SHORTCUTS
-========================================================= */
+// ========================================
+// KEYBOARD SHORTCUTS
+// ========================================
 
 document.addEventListener(
     "keydown",
-    (event) => {
+    event => {
 
-        /* Press / to focus search */
+        // Press T for theme
 
         if (
-            event.key === "/" &&
-            document.activeElement !== searchInput
+            event.key.toLowerCase() === "t"
         ) {
 
-            event.preventDefault();
-
-            if (searchInput) {
-                searchInput.focus();
-            }
+            themeBtn.click();
 
         }
 
 
-        /* Press Escape to clear search */
+        // Press E for explore
 
         if (
-            event.key === "Escape" &&
-            document.activeElement === searchInput
+            event.key.toLowerCase() === "e"
         ) {
 
-            searchInput.value = "";
-
-            searchResult.textContent =
-                "Try searching for Orion, Mars, Sirius or Andromeda.";
-
-            searchInput.blur();
+            document
+                .getElementById("explore")
+                .scrollIntoView({
+                    behavior: "smooth"
+                });
 
         }
 
@@ -647,41 +384,14 @@ document.addEventListener(
 );
 
 
-/* =========================================================
-   STAR ANIMATION
-========================================================= */
+// ========================================
+// WELCOME MESSAGE
+// ========================================
 
-const stars =
-    document.querySelectorAll(".star");
+setTimeout(() => {
 
+    showToast(
+        "Welcome to Stellerium ✦"
+    );
 
-stars.forEach((star, index) => {
-
-    const delay =
-        (index * 0.23) % 2.5;
-
-    star.style.animationDelay =
-        `${delay}s`;
-
-});
-
-
-/* =========================================================
-   INITIAL PAGE STATE
-========================================================= */
-
-if (searchResult) {
-
-    searchResult.textContent =
-        "Try searching for Orion, Mars, Sirius or Andromeda.";
-
-}
-
-
-/* =========================================================
-   CONSOLE MESSAGE
-========================================================= */
-
-console.log(
-    "✦ Stellerium Star Map loaded successfully."
-);
+}, 1000);
