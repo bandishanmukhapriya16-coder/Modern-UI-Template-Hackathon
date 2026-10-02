@@ -1,88 +1,64 @@
-/* =========================
-   NAVIGATION
-========================= */
-
-const menuBtn = document.getElementById("menuBtn");
-const navLinks = document.getElementById("navLinks");
-
-menuBtn.addEventListener("click", () => {
-
-    navLinks.classList.toggle("active");
-
-    menuBtn.textContent =
-        navLinks.classList.contains("active")
-            ? "✕"
-            : "☰";
-
-});
+/* =========================================================
+   EXO-SCAN
+   Spy Camera Detector
+   Interactive JavaScript
+========================================================= */
 
 
-document.querySelectorAll(".nav-links a").forEach(link => {
+/* ================= ELEMENTS ================= */
 
-    link.addEventListener("click", () => {
+const body = document.body;
 
-        navLinks.classList.remove("active");
+const themeToggle =
+    document.getElementById("themeToggle");
 
-        menuBtn.textContent = "☰";
+const menuButton =
+    document.getElementById("menuButton");
 
-    });
+const navLinks =
+    document.getElementById("navLinks");
 
-});
+const startScan =
+    document.getElementById("startScan");
 
+const scanAgain =
+    document.getElementById("scanAgain");
 
-/* =========================
-   DARK MODE
-========================= */
+const ctaScan =
+    document.getElementById("ctaScan");
 
-const themeBtn =
-    document.getElementById("themeBtn");
+const scannerStatus =
+    document.getElementById("scannerStatus");
 
-if (localStorage.getItem("safeScanTheme") === "dark") {
+const roomStatus =
+    document.getElementById("roomStatus");
 
-    document.body.classList.add("dark");
+const scanPercent =
+    document.getElementById("scanPercent");
 
-    themeBtn.textContent = "☀";
+const resultTitle =
+    document.getElementById("resultTitle");
 
-}
-
-
-themeBtn.addEventListener("click", () => {
-
-    document.body.classList.toggle("dark");
-
-    const darkMode =
-        document.body.classList.contains("dark");
-
-    themeBtn.textContent =
-        darkMode ? "☀" : "☾";
-
-    localStorage.setItem(
-        "safeScanTheme",
-        darkMode ? "dark" : "light"
-    );
-
-    showToast(
-        darkMode
-            ? "Dark mode enabled."
-            : "Light mode enabled."
-    );
-
-});
-
-
-/* =========================
-   TOAST
-========================= */
+const resultText =
+    document.getElementById("resultText");
 
 const toast =
     document.getElementById("toast");
 
+const toastTitle =
+    document.getElementById("toastTitle");
+
 const toastMessage =
     document.getElementById("toastMessage");
 
+
+/* ================= TOAST ================= */
+
 let toastTimer;
 
-function showToast(message) {
+function showToast(title, message) {
+
+    toastTitle.textContent = title;
 
     toastMessage.textContent = message;
 
@@ -94,38 +70,85 @@ function showToast(message) {
 
         toast.classList.remove("show");
 
-    }, 2800);
-
+    }, 3000);
 }
 
 
-/* =========================
-   SCANNER
-========================= */
+/* ================= MOBILE MENU ================= */
 
-const scanButton =
-    document.getElementById("scanButton");
+menuButton.addEventListener("click", () => {
 
-const startScanBtn =
-    document.getElementById("startScanBtn");
+    navLinks.classList.toggle("open");
 
-const ctaScan =
-    document.getElementById("ctaScan");
+    menuButton.textContent =
+        navLinks.classList.contains("open")
+            ? "×"
+            : "☰";
 
-const scanStatus =
-    document.getElementById("scanStatus");
+});
 
-const scanSubtext =
-    document.getElementById("scanSubtext");
 
-const scanPercent =
-    document.getElementById("scanPercent");
+document
+    .querySelectorAll(".nav-links a")
+    .forEach(link => {
 
+        link.addEventListener("click", () => {
+
+            navLinks.classList.remove("open");
+
+            menuButton.textContent = "☰";
+
+        });
+
+    });
+
+
+/* ================= DARK MODE ================= */
+
+themeToggle.addEventListener("click", () => {
+
+    body.classList.toggle("dark");
+
+    const isDark =
+        body.classList.contains("dark");
+
+    themeToggle.textContent =
+        isDark ? "☀" : "☾";
+
+    localStorage.setItem(
+        "exoScanTheme",
+        isDark ? "dark" : "light"
+    );
+
+    showToast(
+        "Appearance updated",
+        isDark
+            ? "Dark mode enabled."
+            : "Light mode enabled."
+    );
+
+});
+
+
+const savedTheme =
+    localStorage.getItem("exoScanTheme");
+
+if (savedTheme === "dark") {
+
+    body.classList.add("dark");
+
+    themeToggle.textContent = "☀";
+}
+
+
+/* ================= SCAN SYSTEM ================= */
 
 let scanning = false;
 
+let scanTimer;
 
-function startScan() {
+
+function runScan() {
 
     if (scanning) {
         return;
@@ -133,90 +156,89 @@ function startScan() {
 
     scanning = true;
 
-    scanButton.disabled = true;
-
-    scanButton.textContent =
-        "Scanning...";
-
-    scanStatus.textContent =
-        "Checking environment";
-
-    scanSubtext.textContent =
-        "Privacy review in progress";
+    clearInterval(scanTimer);
 
     let progress = 0;
 
-    const scanInterval =
-        setInterval(() => {
+    scannerStatus.textContent =
+        "SCANNING";
 
-            progress += Math.floor(
-                Math.random() * 8
-            ) + 4;
+    roomStatus.textContent =
+        "ANALYZING ROOM";
 
-            if (progress >= 100) {
+    scanPercent.textContent =
+        "0%";
 
-                progress = 100;
+    resultTitle.textContent =
+        "Scan in progress";
 
-                clearInterval(scanInterval);
+    resultText.textContent =
+        "Checking visual safety zones...";
 
-                finishScan();
 
-            }
+    showToast(
+        "Room scan started",
+        "EXO-SCAN is checking the room interface."
+    );
 
-            scanPercent.textContent =
-                `${progress}%`;
 
-        }, 180);
+    scanTimer = setInterval(() => {
+
+        progress += Math.floor(
+            Math.random() * 8
+        ) + 4;
+
+        if (progress >= 100) {
+
+            progress = 100;
+
+            clearInterval(scanTimer);
+
+            finishScan();
+
+        }
+
+        scanPercent.textContent =
+            `${progress}%`;
+
+    }, 220);
 
 }
 
 
 function finishScan() {
 
-    scanStatus.textContent =
-        "Review complete";
-
-    scanSubtext.textContent =
-        "No automatic conclusion detected";
-
-    scanButton.disabled = false;
-
-    scanButton.textContent =
-        "Run Scan Again";
-
     scanning = false;
 
-    showToast(
-        "Safety scan simulation completed."
-    );
+    scannerStatus.textContent =
+        "COMPLETE";
 
-    document.getElementById("score").textContent =
-        "98";
+    roomStatus.textContent =
+        "VISUAL CHECK COMPLETE";
+
+    resultTitle.textContent =
+        "No obvious visual concern";
+
+    resultText.textContent =
+        "The simulated scan found no obvious suspicious object. Continue with a manual visual inspection.";
+
+    showToast(
+        "Scan complete",
+        "No obvious visual concern detected."
+    );
 
 }
 
 
-scanButton.addEventListener(
+startScan.addEventListener(
     "click",
-    startScan
+    runScan
 );
 
 
-startScanBtn.addEventListener(
+scanAgain.addEventListener(
     "click",
-    () => {
-
-        document.getElementById("scanner")
-            .scrollIntoView({
-                behavior: "smooth",
-                block: "center"
-            });
-
-        setTimeout(() => {
-            startScan();
-        }, 600);
-
-    }
+    runScan
 );
 
 
@@ -224,117 +246,136 @@ ctaScan.addEventListener(
     "click",
     () => {
 
-        document.getElementById("scanner")
+        document
+            .getElementById("scanner")
             .scrollIntoView({
-                behavior: "smooth",
-                block: "center"
+                behavior: "smooth"
             });
 
-        setTimeout(() => {
-            startScan();
-        }, 600);
+        setTimeout(
+            runScan,
+            500
+        );
 
     }
 );
 
 
-/* =========================
-   SAFETY CHECK BUTTONS
-========================= */
+/* ================= CHECK BUTTONS ================= */
 
 const checkButtons =
-    document.querySelectorAll(".check-btn");
+    document.querySelectorAll(
+        ".check-button"
+    );
 
 
 checkButtons.forEach(button => {
 
-    button.addEventListener("click", () => {
+    button.addEventListener(
+        "click",
+        () => {
 
-        const checkName =
-            button.dataset.check;
+            const card =
+                button.closest(
+                    ".check-card"
+                );
 
-        showToast(
-            `${checkName} started.`
-        );
-
-        button.textContent =
-            "Check selected ✓";
-
-        setTimeout(() => {
+            const title =
+                card.querySelector("h3")
+                    .textContent;
 
             button.textContent =
-                "Run Check →";
+                "Area marked ✓";
 
-        }, 1800);
+            showToast(
+                "Inspection zone",
+                `${title} added to your checklist.`
+            );
 
-    });
+        }
+    );
 
 });
 
 
-/* =========================
-   KEYBOARD SHORTCUTS
-========================= */
+/* ================= SCROLL REVEAL ================= */
 
-document.addEventListener("keydown", event => {
+const revealElements =
+    document.querySelectorAll(
+        ".check-card, .location-card, .visual-point, .result-card"
+    );
 
-    if (
-        event.key.toLowerCase() === "s" &&
-        document.activeElement.tagName !== "INPUT"
-    ) {
 
-        startScan();
+const revealObserver =
+    new IntersectionObserver(
+        entries => {
+
+            entries.forEach(entry => {
+
+                if (
+                    entry.isIntersecting
+                ) {
+
+                    entry.target.style.opacity =
+                        "1";
+
+                    entry.target.style.transform =
+                        "translateY(0)";
+
+                    revealObserver.unobserve(
+                        entry.target
+                    );
+
+                }
+
+            });
+
+        },
+        {
+            threshold: 0.12
+        }
+    );
+
+
+revealElements.forEach(element => {
+
+    element.style.opacity = "0";
+
+    element.style.transform =
+        "translateY(22px)";
+
+    element.style.transition =
+        "opacity 0.6s ease, transform 0.6s ease";
+
+    revealObserver.observe(element);
+
+});
+
+
+/* ================= KEYBOARD SHORTCUT ================= */
+
+document.addEventListener(
+    "keydown",
+    event => {
+
+        if (
+            event.key.toLowerCase() === "s" &&
+            !event.ctrlKey &&
+            !event.altKey &&
+            !event.metaKey
+        ) {
+
+            runScan();
+
+        }
 
     }
-
-    if (
-        event.key.toLowerCase() === "d" &&
-        document.activeElement.tagName !== "INPUT"
-    ) {
-
-        themeBtn.click();
-
-    }
-
-});
+);
 
 
-/* =========================
-   NAVBAR SHADOW
-========================= */
+/* ================= INITIAL MESSAGE ================= */
 
-window.addEventListener("scroll", () => {
-
-    const navbar =
-        document.querySelector(".navbar");
-
-    if (window.scrollY > 30) {
-
-        navbar.style.boxShadow =
-            "0 8px 30px rgba(16,24,40,0.06)";
-
-    } else {
-
-        navbar.style.boxShadow =
-            "none";
-
-    }
-
-});
-
-
-/* =========================
-   INITIAL MESSAGE
-========================= */
-
-window.addEventListener("load", () => {
-
-    setTimeout(() => {
-
-        showToast(
-            "SafeScan is ready."
-        );
-
-    }, 700);
-
-});
+showToast(
+    "EXO-SCAN ready",
+    "Press Start Room Scan to begin."
+);

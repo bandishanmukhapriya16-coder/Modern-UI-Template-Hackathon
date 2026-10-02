@@ -6,140 +6,160 @@
 
     <title>Nearbyy | Discover What's Around You</title>
 
-    <link rel="stylesheet" href="style.css">
+    <meta
+        name="description"
+        content="Nearbyy helps you discover restaurants, cafes, attractions and useful places around you."
+    >
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap"
+        rel="stylesheet"
+    >
+
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    >
+
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-    <!-- Navbar -->
+    <!-- ================= NAVBAR ================= -->
+
     <header class="navbar">
+
         <div class="nav-container">
 
-            <a href="#" class="logo">
-                <span class="logo-mark">✦</span>
-                Nearby<span>y</span>
+            <a href="#home" class="logo">
+                <span class="logo-mark">
+                    <i class="fa-solid fa-location-dot"></i>
+                </span>
+
+                <span>Nearbyy</span>
             </a>
 
+
             <nav class="nav-links" id="navLinks">
-                <a href="#discover">Discover</a>
+                <a href="#home">Explore</a>
                 <a href="#categories">Categories</a>
-                <a href="#places">Places</a>
-                <a href="#about">About</a>
+                <a href="#trending">Trending</a>
+                <a href="#saved">Saved</a>
             </nav>
 
+
             <div class="nav-actions">
-                <button class="theme-btn" id="themeBtn">☾</button>
-                <button class="location-btn" id="locationBtn">
-                    <span>⌖</span>
-                    Use my location
+
+                <button
+                    class="theme-btn"
+                    id="themeBtn"
+                    title="Toggle theme"
+                >
+                    <i class="fa-regular fa-moon"></i>
                 </button>
-                <button class="menu-btn" id="menuBtn">☰</button>
+
+                <button
+                    class="profile-btn"
+                    id="profileBtn"
+                    title="Profile"
+                >
+                    <i class="fa-regular fa-user"></i>
+                </button>
+
+                <button
+                    class="menu-btn"
+                    id="menuBtn"
+                >
+                    <i class="fa-solid fa-bars"></i>
+                </button>
+
             </div>
 
         </div>
+
     </header>
 
 
+    <!-- ================= HERO ================= -->
+
     <main>
 
-        <!-- Hero -->
-        <section class="hero" id="discover">
+        <section class="hero" id="home">
 
-            <div class="hero-container">
+            <div class="hero-background"></div>
 
-                <div class="hero-content">
+            <div class="hero-content">
 
-                    <div class="eyebrow">
-                        <span class="live-dot"></span>
-                        Explore your surroundings
-                    </div>
+                <div class="location-pill">
+                    <i class="fa-solid fa-location-dot"></i>
 
-                    <h1>
-                        Find great places
-                        <span>nearby.</span>
-                    </h1>
+                    <span id="locationText">
+                        Discovering places near you
+                    </span>
 
-                    <p>
-                        Discover cafés, restaurants, parks, shopping spots,
-                        services and hidden gems around you.
-                    </p>
+                    <button id="locationBtn">
+                        Change
+                    </button>
+                </div>
 
-                    <div class="search-box">
 
-                        <span class="search-icon">⌕</span>
+                <h1>
+                    Find your
+                    <span>next favourite</span>
+                    place.
+                </h1>
 
-                        <input
-                            type="text"
-                            id="searchInput"
-                            placeholder="Search places, services or experiences..."
-                        >
 
-                        <button id="searchBtn">Search</button>
+                <p>
+                    Discover cafes, restaurants, attractions and hidden
+                    gems around you — all in one place.
+                </p>
 
-                    </div>
 
-                    <div class="popular-searches">
-                        <span>Popular:</span>
-                        <button class="quick-search">Coffee</button>
-                        <button class="quick-search">Restaurants</button>
-                        <button class="quick-search">Parks</button>
-                        <button class="quick-search">Shopping</button>
-                    </div>
+                <!-- SEARCH -->
+
+                <div class="search-box">
+
+                    <i class="fa-solid fa-magnifying-glass"></i>
+
+                    <input
+                        type="text"
+                        id="searchInput"
+                        placeholder="Search places, food, experiences..."
+                    >
+
+                    <button id="searchButton">
+                        Search
+                    </button>
 
                 </div>
 
 
-                <!-- Map -->
-                <div class="map-card">
+                <!-- QUICK SEARCH -->
 
-                    <div class="map-top">
-                        <div class="map-location">
-                            <span>⌖</span>
-                            Your area
-                        </div>
+                <div class="quick-search">
 
-                        <button id="locateMapBtn">◎</button>
-                    </div>
+                    <span>Popular:</span>
 
-                    <div class="map">
+                    <button data-search="coffee">
+                        Coffee
+                    </button>
 
-                        <div class="road road-one"></div>
-                        <div class="road road-two"></div>
-                        <div class="road road-three"></div>
-                        <div class="road road-four"></div>
+                    <button data-search="restaurants">
+                        Restaurants
+                    </button>
 
-                        <div class="map-water"></div>
+                    <button data-search="parks">
+                        Parks
+                    </button>
 
-                        <div class="map-pin pin-one">
-                            <span>☕</span>
-                        </div>
-
-                        <div class="map-pin pin-two">
-                            <span>🍴</span>
-                        </div>
-
-                        <div class="map-pin pin-three">
-                            <span>🌳</span>
-                        </div>
-
-                        <div class="map-pin pin-four">
-                            <span>🛍</span>
-                        </div>
-
-                        <div class="current-location">
-                            <div></div>
-                        </div>
-
-                    </div>
-
-                    <div class="map-bottom">
-                        <span>4.2 km area</span>
-                        <button id="expandMapBtn">Expand map ↗</button>
-                    </div>
+                    <button data-search="shopping">
+                        Shopping
+                    </button>
 
                 </div>
 
@@ -148,58 +168,102 @@
         </section>
 
 
-        <!-- Categories -->
+        <!-- ================= CATEGORIES ================= -->
+
         <section class="section" id="categories">
 
-            <div class="section-heading">
+            <div class="section-header">
 
-                <span class="section-label">EXPLORE CATEGORIES</span>
+                <div>
+                    <span class="eyebrow">
+                        Explore
+                    </span>
 
-                <h2>What are you looking for?</h2>
+                    <h2>
+                        What are you looking for?
+                    </h2>
+                </div>
 
-                <p>
-                    Browse popular categories and discover something new nearby.
-                </p>
+                <button
+                    class="view-all-btn"
+                    id="allCategoriesBtn"
+                >
+                    View all
+                    <i class="fa-solid fa-arrow-right"></i>
+                </button>
 
             </div>
 
 
             <div class="category-grid">
 
-                <button class="category-card" data-category="cafes">
-                    <span class="category-icon orange">☕</span>
-                    <strong>Cafés</strong>
-                    <small>126 places</small>
+                <button
+                    class="category-card active"
+                    data-category="all"
+                >
+                    <span class="category-icon blue">
+                        <i class="fa-solid fa-compass"></i>
+                    </span>
+
+                    <strong>All places</strong>
+
+                    <small>Explore everything</small>
                 </button>
 
-                <button class="category-card" data-category="food">
-                    <span class="category-icon red">🍴</span>
+
+                <button
+                    class="category-card"
+                    data-category="cafe"
+                >
+                    <span class="category-icon orange">
+                        <i class="fa-solid fa-mug-hot"></i>
+                    </span>
+
+                    <strong>Cafes</strong>
+
+                    <small>Good coffee, good mood</small>
+                </button>
+
+
+                <button
+                    class="category-card"
+                    data-category="restaurant"
+                >
+                    <span class="category-icon red">
+                        <i class="fa-solid fa-utensils"></i>
+                    </span>
+
                     <strong>Restaurants</strong>
-                    <small>284 places</small>
+
+                    <small>Find your next meal</small>
                 </button>
 
-                <button class="category-card" data-category="parks">
-                    <span class="category-icon green">🌿</span>
-                    <strong>Parks</strong>
-                    <small>48 places</small>
+
+                <button
+                    class="category-card"
+                    data-category="attraction"
+                >
+                    <span class="category-icon purple">
+                        <i class="fa-solid fa-camera"></i>
+                    </span>
+
+                    <strong>Attractions</strong>
+
+                    <small>Places worth visiting</small>
                 </button>
 
-                <button class="category-card" data-category="shopping">
-                    <span class="category-icon purple">🛍</span>
+
+                <button
+                    class="category-card"
+                    data-category="shopping"
+                >
+                    <span class="category-icon green">
+                        <i class="fa-solid fa-bag-shopping"></i>
+                    </span>
+
                     <strong>Shopping</strong>
-                    <small>197 places</small>
-                </button>
 
-                <button class="category-card" data-category="health">
-                    <span class="category-icon blue">✚</span>
-                    <strong>Healthcare</strong>
-                    <small>72 places</small>
-                </button>
-
-                <button class="category-card" data-category="services">
-                    <span class="category-icon yellow">⚙</span>
-                    <strong>Services</strong>
-                    <small>153 places</small>
+                    <small>Discover local finds</small>
                 </button>
 
             </div>
@@ -207,238 +271,572 @@
         </section>
 
 
-        <!-- Places -->
-        <section class="places-section" id="places">
+        <!-- ================= TRENDING ================= -->
 
-            <div class="section places-header">
+        <section
+            class="section places-section"
+            id="trending"
+        >
 
-                <div>
-                    <span class="section-label">NEAR YOU</span>
-                    <h2>Popular places nearby</h2>
-                </div>
-
-                <div class="filter-buttons">
-                    <button class="filter active" data-filter="all">All</button>
-                    <button class="filter" data-filter="food">Food</button>
-                    <button class="filter" data-filter="coffee">Coffee</button>
-                    <button class="filter" data-filter="parks">Parks</button>
-                </div>
-
-            </div>
-
-
-            <div class="section places-grid" id="placesGrid">
-
-                <article class="place-card" data-type="coffee">
-
-                    <div class="place-image coffee-image">
-                        <span class="image-label">Coffee</span>
-                        <button class="heart-btn">♡</button>
-                    </div>
-
-                    <div class="place-content">
-
-                        <div class="place-title">
-                            <h3>Roast & Bean</h3>
-                            <span class="verified">✓</span>
-                        </div>
-
-                        <div class="rating">
-                            ★ 4.8
-                            <span>· 1.2 km</span>
-                        </div>
-
-                        <p>Specialty coffee · Bakery</p>
-
-                        <div class="place-bottom">
-                            <span class="open">Open now</span>
-                            <span>₹₹</span>
-                        </div>
-
-                    </div>
-
-                </article>
-
-
-                <article class="place-card" data-type="food">
-
-                    <div class="place-image restaurant-image">
-                        <span class="image-label">Restaurant</span>
-                        <button class="heart-btn">♡</button>
-                    </div>
-
-                    <div class="place-content">
-
-                        <div class="place-title">
-                            <h3>Olive Table</h3>
-                            <span class="verified">✓</span>
-                        </div>
-
-                        <div class="rating">
-                            ★ 4.7
-                            <span>· 1.8 km</span>
-                        </div>
-
-                        <p>Contemporary dining · Asian</p>
-
-                        <div class="place-bottom">
-                            <span class="open">Open now</span>
-                            <span>₹₹₹</span>
-                        </div>
-
-                    </div>
-
-                </article>
-
-
-                <article class="place-card" data-type="parks">
-
-                    <div class="place-image park-image">
-                        <span class="image-label">Park</span>
-                        <button class="heart-btn">♡</button>
-                    </div>
-
-                    <div class="place-content">
-
-                        <div class="place-title">
-                            <h3>Greenway Park</h3>
-                            <span class="verified">✓</span>
-                        </div>
-
-                        <div class="rating">
-                            ★ 4.6
-                            <span>· 2.4 km</span>
-                        </div>
-
-                        <p>Nature · Walking · Family</p>
-
-                        <div class="place-bottom">
-                            <span class="open">Open now</span>
-                            <span>Free</span>
-                        </div>
-
-                    </div>
-
-                </article>
-
-
-                <article class="place-card" data-type="food">
-
-                    <div class="place-image cafe-image">
-                        <span class="image-label">Café</span>
-                        <button class="heart-btn">♡</button>
-                    </div>
-
-                    <div class="place-content">
-
-                        <div class="place-title">
-                            <h3>Daily Grind</h3>
-                            <span class="verified">✓</span>
-                        </div>
-
-                        <div class="rating">
-                            ★ 4.5
-                            <span>· 2.7 km</span>
-                        </div>
-
-                        <p>Coffee · Breakfast · Desserts</p>
-
-                        <div class="place-bottom">
-                            <span class="open">Open now</span>
-                            <span>₹₹</span>
-                        </div>
-
-                    </div>
-
-                </article>
-
-            </div>
-
-        </section>
-
-
-        <!-- Discovery banner -->
-        <section class="discovery">
-
-            <div class="discovery-container">
+            <div class="section-header">
 
                 <div>
-                    <span class="section-label">GO A LITTLE FURTHER</span>
-
-                    <h2>There is always something new to discover.</h2>
-
-                    <p>
-                        Explore local favorites, hidden gems and places you
-                        might not find through ordinary searches.
-                    </p>
-
-                    <button class="primary-btn" id="exploreBtn">
-                        Explore Nearby
-                        <span>→</span>
-                    </button>
-                </div>
-
-                <div class="discovery-art">
-
-                    <div class="circle circle-one"></div>
-                    <div class="circle circle-two"></div>
-
-                    <div class="discovery-pin">
-                        ✦
-                    </div>
-
-                </div>
-
-            </div>
-
-        </section>
-
-
-        <!-- About -->
-        <section class="section about" id="about">
-
-            <div class="about-grid">
-
-                <div>
-
-                    <span class="section-label">ABOUT NEARBYY</span>
+                    <span class="eyebrow">
+                        Nearby now
+                    </span>
 
                     <h2>
-                        Your local world,
-                        <span>one place away.</span>
+                        Places people love
                     </h2>
+                </div>
 
+
+                <div class="sort-control">
+
+                    <i class="fa-solid fa-sliders"></i>
+
+                    <select id="sortSelect">
+
+                        <option value="recommended">
+                            Recommended
+                        </option>
+
+                        <option value="rating">
+                            Highest rated
+                        </option>
+
+                        <option value="distance">
+                            Nearest first
+                        </option>
+
+                    </select>
+
+                </div>
+
+            </div>
+
+
+            <div
+                class="places-grid"
+                id="placesGrid"
+            >
+
+                <!-- PLACE 1 -->
+
+                <article
+                    class="place-card"
+                    data-category="cafe"
+                    data-name="The Daily Grind"
+                    data-rating="4.8"
+                    data-distance="0.8"
+                >
+
+                    <div class="place-image">
+
+                        <img
+                            src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&w=1200&q=85"
+                            alt="Modern coffee shop"
+                        >
+
+                        <span class="open-badge">
+                            Open now
+                        </span>
+
+                        <button
+                            class="save-btn"
+                            data-place="The Daily Grind"
+                        >
+                            <i class="fa-regular fa-heart"></i>
+                        </button>
+
+                    </div>
+
+
+                    <div class="place-content">
+
+                        <div class="place-top">
+
+                            <div>
+
+                                <span class="place-category">
+                                    Cafe
+                                </span>
+
+                                <h3>
+                                    The Daily Grind
+                                </h3>
+
+                            </div>
+
+                            <span class="rating">
+                                <i class="fa-solid fa-star"></i>
+                                4.8
+                            </span>
+
+                        </div>
+
+
+                        <p class="place-description">
+                            Specialty coffee, fresh pastries and a
+                            relaxed space to work or meet.
+                        </p>
+
+
+                        <div class="place-meta">
+
+                            <span>
+                                <i class="fa-solid fa-location-arrow"></i>
+                                0.8 km
+                            </span>
+
+                            <span>
+                                <i class="fa-regular fa-clock"></i>
+                                8 AM – 10 PM
+                            </span>
+
+                        </div>
+
+
+                        <button
+                            class="details-btn"
+                            data-place="The Daily Grind"
+                        >
+                            View place
+                            <i class="fa-solid fa-arrow-right"></i>
+                        </button>
+
+                    </div>
+
+                </article>
+
+
+                <!-- PLACE 2 -->
+
+                <article
+                    class="place-card"
+                    data-category="restaurant"
+                    data-name="Olive & Ember"
+                    data-rating="4.7"
+                    data-distance="1.2"
+                >
+
+                    <div class="place-image">
+
+                        <img
+                            src="https://images.unsplash.com/photo-1515003197210-e0cd71810b5f?auto=format&fit=crop&w=1200&q=85"
+                            alt="Beautiful restaurant interior"
+                        >
+
+                        <span class="open-badge">
+                            Open now
+                        </span>
+
+                        <button
+                            class="save-btn"
+                            data-place="Olive & Ember"
+                        >
+                            <i class="fa-regular fa-heart"></i>
+                        </button>
+
+                    </div>
+
+
+                    <div class="place-content">
+
+                        <div class="place-top">
+
+                            <div>
+
+                                <span class="place-category">
+                                    Restaurant
+                                </span>
+
+                                <h3>
+                                    Olive & Ember
+                                </h3>
+
+                            </div>
+
+                            <span class="rating">
+                                <i class="fa-solid fa-star"></i>
+                                4.7
+                            </span>
+
+                        </div>
+
+
+                        <p class="place-description">
+                            Modern comfort food, seasonal ingredients
+                            and a warm neighbourhood atmosphere.
+                        </p>
+
+
+                        <div class="place-meta">
+
+                            <span>
+                                <i class="fa-solid fa-location-arrow"></i>
+                                1.2 km
+                            </span>
+
+                            <span>
+                                <i class="fa-regular fa-clock"></i>
+                                11 AM – 11 PM
+                            </span>
+
+                        </div>
+
+
+                        <button
+                            class="details-btn"
+                            data-place="Olive & Ember"
+                        >
+                            View place
+                            <i class="fa-solid fa-arrow-right"></i>
+                        </button>
+
+                    </div>
+
+                </article>
+
+
+                <!-- PLACE 3 -->
+
+                <article
+                    class="place-card"
+                    data-category="attraction"
+                    data-name="The Old Town"
+                    data-rating="4.9"
+                    data-distance="2.1"
+                >
+
+                    <div class="place-image">
+
+                        <img
+                            src="https://images.unsplash.com/photo-1533105079780-92b9be482077?auto=format&fit=crop&w=1200&q=85"
+                            alt="Beautiful city street"
+                        >
+
+                        <span class="open-badge">
+                            Open today
+                        </span>
+
+                        <button
+                            class="save-btn"
+                            data-place="The Old Town"
+                        >
+                            <i class="fa-regular fa-heart"></i>
+                        </button>
+
+                    </div>
+
+
+                    <div class="place-content">
+
+                        <div class="place-top">
+
+                            <div>
+
+                                <span class="place-category">
+                                    Attraction
+                                </span>
+
+                                <h3>
+                                    The Old Town
+                                </h3>
+
+                            </div>
+
+                            <span class="rating">
+                                <i class="fa-solid fa-star"></i>
+                                4.9
+                            </span>
+
+                        </div>
+
+
+                        <p class="place-description">
+                            Historic streets, beautiful architecture and
+                            plenty of photo-worthy corners.
+                        </p>
+
+
+                        <div class="place-meta">
+
+                            <span>
+                                <i class="fa-solid fa-location-arrow"></i>
+                                2.1 km
+                            </span>
+
+                            <span>
+                                <i class="fa-regular fa-clock"></i>
+                                Open all day
+                            </span>
+
+                        </div>
+
+
+                        <button
+                            class="details-btn"
+                            data-place="The Old Town"
+                        >
+                            View place
+                            <i class="fa-solid fa-arrow-right"></i>
+                        </button>
+
+                    </div>
+
+                </article>
+
+
+                <!-- PLACE 4 -->
+
+                <article
+                    class="place-card"
+                    data-category="shopping"
+                    data-name="Local Market"
+                    data-rating="4.6"
+                    data-distance="1.5"
+                >
+
+                    <div class="place-image">
+
+                        <img
+                            src="https://images.unsplash.com/photo-1441986300917-64674bd600d8?auto=format&fit=crop&w=1200&q=85"
+                            alt="Modern shopping store"
+                        >
+
+                        <span class="open-badge">
+                            Open now
+                        </span>
+
+                        <button
+                            class="save-btn"
+                            data-place="Local Market"
+                        >
+                            <i class="fa-regular fa-heart"></i>
+                        </button>
+
+                    </div>
+
+
+                    <div class="place-content">
+
+                        <div class="place-top">
+
+                            <div>
+
+                                <span class="place-category">
+                                    Shopping
+                                </span>
+
+                                <h3>
+                                    Local Market
+                                </h3>
+
+                            </div>
+
+                            <span class="rating">
+                                <i class="fa-solid fa-star"></i>
+                                4.6
+                            </span>
+
+                        </div>
+
+
+                        <p class="place-description">
+                            Independent stores, fashion, lifestyle
+                            products and local brands.
+                        </p>
+
+
+                        <div class="place-meta">
+
+                            <span>
+                                <i class="fa-solid fa-location-arrow"></i>
+                                1.5 km
+                            </span>
+
+                            <span>
+                                <i class="fa-regular fa-clock"></i>
+                                10 AM – 9 PM
+                            </span>
+
+                        </div>
+
+
+                        <button
+                            class="details-btn"
+                            data-place="Local Market"
+                        >
+                            View place
+                            <i class="fa-solid fa-arrow-right"></i>
+                        </button>
+
+                    </div>
+
+                </article>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= MAP ================= -->
+
+        <section class="map-section">
+
+            <div class="map-copy">
+
+                <span class="eyebrow">
+                    Explore the neighbourhood
+                </span>
+
+                <h2>
+                    Your city,
+                    <span>your way.</span>
+                </h2>
+
+                <p>
+                    Discover places around you and build your own
+                    collection of favourite spots.
+                </p>
+
+
+                <div class="map-stats">
+
+                    <div>
+                        <strong>120+</strong>
+                        <span>places nearby</span>
+                    </div>
+
+                    <div>
+                        <strong>4.7</strong>
+                        <span>average rating</span>
+                    </div>
+
+                    <div>
+                        <strong>24/7</strong>
+                        <span>discovery</span>
+                    </div>
+
+                </div>
+
+
+                <button
+                    class="primary-btn"
+                    id="exploreMapBtn"
+                >
+                    Explore map
+                    <i class="fa-solid fa-arrow-right"></i>
+                </button>
+
+            </div>
+
+
+            <div class="map-visual">
+
+                <div class="map-grid"></div>
+
+                <div class="map-road road-one"></div>
+                <div class="map-road road-two"></div>
+                <div class="map-road road-three"></div>
+
+                <div class="map-place place-a">
+                    <i class="fa-solid fa-mug-hot"></i>
+                </div>
+
+                <div class="map-place place-b">
+                    <i class="fa-solid fa-utensils"></i>
+                </div>
+
+                <div class="map-place place-c">
+                    <i class="fa-solid fa-camera"></i>
+                </div>
+
+                <div class="map-place place-d">
+                    <i class="fa-solid fa-bag-shopping"></i>
+                </div>
+
+                <div class="you-marker">
+                    <span></span>
+                    <small>You</small>
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= SAVED ================= -->
+
+        <section
+            class="section saved-section"
+            id="saved"
+        >
+
+            <div class="saved-card">
+
+                <div class="saved-icon">
+                    <i class="fa-regular fa-heart"></i>
                 </div>
 
                 <div>
 
+                    <span class="eyebrow">
+                        Your collection
+                    </span>
+
+                    <h2>
+                        Keep the places
+                        you love close.
+                    </h2>
+
                     <p>
-                        Nearbyy is designed to make local discovery simple.
-                        Instead of scrolling through endless results, find
-                        useful places, experiences and services around you
-                        through a clean, modern interface.
+                        Save interesting places and come back to
+                        them whenever you're ready.
                     </p>
 
-                    <div class="stats">
-
-                        <div>
-                            <strong>12K+</strong>
-                            <span>Places</span>
-                        </div>
-
-                        <div>
-                            <strong>4.8★</strong>
-                            <span>Average rating</span>
-                        </div>
-
-                        <div>
-                            <strong>120+</strong>
-                            <span>Cities</span>
-                        </div>
-
-                    </div>
-
                 </div>
+
+                <button
+                    class="secondary-btn"
+                    id="savedBtn"
+                >
+                    View saved places
+                    <i class="fa-solid fa-arrow-right"></i>
+                </button>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= CTA ================= -->
+
+        <section class="cta">
+
+            <div>
+
+                <span class="eyebrow">
+                    Start exploring
+                </span>
+
+                <h2>
+                    There is always
+                    something nearby.
+                </h2>
+
+                <p>
+                    Open Nearbyy and discover your next favourite spot.
+                </p>
+
+                <button
+                    class="white-btn"
+                    id="startBtn"
+                >
+                    Explore now
+                    <i class="fa-solid fa-arrow-right"></i>
+                </button>
 
             </div>
 
@@ -447,57 +845,221 @@
     </main>
 
 
-    <!-- Footer -->
-    <footer>
+    <!-- ================= DETAILS MODAL ================= -->
+
+    <div
+        class="modal"
+        id="detailsModal"
+    >
+
+        <div class="modal-content">
+
+            <button
+                class="modal-close"
+                id="modalClose"
+            >
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+
+            <div class="modal-image">
+
+                <img
+                    id="modalImage"
+                    src=""
+                    alt=""
+                >
+
+            </div>
+
+            <div class="modal-body">
+
+                <span
+                    class="place-category"
+                    id="modalCategory"
+                >
+                    Cafe
+                </span>
+
+                <h2 id="modalTitle">
+                    The Daily Grind
+                </h2>
+
+                <div class="modal-rating">
+
+                    <span>
+                        <i class="fa-solid fa-star"></i>
+                        <span id="modalRating">4.8</span>
+                    </span>
+
+                    <span>
+                        <i class="fa-solid fa-location-arrow"></i>
+                        <span id="modalDistance">0.8 km</span>
+                    </span>
+
+                </div>
+
+                <p id="modalDescription">
+                    Specialty coffee and fresh pastries.
+                </p>
+
+                <div class="modal-actions">
+
+                    <button
+                        class="primary-btn"
+                        id="directionsBtn"
+                    >
+                        <i class="fa-solid fa-diamond-turn-right"></i>
+                        Directions
+                    </button>
+
+                    <button
+                        class="secondary-btn"
+                        id="modalSaveBtn"
+                    >
+                        <i class="fa-regular fa-heart"></i>
+                        Save
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- ================= TOAST ================= -->
+
+    <div
+        class="toast"
+        id="toast"
+    >
+
+        <div class="toast-icon">
+            <i class="fa-solid fa-check"></i>
+        </div>
+
+        <div>
+
+            <strong id="toastTitle">
+                Saved
+            </strong>
+
+            <p id="toastMessage">
+                Place saved to your collection.
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <!-- ================= FOOTER ================= -->
+
+    <footer class="footer">
 
         <div class="footer-container">
 
             <div class="footer-brand">
 
-                <a href="#" class="logo">
-                    <span class="logo-mark">✦</span>
-                    Nearby<span>y</span>
+                <a href="#home" class="logo">
+                    <span class="logo-mark">
+                        <i class="fa-solid fa-location-dot"></i>
+                    </span>
+
+                    Nearbyy
                 </a>
 
                 <p>
-                    Discover more of what's around you.
+                    Discover interesting places,
+                    experiences and local favourites.
                 </p>
+
+                <div class="social-links">
+
+                    <a href="#">
+                        <i class="fa-brands fa-instagram"></i>
+                    </a>
+
+                    <a href="#">
+                        <i class="fa-brands fa-x-twitter"></i>
+                    </a>
+
+                    <a href="#">
+                        <i class="fa-brands fa-facebook-f"></i>
+                    </a>
+
+                </div>
 
             </div>
 
-            <div class="footer-links">
 
-                <div>
-                    <strong>Explore</strong>
-                    <a href="#discover">Discover</a>
-                    <a href="#categories">Categories</a>
-                    <a href="#places">Places</a>
-                </div>
+            <div class="footer-column">
 
-                <div>
-                    <strong>Nearbyy</strong>
-                    <a href="#about">About</a>
-                    <a href="#">Privacy</a>
-                    <a href="#">Contact</a>
-                </div>
+                <h4>Discover</h4>
+
+                <a href="#categories">Categories</a>
+                <a href="#trending">Trending</a>
+                <a href="#saved">Saved places</a>
+                <a href="#home">Explore</a>
+
+            </div>
+
+
+            <div class="footer-column">
+
+                <h4>Nearbyy</h4>
+
+                <a href="#">About us</a>
+                <a href="#">How it works</a>
+                <a href="#">Community</a>
+                <a href="#">Contact</a>
+
+            </div>
+
+
+            <div class="footer-column">
+
+                <h4>Stay curious</h4>
+
+                <p>
+                    Get local recommendations and new discoveries.
+                </p>
+
+                <form id="newsletterForm">
+
+                    <input
+                        type="email"
+                        id="emailInput"
+                        placeholder="Email address"
+                        required
+                    >
+
+                    <button type="submit">
+                        <i class="fa-solid fa-arrow-right"></i>
+                    </button>
+
+                </form>
 
             </div>
 
         </div>
 
+
         <div class="footer-bottom">
-            <span>© 2026 Nearbyy. All rights reserved.</span>
-            <span>Made for local discovery.</span>
+
+            <span>
+                © 2026 Nearbyy. All rights reserved.
+            </span>
+
+            <span>
+                Discover more. Go further.
+            </span>
+
         </div>
 
     </footer>
-
-
-    <!-- Toast -->
-    <div class="toast" id="toast">
-        <span>✓</span>
-        <p id="toastMessage">Done.</p>
-    </div>
 
 
     <script src="script.js"></script>
