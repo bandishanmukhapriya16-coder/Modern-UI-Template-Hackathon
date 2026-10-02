@@ -1,0 +1,638 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="description" content="SoilSense - Smart soil monitoring dashboard">
+
+    <title>SoilSense | Smart Soil Monitor</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- Navigation -->
+    <header class="navbar">
+
+        <a href="#home" class="logo">
+            <span>🌱</span>
+            SoilSense
+        </a>
+
+        <nav class="nav-links" id="navLinks">
+            <a href="#home">Overview</a>
+            <a href="#sensors">Sensors</a>
+            <a href="#insights">Insights</a>
+            <a href="#history">History</a>
+        </nav>
+
+        <div class="nav-actions">
+
+            <button
+                class="theme-btn"
+                id="themeToggle"
+                aria-label="Toggle theme">
+                ☀️
+            </button>
+
+            <button
+                class="menu-btn"
+                id="menuBtn"
+                aria-label="Open menu">
+                ☰
+            </button>
+
+        </div>
+
+    </header>
+
+
+    <main>
+
+        <!-- Hero -->
+        <section class="hero" id="home">
+
+            <div class="hero-content">
+
+                <span class="eyebrow">SMART SOIL MONITORING</span>
+
+                <h1>
+                    Know your soil.
+                    <span>Grow better.</span>
+                </h1>
+
+                <p>
+                    Monitor soil moisture, temperature, nutrients and
+                    overall conditions from one simple dashboard.
+                </p>
+
+                <div class="hero-actions">
+
+                    <button class="primary-btn" id="scanBtn">
+                        Scan soil
+                    </button>
+
+                    <a href="#sensors" class="secondary-btn">
+                        View sensors →
+                    </a>
+
+                </div>
+
+                <div class="status-line">
+
+                    <span class="status-dot"></span>
+
+                    <span>
+                        All sensors connected
+                    </span>
+
+                    <strong>
+                        Updated 2 min ago
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+            <div class="hero-dashboard">
+
+                <div class="dashboard-header">
+
+                    <div>
+                        <span>Garden overview</span>
+                        <h2>Excellent</h2>
+                    </div>
+
+                    <div class="health-score">
+                        <strong>92</strong>
+                        <span>/100</span>
+                    </div>
+
+                </div>
+
+
+                <div class="soil-visual">
+
+                    <div class="soil-circle">
+
+                        <span>🌱</span>
+
+                        <strong>Healthy</strong>
+
+                        <small>Soil condition</small>
+
+                    </div>
+
+                </div>
+
+
+                <div class="mini-readings">
+
+                    <div>
+                        <span>Moisture</span>
+                        <strong>68%</strong>
+                    </div>
+
+                    <div>
+                        <span>Temperature</span>
+                        <strong>24°C</strong>
+                    </div>
+
+                    <div>
+                        <span>pH level</span>
+                        <strong>6.7</strong>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- Sensor overview -->
+        <section class="section" id="sensors">
+
+            <div class="section-heading">
+
+                <div>
+                    <span class="eyebrow">LIVE READINGS</span>
+
+                    <h2>Your soil at a glance</h2>
+                </div>
+
+                <span class="last-updated">
+                    ● Live data
+                </span>
+
+            </div>
+
+
+            <div class="sensor-grid">
+
+                <!-- Moisture -->
+                <article class="sensor-card">
+
+                    <div class="sensor-top">
+
+                        <div class="sensor-icon moisture">
+                            💧
+                        </div>
+
+                        <span class="sensor-status">
+                            Optimal
+                        </span>
+
+                    </div>
+
+                    <p>Soil moisture</p>
+
+                    <h3>
+                        <span id="moistureValue">68</span>%
+                    </h3>
+
+                    <div class="progress">
+
+                        <div
+                            class="progress-fill moisture-fill"
+                            id="moistureBar">
+                        </div>
+
+                    </div>
+
+                    <small>
+                        Ideal range: 55–75%
+                    </small>
+
+                </article>
+
+
+                <!-- Temperature -->
+                <article class="sensor-card">
+
+                    <div class="sensor-top">
+
+                        <div class="sensor-icon temperature">
+                            🌡️
+                        </div>
+
+                        <span class="sensor-status">
+                            Good
+                        </span>
+
+                    </div>
+
+                    <p>Soil temperature</p>
+
+                    <h3>
+                        <span id="temperatureValue">24</span>°C
+                    </h3>
+
+                    <div class="temperature-scale">
+
+                        <span>10°</span>
+
+                        <div class="temperature-track">
+
+                            <div class="temperature-marker"></div>
+
+                        </div>
+
+                        <span>35°</span>
+
+                    </div>
+
+                    <small>
+                        Ideal range: 18–28°C
+                    </small>
+
+                </article>
+
+
+                <!-- pH -->
+                <article class="sensor-card">
+
+                    <div class="sensor-top">
+
+                        <div class="sensor-icon ph">
+                            ⚗️
+                        </div>
+
+                        <span class="sensor-status">
+                            Balanced
+                        </span>
+
+                    </div>
+
+                    <p>Soil pH</p>
+
+                    <h3>
+                        <span id="phValue">6.7</span>
+                    </h3>
+
+                    <div class="ph-scale">
+
+                        <span>Acidic</span>
+
+                        <div class="ph-track">
+
+                            <div class="ph-marker"></div>
+
+                        </div>
+
+                        <span>Alkaline</span>
+
+                    </div>
+
+                    <small>
+                        Ideal range: 6.0–7.0
+                    </small>
+
+                </article>
+
+
+                <!-- Nutrients -->
+                <article class="sensor-card">
+
+                    <div class="sensor-top">
+
+                        <div class="sensor-icon nutrients">
+                            🌿
+                        </div>
+
+                        <span class="sensor-status warning">
+                            Moderate
+                        </span>
+
+                    </div>
+
+                    <p>Nutrients</p>
+
+                    <h3>
+                        <span id="nutrientValue">72</span>%
+                    </h3>
+
+                    <div class="progress">
+
+                        <div
+                            class="progress-fill nutrient-fill"
+                            id="nutrientBar">
+                        </div>
+
+                    </div>
+
+                    <small>
+                        Nitrogen · Phosphorus · Potassium
+                    </small>
+
+                </article>
+
+            </div>
+
+        </section>
+
+
+        <!-- Insights -->
+        <section class="insight-section" id="insights">
+
+            <div class="insight-wrapper">
+
+                <div class="insight-copy">
+
+                    <span class="eyebrow">
+                        SMART INSIGHTS
+                    </span>
+
+                    <h2>
+                        Your soil is talking.
+                        We help you listen.
+                    </h2>
+
+                    <p>
+                        SoilSense turns sensor readings into simple
+                        recommendations so you can understand what
+                        your plants need.
+                    </p>
+
+                    <button class="light-btn" id="insightBtn">
+                        Refresh insights
+                    </button>
+
+                </div>
+
+
+                <div class="insight-list">
+
+                    <div class="insight-card">
+
+                        <div class="insight-number">
+                            01
+                        </div>
+
+                        <div>
+                            <h3>Water level looks healthy</h3>
+
+                            <p>
+                                Moisture is currently within the
+                                recommended range.
+                            </p>
+                        </div>
+
+                        <span class="check">✓</span>
+
+                    </div>
+
+
+                    <div class="insight-card">
+
+                        <div class="insight-number">
+                            02
+                        </div>
+
+                        <div>
+                            <h3>Check nutrients soon</h3>
+
+                            <p>
+                                Nutrient levels are moderate.
+                                Consider feeding your plants.
+                            </p>
+                        </div>
+
+                        <span class="check">!</span>
+
+                    </div>
+
+
+                    <div class="insight-card">
+
+                        <div class="insight-number">
+                            03
+                        </div>
+
+                        <div>
+                            <h3>Temperature is ideal</h3>
+
+                            <p>
+                                Current soil temperature supports
+                                healthy plant growth.
+                            </p>
+                        </div>
+
+                        <span class="check">✓</span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- History -->
+        <section class="section" id="history">
+
+            <div class="section-heading">
+
+                <div>
+
+                    <span class="eyebrow">
+                        LAST 7 DAYS
+                    </span>
+
+                    <h2>Soil moisture history</h2>
+
+                </div>
+
+                <button
+                    class="text-btn"
+                    id="historyBtn">
+                    View detailed report →
+                </button>
+
+            </div>
+
+
+            <div class="chart-card">
+
+                <div class="chart-header">
+
+                    <div>
+                        <strong>Average moisture</strong>
+
+                        <span>
+                            64.8% average
+                        </span>
+                    </div>
+
+                    <div class="chart-period">
+                        Last 7 days
+                    </div>
+
+                </div>
+
+
+                <div class="chart">
+
+                    <div class="chart-lines">
+
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+
+                    </div>
+
+
+                    <div class="chart-bars">
+
+                        <div class="bar-item">
+                            <div class="bar" style="height: 55%;"></div>
+                            <span>Mon</span>
+                        </div>
+
+                        <div class="bar-item">
+                            <div class="bar" style="height: 70%;"></div>
+                            <span>Tue</span>
+                        </div>
+
+                        <div class="bar-item">
+                            <div class="bar" style="height: 61%;"></div>
+                            <span>Wed</span>
+                        </div>
+
+                        <div class="bar-item">
+                            <div class="bar" style="height: 78%;"></div>
+                            <span>Thu</span>
+                        </div>
+
+                        <div class="bar-item">
+                            <div class="bar" style="height: 67%;"></div>
+                            <span>Fri</span>
+                        </div>
+
+                        <div class="bar-item">
+                            <div class="bar" style="height: 72%;"></div>
+                            <span>Sat</span>
+                        </div>
+
+                        <div class="bar-item">
+                            <div class="bar active-bar" style="height: 82%;"></div>
+                            <span>Sun</span>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- Plant recommendation -->
+        <section class="recommendation">
+
+            <div>
+
+                <span class="eyebrow">
+                    GARDEN RECOMMENDATION
+                </span>
+
+                <h2>
+                    Perfect conditions for
+                    leafy greens.
+                </h2>
+
+                <p>
+                    Based on your current soil readings,
+                    lettuce, spinach and herbs should thrive.
+                </p>
+
+            </div>
+
+            <div class="plant-tags">
+
+                <span>🥬 Lettuce</span>
+                <span>🌿 Spinach</span>
+                <span>🌱 Basil</span>
+                <span>🌿 Mint</span>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- Footer -->
+    <footer>
+
+        <div class="footer-main">
+
+            <div>
+
+                <a href="#home" class="logo">
+                    <span>🌱</span>
+                    SoilSense
+                </a>
+
+                <p>
+                    Simple insights for healthier soil
+                    and stronger plants.
+                </p>
+
+            </div>
+
+
+            <div class="footer-links">
+
+                <a href="#home">Overview</a>
+                <a href="#sensors">Sensors</a>
+                <a href="#insights">Insights</a>
+                <a href="#history">History</a>
+
+            </div>
+
+        </div>
+
+
+        <div class="footer-bottom">
+
+            <span>
+                © 2026 SoilSense
+            </span>
+
+            <span>
+                Built for the Modern UI Template Hackathon
+            </span>
+
+        </div>
+
+    </footer>
+
+
+    <!-- Toast -->
+    <div class="toast" id="toast">
+
+        <span>✓</span>
+
+        <p id="toastMessage">
+            Updated successfully
+        </p>
+
+    </div>
+
+
+    <script src="script.js"></script>
+
+</body>
+</html>
