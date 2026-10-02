@@ -3,7 +3,6 @@
    Main Stylesheet
 ========================================= */
 
-
 /* =========================================
    ROOT VARIABLES
 ========================================= */
@@ -110,9 +109,7 @@ img {
 .section-label {
     display: inline-block;
     margin-bottom: 14px;
-
     color: var(--primary);
-
     font-size: 0.76rem;
     font-weight: 800;
     letter-spacing: 0.15em;
@@ -123,13 +120,11 @@ img {
     justify-content: space-between;
     align-items: flex-end;
     gap: 40px;
-
     margin-bottom: 45px;
 }
 
 .section-intro>p {
     max-width: 450px;
-
     color: var(--text-light);
     font-size: 0.98rem;
 }
@@ -165,16 +160,18 @@ h2 span {
     color: var(--primary);
 }
 
+
+/* =========================================
+   BUTTONS
+========================================= */
+
 .primary-btn,
 .secondary-btn,
 .light-btn {
     min-height: 52px;
     padding: 0 24px;
-
     border-radius: 999px;
-
     font-weight: 700;
-
     transition:
         transform var(--transition),
         background var(--transition),
@@ -187,10 +184,8 @@ h2 span {
     align-items: center;
     justify-content: center;
     gap: 18px;
-
     color: var(--white);
     background: var(--primary);
-
     box-shadow: 0 10px 25px rgba(232, 93, 4, 0.22);
 }
 
@@ -254,10 +249,10 @@ h2 span {
     top: 0;
     left: 0;
     z-index: 1000;
-
     width: 100%;
 
     background: rgba(255, 255, 255, 0.92);
+
     border-bottom: 1px solid transparent;
 
     backdrop-filter: blur(18px);
@@ -281,6 +276,7 @@ h2 span {
     display: flex;
     align-items: center;
     justify-content: space-between;
+
     gap: 30px;
 }
 
@@ -341,6 +337,7 @@ h2 span {
     position: relative;
 
     color: #555;
+
     font-size: 0.9rem;
     font-weight: 600;
 
@@ -351,6 +348,7 @@ h2 span {
     content: "";
 
     position: absolute;
+
     left: 0;
     bottom: -8px;
 
@@ -432,6 +430,7 @@ h2 span {
     padding: 9px;
 
     border-radius: 10px;
+
     background: var(--cream);
 }
 
@@ -484,6 +483,7 @@ h2 span {
     z-index: 2;
 
     width: min(1180px, calc(100% - 40px));
+
     margin: 78px auto 0;
 
     color: var(--white);
@@ -513,6 +513,7 @@ h2 span {
     height: 8px;
 
     border-radius: 50%;
+
     background: #63d894;
 
     box-shadow: 0 0 0 5px rgba(99, 216, 148, 0.12);
@@ -522,6 +523,7 @@ h2 span {
     max-width: 700px;
 
     font-size: clamp(3.3rem, 7vw, 6.4rem);
+
     letter-spacing: -0.07em;
 }
 
@@ -594,6 +596,7 @@ h2 span {
     margin-top: 2px;
 
     color: rgba(255, 255, 255, 0.65);
+
     font-size: 0.72rem;
 }
 
@@ -645,6 +648,7 @@ h2 span {
     content: "";
 
     position: absolute;
+
     left: 0;
     bottom: -1px;
 
@@ -666,8 +670,11 @@ h2 span {
 
 .search-content {
     display: grid;
+
     grid-template-columns: 1fr 1fr auto;
+
     align-items: end;
+
     gap: 18px;
 }
 
@@ -688,6 +695,7 @@ h2 span {
     gap: 10px;
 
     height: 54px;
+
     padding: 0 16px;
 
     border: 1px solid var(--border);
@@ -714,7 +722,6 @@ h2 span {
     outline: none;
 
     background: transparent;
-
     color: var(--text);
 
     font-size: 0.9rem;
@@ -722,6 +729,7 @@ h2 span {
 
 .search-btn {
     min-height: 54px;
+
     padding: 0 25px;
 
     border-radius: 13px;
@@ -816,11 +824,15 @@ h2 span {
 }
 
 
-/* FLIGHT CARDS */
+/* =========================================
+   FLIGHT CARDS
+========================================= */
 
 .flight-cards {
     display: grid;
+
     grid-template-columns: repeat(3, 1fr);
+
     gap: 18px;
 
     margin-top: 25px;
@@ -846,6 +858,7 @@ h2 span {
 
 .featured-flight {
     border-color: rgba(232, 93, 4, 0.3);
+
     box-shadow: 0 10px 30px rgba(232, 93, 4, 0.08);
 }
 
@@ -853,6 +866,7 @@ h2 span {
 .flight-route,
 .flight-time {
     display: flex;
+
     justify-content: space-between;
     align-items: center;
 }
@@ -887,6 +901,7 @@ h2 span {
 
 .flight-number {
     color: var(--text-light);
+
     font-size: 0.76rem;
     font-weight: 700;
 }
@@ -895,6 +910,7 @@ h2 span {
     display: block;
 
     font-family: "Manrope", sans-serif;
+
     font-size: 1.65rem;
 }
 
@@ -902,6 +918,7 @@ h2 span {
     display: block;
 
     color: var(--text-light);
+
     font-size: 0.7rem;
 }
 
@@ -923,6 +940,7 @@ h2 span {
 
 .route-line span {
     position: absolute;
+
     left: 50%;
     top: 50%;
 
@@ -937,7 +955,6 @@ h2 span {
     border-radius: 50%;
 
     background: var(--white);
-
     color: var(--primary);
 
     font-size: 0.75rem;
@@ -947,6 +964,7 @@ h2 span {
     margin-top: 15px;
 
     color: var(--text-light);
+
     font-size: 0.73rem;
 }
 
@@ -1008,6 +1026,7 @@ h2 span {
 
     background-position: center;
     background-size: cover;
+    background-repeat: no-repeat;
 }
 
 .parking-image {
@@ -1015,8 +1034,70 @@ h2 span {
         linear-gradient(180deg,
             rgba(0, 0, 0, 0.05),
             rgba(0, 0, 0, 0.18)),
-        url("https://images.unsplash.com/photo-1506521781263-d8422e82f27a?auto=format&fit=crop&w=1000&q=80");
+        url("https://d34vm3j4h7f97z.cloudfront.net/optimized/4X/0/f/5/0f5b8de1729c69050250d8e4d3b1fb5768b3d656_2_681x500.jpeg");
 }
+
+
+/* ADDITIONAL SERVICE IMAGES */
+
+.service-card:nth-child(2) {
+    background:
+        linear-gradient(180deg,
+            rgba(0, 0, 0, 0.08),
+            rgba(0, 0, 0, 0.78)),
+        url("https://images.unsplash.com/photo-1569154941061-e231b4725ef1?auto=format&fit=crop&w=1000&q=85") center / cover no-repeat;
+
+    color: var(--white);
+}
+
+.service-card:nth-child(3) {
+    background:
+        linear-gradient(180deg,
+            rgba(0, 0, 0, 0.05),
+            rgba(0, 0, 0, 0.78)),
+        url("https://images.unsplash.com/photo-1556740749-887f6717d7e4?auto=format&fit=crop&w=1000&q=85") center / cover no-repeat;
+
+    color: var(--white);
+}
+
+.service-card:nth-child(4) {
+    background:
+        linear-gradient(180deg,
+            rgba(0, 0, 0, 0.05),
+            rgba(0, 0, 0, 0.78)),
+        url("https://www.gmrgroup.com/airports-and-aero-services/airport-services/duty-free/media_1e96f80f42c7a38bf38fc647d19867f2413f67b4e.jpg?format=jpg&optimize=medium&width=750") center / cover no-repeat;
+
+    color: var(--white);
+}
+
+.service-card:nth-child(5) {
+    background:
+        linear-gradient(180deg,
+            rgba(0, 0, 0, 0.05),
+            rgba(0, 0, 0, 0.78)),
+        url("https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=1000&q=85") center / cover no-repeat;
+
+    color: var(--white);
+}
+
+.service-card:nth-child(2) .service-icon,
+.service-card:nth-child(3) .service-icon,
+.service-card:nth-child(4) .service-icon,
+.service-card:nth-child(5) .service-icon {
+    background: rgba(255, 255, 255, 0.18);
+    color: #ffffff;
+    backdrop-filter: blur(8px);
+}
+
+.service-card:nth-child(2) p,
+.service-card:nth-child(3) p,
+.service-card:nth-child(4) p,
+.service-card:nth-child(5) p {
+    color: rgba(255, 255, 255, 0.78);
+}
+
+
+/* SERVICE CONTENT */
 
 .service-content {
     padding: 28px;
@@ -1041,7 +1122,6 @@ h2 span {
 
 .service-card h3 {
     margin-bottom: 10px;
-
     font-size: 1.35rem;
 }
 
@@ -1051,6 +1131,7 @@ h2 span {
     margin-bottom: 20px;
 
     color: var(--text-light);
+
     font-size: 0.86rem;
 }
 
@@ -1067,12 +1148,15 @@ h2 span {
     padding: 110px 0;
 
     background: var(--dark);
+
     color: var(--white);
 }
 
 .journey-wrapper {
     display: grid;
+
     grid-template-columns: 0.85fr 1fr;
+
     gap: 100px;
 
     align-items: center;
@@ -1096,7 +1180,9 @@ h2 span {
 
 .journey-step {
     display: flex;
+
     align-items: flex-start;
+
     gap: 20px;
 }
 
@@ -1110,6 +1196,7 @@ h2 span {
     place-items: center;
 
     border: 1px solid rgba(255, 255, 255, 0.16);
+
     border-radius: 50%;
 
     background: rgba(255, 255, 255, 0.06);
@@ -1128,6 +1215,7 @@ h2 span {
 
 .journey-step.current .step-number {
     border-color: var(--primary);
+
     color: #ff9654;
 
     box-shadow: 0 0 0 7px rgba(232, 93, 4, 0.12);
@@ -1142,6 +1230,7 @@ h2 span {
 
     font-size: 0.68rem;
     font-weight: 700;
+
     letter-spacing: 0.1em;
 }
 
@@ -1176,7 +1265,9 @@ h2 span {
 
 .checkin-card {
     display: grid;
+
     grid-template-columns: 1fr 0.85fr;
+
     gap: 70px;
 
     align-items: center;
@@ -1222,6 +1313,7 @@ h2 span {
 .boarding-route,
 .boarding-details {
     display: flex;
+
     justify-content: space-between;
     align-items: center;
 }
@@ -1232,14 +1324,17 @@ h2 span {
     border-bottom: 1px dashed var(--border);
 
     color: var(--text-light);
+
     font-size: 0.62rem;
     font-weight: 800;
+
     letter-spacing: 0.08em;
 }
 
 .mini-logo {
     display: flex;
     align-items: center;
+
     gap: 5px;
 
     color: var(--dark);
@@ -1272,6 +1367,7 @@ h2 span {
     display: block;
 
     font-family: "Manrope", sans-serif;
+
     font-size: 2.3rem;
 }
 
@@ -1286,6 +1382,7 @@ h2 span {
 
 .boarding-details {
     display: grid;
+
     grid-template-columns: repeat(4, 1fr);
 
     gap: 10px;
@@ -1305,6 +1402,7 @@ h2 span {
     margin-bottom: 5px;
 
     color: var(--text-light);
+
     font-size: 0.6rem;
 }
 
@@ -1322,11 +1420,13 @@ h2 span {
     border-radius: 8px;
 
     background: var(--dark);
+
     color: var(--white);
 
     text-align: center;
 
     letter-spacing: 5px;
+
     font-size: 1rem;
 }
 
@@ -1400,6 +1500,7 @@ h2 span {
 
     font-size: 0.62rem;
     font-weight: 800;
+
     letter-spacing: 0.08em;
 
     backdrop-filter: blur(10px);
@@ -1485,6 +1586,7 @@ h2 span {
 
 .app-section {
     padding: 100px 0;
+
     background: var(--off-white);
 }
 
@@ -1492,6 +1594,7 @@ h2 span {
     min-height: 500px;
 
     display: grid;
+
     grid-template-columns: 1fr 0.7fr;
 
     align-items: center;
@@ -1503,6 +1606,7 @@ h2 span {
     border-radius: var(--radius-lg);
 
     background: var(--dark);
+
     color: var(--white);
 
     position: relative;
@@ -1554,6 +1658,7 @@ h2 span {
     border-radius: 12px;
 
     background: rgba(255, 255, 255, 0.08);
+
     color: var(--white);
 
     text-align: left;
@@ -1576,7 +1681,9 @@ h2 span {
 
 .store-btn small {
     color: rgba(255, 255, 255, 0.55);
+
     font-size: 0.48rem;
+
     letter-spacing: 0.08em;
 }
 
@@ -1596,10 +1703,10 @@ h2 span {
     height: 485px;
 
     margin: auto;
-
     padding: 10px;
 
     border: 6px solid #292929;
+
     border-radius: 38px;
 
     background: #111;
@@ -1625,12 +1732,14 @@ h2 span {
     border-radius: 27px;
 
     background: var(--white);
+
     color: var(--dark);
 }
 
 .phone-header {
     display: flex;
     align-items: center;
+
     gap: 4px;
 
     font-size: 0.85rem;
@@ -1638,7 +1747,9 @@ h2 span {
 
 .phone-header span {
     font-size: 0.48rem;
+
     font-weight: 800;
+
     letter-spacing: 0.1em;
 }
 
@@ -1650,18 +1761,20 @@ h2 span {
     color: var(--text-light);
 
     font-size: 0.52rem;
+
     font-weight: 800;
+
     letter-spacing: 0.1em;
 }
 
 .phone-greeting h4 {
     margin-top: 5px;
-
     font-size: 1.3rem;
 }
 
 .phone-flight {
     display: flex;
+
     justify-content: space-between;
     align-items: center;
 
@@ -1679,7 +1792,9 @@ h2 span {
 
 .phone-flight small {
     color: var(--primary);
+
     font-size: 0.48rem;
+
     font-weight: 800;
 }
 
@@ -1702,6 +1817,7 @@ h2 span {
 
 .phone-route {
     display: flex;
+
     justify-content: space-between;
     align-items: center;
 
@@ -1717,7 +1833,9 @@ h2 span {
 
 .phone-services {
     display: grid;
+
     grid-template-columns: repeat(3, 1fr);
+
     gap: 6px;
 }
 
@@ -1743,12 +1861,15 @@ h2 span {
     padding: 70px 0 25px;
 
     background: #0c0c0c;
+
     color: var(--white);
 }
 
 .footer-top {
     display: grid;
+
     grid-template-columns: 2fr repeat(3, 1fr);
+
     gap: 50px;
 
     padding-bottom: 55px;
@@ -1770,6 +1891,7 @@ h2 span {
     margin-bottom: 18px;
 
     color: var(--white);
+
     font-size: 0.85rem;
 }
 
@@ -1791,7 +1913,9 @@ h2 span {
 
 .footer-bottom {
     display: flex;
+
     justify-content: space-between;
+
     gap: 20px;
 
     padding-top: 22px;
@@ -1808,6 +1932,7 @@ h2 span {
 
 .toast {
     position: fixed;
+
     z-index: 2000;
 
     right: 25px;
@@ -1818,11 +1943,13 @@ h2 span {
 
     display: flex;
     align-items: center;
+
     gap: 12px;
 
     padding: 14px 15px;
 
     border: 1px solid var(--border);
+
     border-radius: 16px;
 
     background: var(--white);
@@ -1830,6 +1957,7 @@ h2 span {
     box-shadow: var(--shadow-lg);
 
     transform: translateY(130px);
+
     opacity: 0;
 
     pointer-events: none;
@@ -1841,6 +1969,7 @@ h2 span {
 
 .toast.show {
     transform: translateY(0);
+
     opacity: 1;
 
     pointer-events: auto;
@@ -1881,6 +2010,7 @@ h2 span {
     margin-left: auto;
 
     background: transparent;
+
     color: var(--text-light);
 
     font-size: 1.1rem;
@@ -1893,6 +2023,7 @@ h2 span {
 
 .back-top {
     position: fixed;
+
     z-index: 900;
 
     right: 25px;
@@ -1912,6 +2043,7 @@ h2 span {
     box-shadow: var(--shadow-md);
 
     opacity: 0;
+
     transform: translateY(20px);
 
     pointer-events: none;
@@ -1923,7 +2055,9 @@ h2 span {
 
 .back-top.show {
     opacity: 1;
+
     transform: translateY(0);
+
     pointer-events: auto;
 }
 
@@ -1980,7 +2114,7 @@ body.dark-mode .service-card,
 body.dark-mode .offer-small,
 body.dark-mode .toast,
 body.dark-mode .boarding-pass {
-    background: #181818;
+    background-color: #181818;
 }
 
 body.dark-mode .input-wrapper {
@@ -2072,6 +2206,7 @@ body.dark-mode .footer {
         padding: 15px;
 
         border: 1px solid var(--border);
+
         border-radius: 18px;
 
         background: var(--white);
@@ -2079,6 +2214,7 @@ body.dark-mode .footer {
         box-shadow: var(--shadow-lg);
 
         opacity: 0;
+
         transform: translateY(-15px);
 
         pointer-events: none;
@@ -2090,7 +2226,9 @@ body.dark-mode .footer {
 
     .nav-links.open {
         opacity: 1;
+
         transform: translateY(0);
+
         pointer-events: auto;
     }
 
@@ -2278,7 +2416,6 @@ body.dark-mode .footer {
         left: 14px;
         right: 14px;
         bottom: 14px;
-
         min-width: auto;
     }
 
