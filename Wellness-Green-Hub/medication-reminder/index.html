@@ -1,0 +1,961 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Medly | Medication Reminder</title>
+
+    <meta
+        name="description"
+        content="Medly is a modern medication reminder and daily wellness tracking interface."
+    >
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap"
+        rel="stylesheet"
+    >
+
+    <link
+        rel="stylesheet"
+        href="style.css"
+    >
+</head>
+
+<body>
+
+    <!-- ==============================
+         NAVIGATION
+    =============================== -->
+
+    <header class="navbar">
+
+        <div class="container nav-container">
+
+            <a href="#home" class="logo">
+                <span class="logo-icon">✚</span>
+                <span>Medly</span>
+            </a>
+
+            <nav class="nav-links" id="navLinks">
+
+                <a href="#home">Today</a>
+                <a href="#medications">Medications</a>
+                <a href="#schedule">Schedule</a>
+                <a href="#progress">Progress</a>
+
+            </nav>
+
+            <div class="nav-actions">
+
+                <button
+                    class="theme-toggle"
+                    id="themeToggle"
+                    aria-label="Toggle dark mode"
+                    title="Toggle dark mode"
+                >
+                    ◐
+                </button>
+
+                <button
+                    class="menu-btn"
+                    id="menuBtn"
+                    aria-label="Open navigation"
+                    title="Open navigation"
+                >
+                    ☰
+                </button>
+
+            </div>
+
+        </div>
+
+    </header>
+
+
+    <!-- ==============================
+         HERO
+    =============================== -->
+
+    <main id="home">
+
+        <section class="hero">
+
+            <div class="container hero-grid">
+
+                <div class="hero-content">
+
+                    <span class="eyebrow">
+                        ● Daily wellness companion
+                    </span>
+
+                    <h1>
+                        Stay on track with
+                        <span>every dose.</span>
+                    </h1>
+
+                    <p class="hero-description">
+                        A simple and modern way to organize your medication
+                        schedule, track daily progress, and stay consistent
+                        with your routine.
+                    </p>
+
+                    <div class="hero-actions">
+
+                        <a
+                            href="#medications"
+                            class="btn btn-primary"
+                        >
+                            View medications →
+                        </a>
+
+                        <a
+                            href="#schedule"
+                            class="btn btn-secondary"
+                        >
+                            View schedule
+                        </a>
+
+                    </div>
+
+                    <p class="hero-note">
+                        Front-end demonstration interface for the Modern UI Template Hackathon.
+                    </p>
+
+                </div>
+
+
+                <!-- Dashboard Preview -->
+
+                <div class="dashboard-preview">
+
+                    <div class="dashboard-top">
+
+                        <div>
+                            <div class="dashboard-title">
+                                Today's overview
+                            </div>
+
+                            <div class="dashboard-date">
+                                Monday · Daily plan
+                            </div>
+                        </div>
+
+                        <span class="eyebrow">
+                            On track
+                        </span>
+
+                    </div>
+
+
+                    <div class="health-score">
+
+                        <div class="health-score-top">
+
+                            <div>
+
+                                <div class="score-label">
+                                    Daily adherence
+                                </div>
+
+                                <div class="score-number">
+                                    92%
+                                </div>
+
+                            </div>
+
+                            <div class="score-ring">
+                                <span>92%</span>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="dashboard-mini-grid">
+
+                        <div class="mini-card">
+
+                            <div class="mini-icon">
+                                💊
+                            </div>
+
+                            <div class="mini-label">
+                                Taken
+                            </div>
+
+                            <div class="mini-value">
+                                3
+                            </div>
+
+                        </div>
+
+
+                        <div class="mini-card">
+
+                            <div class="mini-icon">
+                                ⏰
+                            </div>
+
+                            <div class="mini-label">
+                                Remaining
+                            </div>
+
+                            <div
+                                class="mini-value"
+                                id="remainingCount"
+                            >
+                                1
+                            </div>
+
+                        </div>
+
+
+                        <div class="mini-card">
+
+                            <div class="mini-icon">
+                                ✓
+                            </div>
+
+                            <div class="mini-label">
+                                Completed
+                            </div>
+
+                            <div
+                                class="mini-value"
+                                id="takenCount"
+                            >
+                                3
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ==============================
+             OVERVIEW
+        =============================== -->
+
+        <section class="section">
+
+            <div class="container">
+
+                <div class="section-header">
+
+                    <span class="section-label">
+                        Your day
+                    </span>
+
+                    <h2 class="section-title">
+                        Everything at a glance.
+                    </h2>
+
+                    <p class="section-description">
+                        Keep your daily routine organized with simple
+                        information and clear progress indicators.
+                    </p>
+
+                </div>
+
+
+                <div class="overview-grid">
+
+                    <div class="overview-card">
+
+                        <div class="overview-icon">
+                            💊
+                        </div>
+
+                        <div class="overview-label">
+                            Today's doses
+                        </div>
+
+                        <div class="overview-value">
+                            4
+                        </div>
+
+                        <div class="overview-status">
+                            3 completed
+                        </div>
+
+                    </div>
+
+
+                    <div class="overview-card">
+
+                        <div class="overview-icon">
+                            ⏱
+                        </div>
+
+                        <div class="overview-label">
+                            Next reminder
+                        </div>
+
+                        <div class="overview-value">
+                            8:00 PM
+                        </div>
+
+                        <div class="overview-status">
+                            Evening
+                        </div>
+
+                    </div>
+
+
+                    <div class="overview-card">
+
+                        <div class="overview-icon">
+                            📅
+                        </div>
+
+                        <div class="overview-label">
+                            Current streak
+                        </div>
+
+                        <div class="overview-value">
+                            7 days
+                        </div>
+
+                        <div class="overview-status">
+                            Keep going
+                        </div>
+
+                    </div>
+
+
+                    <div class="overview-card">
+
+                        <div class="overview-icon">
+                            📈
+                        </div>
+
+                        <div class="overview-label">
+                            Weekly progress
+                        </div>
+
+                        <div class="overview-value">
+                            92%
+                        </div>
+
+                        <div class="overview-status">
+                            +8% this week
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ==============================
+             MEDICATIONS
+        =============================== -->
+
+        <section
+            class="section medications-section"
+            id="medications"
+        >
+
+            <div class="container">
+
+                <div class="section-header">
+
+                    <span class="section-label">
+                        Medications
+                    </span>
+
+                    <h2 class="section-title">
+                        Your daily medication plan.
+                    </h2>
+
+                    <p class="section-description">
+                        Review today's scheduled items and update their
+                        status with one simple action.
+                    </p>
+
+                </div>
+
+
+                <div class="medication-grid">
+
+                    <!-- Vitamin D -->
+
+                    <article class="medication-card">
+
+                        <div class="medication-info">
+
+                            <div class="medication-icon">
+                                ☀
+                            </div>
+
+                            <div class="medication-name">
+
+                                <h3>
+                                    Vitamin D
+                                </h3>
+
+                                <p>
+                                    Daily supplement
+                                </p>
+
+                                <div class="medication-time">
+                                    8:00 AM · Morning
+                                </div>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="medication-actions">
+
+                            <button class="dose-btn">
+                                View details
+                            </button>
+
+                            <button class="take-btn">
+                                Mark as taken
+                            </button>
+
+                        </div>
+
+                    </article>
+
+
+                    <!-- Omega 3 -->
+
+                    <article class="medication-card">
+
+                        <div class="medication-info">
+
+                            <div class="medication-icon">
+                                🫧
+                            </div>
+
+                            <div class="medication-name">
+
+                                <h3>
+                                    Omega 3
+                                </h3>
+
+                                <p>
+                                    Daily supplement
+                                </p>
+
+                                <div class="medication-time">
+                                    1:00 PM · Afternoon
+                                </div>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="medication-actions">
+
+                            <button class="dose-btn">
+                                View details
+                            </button>
+
+                            <button class="take-btn">
+                                Mark as taken
+                            </button>
+
+                        </div>
+
+                    </article>
+
+
+                    <!-- Evening Tablet -->
+
+                    <article class="medication-card">
+
+                        <div class="medication-info">
+
+                            <div class="medication-icon">
+                                🌿
+                            </div>
+
+                            <div class="medication-name">
+
+                                <h3>
+                                    Evening Tablet
+                                </h3>
+
+                                <p>
+                                    Evening routine
+                                </p>
+
+                                <div class="medication-time">
+                                    6:30 PM · Evening
+                                </div>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="medication-actions">
+
+                            <button class="dose-btn">
+                                View details
+                            </button>
+
+                            <button class="take-btn">
+                                Mark as taken
+                            </button>
+
+                        </div>
+
+                    </article>
+
+
+                    <!-- Night Supplement -->
+
+                    <article class="medication-card">
+
+                        <div class="medication-info">
+
+                            <div class="medication-icon">
+                                🌙
+                            </div>
+
+                            <div class="medication-name">
+
+                                <h3>
+                                    Night Supplement
+                                </h3>
+
+                                <p>
+                                    Night routine
+                                </p>
+
+                                <div class="medication-time">
+                                    8:00 PM · Evening
+                                </div>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="medication-actions">
+
+                            <button class="dose-btn">
+                                View details
+                            </button>
+
+                            <button class="take-btn">
+                                Mark as taken
+                            </button>
+
+                        </div>
+
+                    </article>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ==============================
+             SCHEDULE
+        =============================== -->
+
+        <section
+            class="section"
+            id="schedule"
+        >
+
+            <div class="container">
+
+                <div class="section-header">
+
+                    <span class="section-label">
+                        Schedule
+                    </span>
+
+                    <h2 class="section-title">
+                        A clearer routine.
+                    </h2>
+
+                    <p class="section-description">
+                        Follow your planned routine through an easy-to-scan
+                        daily timeline.
+                    </p>
+
+                </div>
+
+
+                <div class="schedule-grid">
+
+                    <div class="schedule-list">
+
+                        <div class="schedule-item">
+
+                            <div class="schedule-item-top">
+
+                                <h4>
+                                    Vitamin D
+                                </h4>
+
+                                <span class="schedule-time">
+                                    8:00 AM
+                                </span>
+
+                            </div>
+
+                            <p>
+                                Morning supplement
+                            </p>
+
+                        </div>
+
+
+                        <div class="schedule-item">
+
+                            <div class="schedule-item-top">
+
+                                <h4>
+                                    Omega 3
+                                </h4>
+
+                                <span class="schedule-time">
+                                    1:00 PM
+                                </span>
+
+                            </div>
+
+                            <p>
+                                Afternoon supplement
+                            </p>
+
+                        </div>
+
+
+                        <div class="schedule-item">
+
+                            <div class="schedule-item-top">
+
+                                <h4>
+                                    Evening Tablet
+                                </h4>
+
+                                <span class="schedule-time">
+                                    6:30 PM
+                                </span>
+
+                            </div>
+
+                            <p>
+                                Evening routine
+                            </p>
+
+                        </div>
+
+
+                        <div class="schedule-item">
+
+                            <div class="schedule-item-top">
+
+                                <h4>
+                                    Night Supplement
+                                </h4>
+
+                                <span class="schedule-time">
+                                    8:00 PM
+                                </span>
+
+                            </div>
+
+                            <p>
+                                Night routine
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- Progress -->
+
+                    <div
+                        class="progress-card"
+                        id="progress"
+                    >
+
+                        <div class="progress-header">
+
+                            <h3>
+                                Weekly progress
+                            </h3>
+
+                            <span class="progress-value">
+                                75%
+                            </span>
+
+                        </div>
+
+                        <div class="progress-track">
+
+                            <div class="progress-fill"></div>
+
+                        </div>
+
+
+                        <div class="progress-days">
+
+                            <div class="progress-day">
+                                <span>Mon</span>
+                                <div class="progress-dot complete"></div>
+                            </div>
+
+                            <div class="progress-day">
+                                <span>Tue</span>
+                                <div class="progress-dot complete"></div>
+                            </div>
+
+                            <div class="progress-day">
+                                <span>Wed</span>
+                                <div class="progress-dot complete"></div>
+                            </div>
+
+                            <div class="progress-day">
+                                <span>Thu</span>
+                                <div class="progress-dot complete"></div>
+                            </div>
+
+                            <div class="progress-day">
+                                <span>Fri</span>
+                                <div class="progress-dot complete"></div>
+                            </div>
+
+                            <div class="progress-day">
+                                <span>Sat</span>
+                                <div class="progress-dot"></div>
+                            </div>
+
+                            <div class="progress-day">
+                                <span>Sun</span>
+                                <div class="progress-dot"></div>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- Reminder -->
+
+                <div class="reminder-card">
+
+                    <div>
+
+                        <h3>
+                            Your next reminder is at 8:00 PM.
+                        </h3>
+
+                        <p>
+                            Keep your evening routine on track.
+                        </p>
+
+                    </div>
+
+                    <button
+                        class="reminder-btn"
+                        id="reminderBtn"
+                    >
+                        Set reminder
+                    </button>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ==============================
+             CTA
+        =============================== -->
+
+        <section class="cta">
+
+            <div class="container">
+
+                <div class="cta-box">
+
+                    <span class="section-label">
+                        Stay consistent
+                    </span>
+
+                    <h2>
+                        Small routines can make every day easier.
+                    </h2>
+
+                    <p>
+                        Keep your schedule organized and your daily progress
+                        easy to understand.
+                    </p>
+
+                    <a
+                        href="#medications"
+                        class="btn btn-primary"
+                    >
+                        Review today's plan →
+                    </a>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- ==============================
+         FOOTER
+    =============================== -->
+
+    <footer>
+
+        <div class="container">
+
+            <div class="footer-grid">
+
+                <div class="footer-brand">
+
+                    <a href="#home" class="logo">
+                        <span class="logo-icon">✚</span>
+                        <span>Medly</span>
+                    </a>
+
+                    <p>
+                        A modern front-end concept for medication
+                        scheduling and daily wellness tracking.
+                    </p>
+
+                </div>
+
+
+                <div>
+
+                    <div class="footer-title">
+                        Explore
+                    </div>
+
+                    <div class="footer-links">
+
+                        <a href="#home">
+                            Today
+                        </a>
+
+                        <a href="#medications">
+                            Medications
+                        </a>
+
+                        <a href="#schedule">
+                            Schedule
+                        </a>
+
+                        <a href="#progress">
+                            Progress
+                        </a>
+
+                    </div>
+
+                </div>
+
+
+                <div>
+
+                    <div class="footer-title">
+                        Features
+                    </div>
+
+                    <div class="footer-links">
+
+                        <a href="#medications">
+                            Dose tracking
+                        </a>
+
+                        <a href="#schedule">
+                            Daily schedule
+                        </a>
+
+                        <a href="#progress">
+                            Progress tracking
+                        </a>
+
+                        <a href="#home">
+                            Dark mode
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="footer-bottom">
+
+                <span>
+                    © 2026 Medly. UI concept for educational use.
+                </span>
+
+                <span>
+                    Built with HTML, CSS & JavaScript
+                </span>
+
+            </div>
+
+        </div>
+
+    </footer>
+
+
+    <!-- ==============================
+         TOAST
+    =============================== -->
+
+    <div
+        class="toast"
+        id="toast"
+        role="status"
+        aria-live="polite"
+    >
+        <span id="toastMessage">
+            Welcome to Medly
+        </span>
+    </div>
+
+
+    <!-- ==============================
+         JAVASCRIPT
+    =============================== -->
+
+    <script src="script.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Greenly - Smart plant care and garden weather dashboard">
+    <title>Greenly | Smart Garden</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- Navigation -->
+    <header class="navbar">
+        <a href="#home" class="logo">
+            <span class="logo-icon">🌿</span>
+            Greenly
+        </a>
+
+        <nav class="nav-links" id="navLinks">
+            <a href="#home">Home</a>
+            <a href="#garden">My Garden</a>
+            <a href="#weather">Weather</a>
+            <a href="#tips">Plant Tips</a>
+        </nav>
+
+        <div class="nav-actions">
+            <button class="icon-btn" id="themeToggle" aria-label="Toggle theme">☀️</button>
+            <button class="menu-btn" id="menuBtn">☰</button>
+        </div>
+    </header>
+
+    <main>
+
+        <!-- Hero -->
+        <section class="hero" id="home">
+            <div class="hero-content">
+                <span class="eyebrow">SMART GARDENING</span>
+
+                <h1>
+                    Grow something
+                    <span>beautiful.</span>
+                </h1>
+
+                <p>
+                    Keep your plants healthy with simple care reminders,
+                    garden insights and weather-aware recommendations.
+                </p>
+
+                <div class="hero-buttons">
+                    <button class="primary-btn" id="addPlantBtn">
+                        + Add a plant
+                    </button>
+
+                    <a href="#weather" class="secondary-btn">
+                        Check weather →
+                    </a>
+                </div>
+
+                <div class="hero-stats">
+                    <div>
+                        <strong>12</strong>
+                        <span>Plants</span>
+                    </div>
+
+                    <div>
+                        <strong>92%</strong>
+                        <span>Garden health</span>
+                    </div>
+
+                    <div>
+                        <strong>4</strong>
+                        <span>Tasks today</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="hero-visual">
+                <div class="sun">
+                    ☀️
+                </div>
+
+                <div class="plant-scene">
+                    <div class="leaf leaf-one">🌿</div>
+                    <div class="leaf leaf-two">🍃</div>
+                    <div class="plant-pot">🪴</div>
+                </div>
+
+                <div class="floating-card weather-mini">
+                    <span>Today's weather</span>
+                    <strong>28°C</strong>
+                    <small>Partly cloudy</small>
+                </div>
+            </div>
+        </section>
+
+        <!-- Garden Overview -->
+        <section class="section" id="garden">
+            <div class="section-heading">
+                <div>
+                    <span class="eyebrow">YOUR GARDEN</span>
+                    <h2>Good morning, gardener 🌱</h2>
+                </div>
+
+                <button class="text-btn" id="viewAllBtn">
+                    View all →
+                </button>
+            </div>
+
+            <div class="plant-grid">
+
+                <article class="plant-card">
+                    <div class="plant-image plant-one">
+                        <span>🌱</span>
+                        <button class="favorite">♡</button>
+                    </div>
+
+                    <div class="plant-info">
+                        <div>
+                            <h3>Monstera</h3>
+                            <p>Indoor · Easy care</p>
+                        </div>
+
+                        <span class="health healthy">Healthy</span>
+                    </div>
+
+                    <div class="care-row">
+                        <span>💧 Water</span>
+                        <strong>Today</strong>
+                    </div>
+                </article>
+
+                <article class="plant-card">
+                    <div class="plant-image plant-two">
+                        <span>🌵</span>
+                        <button class="favorite">♡</button>
+                    </div>
+
+                    <div class="plant-info">
+                        <div>
+                            <h3>Desert Rose</h3>
+                            <p>Outdoor · Moderate</p>
+                        </div>
+
+                        <span class="health healthy">Healthy</span>
+                    </div>
+
+                    <div class="care-row">
+                        <span>☀️ Sunlight</span>
+                        <strong>6 hrs</strong>
+                    </div>
+                </article>
+
+                <article class="plant-card">
+                    <div class="plant-image plant-three">
+                        <span>🌿</span>
+                        <button class="favorite">♡</button>
+                    </div>
+
+                    <div class="plant-info">
+                        <div>
+                            <h3>Herb Garden</h3>
+                            <p>Kitchen · Growing</p>
+                        </div>
+
+                        <span class="health attention">Needs care</span>
+                    </div>
+
+                    <div class="care-row">
+                        <span>💧 Water</span>
+                        <strong>Tomorrow</strong>
+                    </div>
+                </article>
+
+            </div>
+        </section>
+
+        <!-- Weather -->
+        <section class="weather-section" id="weather">
+            <div class="weather-container">
+
+                <div class="weather-copy">
+                    <span class="eyebrow">GARDEN WEATHER</span>
+                    <h2>Know the weather.<br>Grow smarter.</h2>
+
+                    <p>
+                        Weather-aware garden insights help you decide
+                        when to water, feed and protect your plants.
+                    </p>
+
+                    <button class="location-btn" id="locationBtn">
+                        📍 Use my location
+                    </button>
+                </div>
+
+                <div class="weather-dashboard">
+
+                    <div class="current-weather">
+                        <div>
+                            <span>Chennai, India</span>
+                            <h3>28°</h3>
+                            <p>Partly cloudy</p>
+                        </div>
+
+                        <div class="weather-icon">⛅</div>
+                    </div>
+
+                    <div class="weather-details">
+                        <div>
+                            <span>💧 Humidity</span>
+                            <strong>74%</strong>
+                        </div>
+
+                        <div>
+                            <span>💨 Wind</span>
+                            <strong>14 km/h</strong>
+                        </div>
+
+                        <div>
+                            <span>🌧️ Rain chance</span>
+                            <strong>20%</strong>
+                        </div>
+                    </div>
+
+                    <div class="forecast">
+                        <div>
+                            <span>Today</span>
+                            <strong>28°</strong>
+                            <small>⛅</small>
+                        </div>
+
+                        <div>
+                            <span>Tue</span>
+                            <strong>29°</strong>
+                            <small>☀️</small>
+                        </div>
+
+                        <div>
+                            <span>Wed</span>
+                            <strong>27°</strong>
+                            <small>🌦️</small>
+                        </div>
+
+                        <div>
+                            <span>Thu</span>
+                            <strong>30°</strong>
+                            <small>☀️</small>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- Today's Tasks -->
+        <section class="section">
+            <div class="section-heading">
+                <div>
+                    <span class="eyebrow">TODAY</span>
+                    <h2>Your garden tasks</h2>
+                </div>
+            </div>
+
+            <div class="task-grid">
+
+                <div class="task-card">
+                    <div class="task-icon">💧</div>
+
+                    <div>
+                        <h3>Water Monstera</h3>
+                        <p>Give your Monstera a good drink.</p>
+                    </div>
+
+                    <button class="complete-btn">✓</button>
+                </div>
+
+                <div class="task-card">
+                    <div class="task-icon">☀️</div>
+
+                    <div>
+                        <h3>Move Aloe outside</h3>
+                        <p>Give it 4–6 hours of sunlight.</p>
+                    </div>
+
+                    <button class="complete-btn">✓</button>
+                </div>
+
+                <div class="task-card">
+                    <div class="task-icon">🌱</div>
+
+                    <div>
+                        <h3>Check herb soil</h3>
+                        <p>Check moisture before watering.</p>
+                    </div>
+
+                    <button class="complete-btn">✓</button>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Tips -->
+        <section class="tips-section" id="tips">
+            <div class="section-heading">
+                <div>
+                    <span class="eyebrow">PLANT TIPS</span>
+                    <h2>Little tips, big growth.</h2>
+                </div>
+            </div>
+
+            <div class="tips-grid">
+
+                <article class="tip-card">
+                    <span>💧</span>
+                    <h3>Water wisely</h3>
+                    <p>
+                        Check the top layer of soil before watering.
+                        Different plants need different schedules.
+                    </p>
+                    <a href="#">Learn more →</a>
+                </article>
+
+                <article class="tip-card">
+                    <span>☀️</span>
+                    <h3>Find the light</h3>
+                    <p>
+                        Place each plant according to its sunlight
+                        requirements for healthier growth.
+                    </p>
+                    <a href="#">Learn more →</a>
+                </article>
+
+                <article class="tip-card">
+                    <span>🌱</span>
+                    <h3>Feed your plants</h3>
+                    <p>
+                        Regular nutrients can help plants grow stronger
+                        during their active growing season.
+                    </p>
+                    <a href="#">Learn more →</a>
+                </article>
+
+            </div>
+        </section>
+
+        <!-- CTA -->
+        <section class="cta">
+            <div>
+                <span class="eyebrow">YOUR GREEN SPACE</span>
+                <h2>Every plant has a story.<br>Help yours grow.</h2>
+            </div>
+
+            <button class="primary-btn" id="startBtn">
+                Start growing →
+            </button>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-brand">
+            <a href="#home" class="logo">
+                <span class="logo-icon">🌿</span>
+                Greenly
+            </a>
+
+            <p>
+                Simple tools for happier plants and greener spaces.
+            </p>
+        </div>
+
+        <div class="footer-links">
+            <a href="#home">Home</a>
+            <a href="#garden">Garden</a>
+            <a href="#weather">Weather</a>
+            <a href="#tips">Tips</a>
+        </div>
+
+        <p class="copyright">
+            © 2026 Greenly. Built for the Modern UI Template Hackathon.
+        </p>
+    </footer>
+
+    <!-- Toast -->
+    <div class="toast" id="toast">
+        <span>✓</span>
+        <p id="toastMessage">Done!</p>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
