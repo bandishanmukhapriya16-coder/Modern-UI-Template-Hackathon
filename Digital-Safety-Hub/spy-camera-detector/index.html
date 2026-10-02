@@ -4,41 +4,62 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>SafeScan | Spy Camera Detector</title>
+    <title>EXO-SCAN | Spy Camera Detector</title>
+
+    <meta
+        name="description"
+        content="EXO-SCAN is a modern privacy-awareness interface for hidden-camera detection and room safety checks."
+    >
 
     <link rel="stylesheet" href="style.css">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap"
+        rel="stylesheet"
+    >
 </head>
 
 <body>
 
-    <!-- Navigation -->
+    <!-- ================= NAVBAR ================= -->
+
     <header class="navbar">
 
         <div class="nav-container">
 
-            <a href="#" class="logo">
-                <span class="logo-mark">◉</span>
-                Safe<span>Scan</span>
+            <a href="#" class="brand">
+                <span class="brand-mark">◉</span>
+
+                <span>
+                    EXO<span>SCAN</span>
+                </span>
             </a>
 
             <nav class="nav-links" id="navLinks">
                 <a href="#scanner">Scanner</a>
-                <a href="#checks">Checks</a>
-                <a href="#tips">Safety Tips</a>
-                <a href="#about">About</a>
+                <a href="#checks">Safety Checks</a>
+                <a href="#locations">Hotspots</a>
+                <a href="#guide">Guide</a>
             </nav>
 
             <div class="nav-actions">
 
-                <button class="theme-btn" id="themeBtn">
+                <button
+                    class="theme-button"
+                    id="themeToggle"
+                    aria-label="Toggle dark mode"
+                >
                     ☾
                 </button>
 
-                <button class="menu-btn" id="menuBtn">
+                <button
+                    class="menu-button"
+                    id="menuButton"
+                    aria-label="Open menu"
+                >
                     ☰
                 </button>
 
@@ -49,63 +70,67 @@
     </header>
 
 
+    <!-- ================= HERO ================= -->
+
     <main>
 
-        <!-- Hero -->
         <section class="hero">
 
             <div class="hero-container">
 
                 <div class="hero-content">
 
-                    <div class="eyebrow">
-                        <span></span>
-                        Personal privacy & safety
+                    <div class="status-badge">
+                        <span class="live-dot"></span>
+                        PRIVACY AWARENESS SYSTEM
                     </div>
 
                     <h1>
-                        Check your space.
-                        <span>Protect your privacy.</span>
+                        Know what's
+                        <span>watching.</span>
                     </h1>
 
                     <p>
-                        SafeScan provides a simple interface for running
-                        privacy-awareness checks when you're staying in
-                        unfamiliar rooms or public spaces.
+                        EXO-SCAN provides a modern room-safety interface
+                        for checking suspicious devices, camera-like objects
+                        and privacy risks.
                     </p>
 
-                    <div class="hero-buttons">
+                    <div class="hero-actions">
 
-                        <button class="primary-btn" id="startScanBtn">
-                            Start Safety Scan
-                            <span>→</span>
+                        <button
+                            class="scan-button"
+                            id="startScan"
+                        >
+                            <span>◎</span>
+                            Start Room Scan
                         </button>
 
-                        <a href="#tips" class="secondary-btn">
-                            Safety Guide
+                        <a
+                            href="#checks"
+                            class="outline-button"
+                        >
+                            Safety checklist
+                            <span>→</span>
                         </a>
 
                     </div>
 
-                    <div class="trust-row">
+                    <div class="hero-metrics">
 
                         <div>
-                            <strong>3</strong>
-                            <span>Safety checks</span>
+                            <strong>06</strong>
+                            <span>Check zones</span>
                         </div>
 
-                        <i></i>
-
                         <div>
-                            <strong>Local</strong>
-                            <span>Privacy focused</span>
+                            <strong>360°</strong>
+                            <span>Room sweep</span>
                         </div>
 
-                        <i></i>
-
                         <div>
-                            <strong>Simple</strong>
-                            <span>Easy to use</span>
+                            <strong>24/7</strong>
+                            <span>Awareness</span>
                         </div>
 
                     </div>
@@ -113,26 +138,29 @@
                 </div>
 
 
-                <!-- Scanner Card -->
+                <!-- SCANNER VISUAL -->
+
                 <div class="scanner-wrapper">
 
                     <div class="scanner-glow"></div>
 
-                    <div class="scanner-card" id="scanner">
+                    <div class="scanner-card">
 
-                        <div class="scanner-header">
+                        <div class="scanner-top">
 
                             <div>
                                 <span class="mini-label">
-                                    SAFETY SCANNER
+                                    EXO-SCAN
                                 </span>
 
-                                <h3>Room Check</h3>
+                                <strong id="scannerStatus">
+                                    READY
+                                </strong>
                             </div>
 
-                            <div class="status">
-                                <span></span>
-                                Ready
+                            <div class="signal-status">
+                                <i></i>
+                                ONLINE
                             </div>
 
                         </div>
@@ -144,68 +172,125 @@
                             <div class="radar-ring ring-two"></div>
                             <div class="radar-ring ring-three"></div>
 
-                            <div class="radar-line"></div>
+                            <div class="radar-cross horizontal"></div>
+                            <div class="radar-cross vertical"></div>
+
+                            <div class="radar-sweep"></div>
+
+                            <span class="target target-one"></span>
+                            <span class="target target-two"></span>
+                            <span class="target target-three"></span>
 
                             <div class="radar-center">
-                                <span>◉</span>
+                                <span>⌾</span>
                             </div>
-
-                            <div class="signal signal-one"></div>
-                            <div class="signal signal-two"></div>
-                            <div class="signal signal-three"></div>
 
                         </div>
 
 
-                        <div class="scanner-status">
+                        <div class="scanner-bottom">
 
                             <div>
-                                <strong id="scanStatus">
-                                    Ready to scan
+                                <span>ROOM STATUS</span>
+                                <strong id="roomStatus">
+                                    READY TO SCAN
                                 </strong>
-
-                                <span id="scanSubtext">
-                                    Start a privacy check
-                                </span>
                             </div>
 
-                            <div class="scan-percent" id="scanPercent">
-                                0%
+                            <div class="scan-percentage">
+                                <strong id="scanPercent">0%</strong>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= SCAN RESULT ================= -->
+
+        <section
+            class="result-section"
+            id="scanner"
+        >
+
+            <div class="section-container">
+
+                <div class="result-card">
+
+                    <div class="result-image">
+
+                        <img
+                            src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1000&q=85"
+                            alt="Technology equipment and electronics"
+                        >
+
+                        <div class="image-overlay">
+
+                            <span>
+                                DEVICE ANALYSIS
+                            </span>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="result-content">
+
+                        <span class="eyebrow">
+                            SCAN ANALYSIS
+                        </span>
+
+                        <h2>
+                            Check before
+                            <span>you relax.</span>
+                        </h2>
+
+                        <p>
+                            A visual room inspection can help you notice
+                            unfamiliar electronics or objects positioned
+                            toward private areas.
+                        </p>
+
+
+                        <div class="result-status">
+
+                            <div class="result-icon">
+                                ✓
+                            </div>
+
+                            <div>
+
+                                <strong id="resultTitle">
+                                    No scan performed
+                                </strong>
+
+                                <span id="resultText">
+                                    Start a room scan to simulate
+                                    the safety-check workflow.
+                                </span>
+
                             </div>
 
                         </div>
 
 
-                        <button class="scan-button" id="scanButton">
-                            Scan Environment
+                        <button
+                            class="secondary-scan"
+                            id="scanAgain"
+                        >
+                            Run Safety Scan
+                            <span>↗</span>
                         </button>
 
                     </div>
 
-
-                    <div class="floating-card floating-top">
-
-                        <span class="float-icon green">✓</span>
-
-                        <div>
-                            <strong>Privacy Check</strong>
-                            <small>Ready</small>
-                        </div>
-
-                    </div>
-
-
-                    <div class="floating-card floating-bottom">
-
-                        <span class="float-icon blue">⌁</span>
-
-                        <div>
-                            <strong>Signal Monitor</strong>
-                            <small>Standby</small>
-                        </div>
-
-                    </div>
-
                 </div>
 
             </div>
@@ -213,436 +298,550 @@
         </section>
 
 
-        <!-- Scan Checks -->
-        <section class="section" id="checks">
+        <!-- ================= SAFETY CHECKS ================= -->
 
-            <div class="section-heading">
+        <section
+            class="checks-section"
+            id="checks"
+        >
 
-                <span class="section-label">
-                    PRIVACY CHECKS
-                </span>
+            <div class="section-container">
 
-                <h2>
-                    Three ways to review your surroundings.
-                </h2>
-
-                <p>
-                    Use these checks as part of a broader personal safety routine.
-                </p>
-
-            </div>
-
-
-            <div class="check-grid">
-
-                <article class="check-card">
-
-                    <div class="check-icon blue">
-                        ⌁
-                    </div>
-
-                    <span class="check-number">
-                        01
-                    </span>
-
-                    <h3>Signal Awareness</h3>
-
-                    <p>
-                        Review unusual wireless activity around your device
-                        and investigate anything unexpected.
-                    </p>
-
-                    <button class="check-btn" data-check="Signal Awareness">
-                        Run Check →
-                    </button>
-
-                </article>
-
-
-                <article class="check-card">
-
-                    <div class="check-icon purple">
-                        ◉
-                    </div>
-
-                    <span class="check-number">
-                        02
-                    </span>
-
-                    <h3>Visual Inspection</h3>
-
-                    <p>
-                        Learn which objects and room areas deserve a closer
-                        visual inspection for unfamiliar devices.
-                    </p>
-
-                    <button class="check-btn" data-check="Visual Inspection">
-                        Run Check →
-                    </button>
-
-                </article>
-
-
-                <article class="check-card">
-
-                    <div class="check-icon green">
-                        ✓
-                    </div>
-
-                    <span class="check-number">
-                        03
-                    </span>
-
-                    <h3>Privacy Review</h3>
-
-                    <p>
-                        Walk through a simple checklist before using an
-                        unfamiliar private space.
-                    </p>
-
-                    <button class="check-btn" data-check="Privacy Review">
-                        Run Check →
-                    </button>
-
-                </article>
-
-            </div>
-
-        </section>
-
-
-        <!-- Dashboard -->
-        <section class="dashboard-section">
-
-            <div class="dashboard-container">
-
-                <div class="dashboard-header">
+                <div class="section-heading">
 
                     <div>
 
-                        <span class="section-label">
-                            SAFETY CENTER
+                        <span class="eyebrow">
+                            ROOM CHECKLIST
                         </span>
 
                         <h2>
-                            Your privacy dashboard
+                            Six places worth
+                            <span>checking.</span>
                         </h2>
 
                     </div>
 
-                    <span class="dashboard-badge">
-                        ● Protection mode
-                    </span>
-
-                </div>
-
-
-                <div class="dashboard-grid">
-
-                    <div class="score-card">
-
-                        <span class="dashboard-label">
-                            SAFETY STATUS
-                        </span>
-
-                        <div class="score-circle">
-
-                            <div>
-                                <strong id="score">
-                                    96
-                                </strong>
-
-                                <span>
-                                    /100
-                                </span>
-                            </div>
-
-                        </div>
-
-                        <h3>
-                            Ready for review
-                        </h3>
-
-                        <p>
-                            Complete the recommended checks for a more
-                            thorough privacy review.
-                        </p>
-
-                    </div>
-
-
-                    <div class="activity-card">
-
-                        <div class="activity-title">
-                            <div>
-                                <span class="dashboard-label">
-                                    RECENT ACTIVITY
-                                </span>
-
-                                <h3>
-                                    Safety checks
-                                </h3>
-                            </div>
-
-                            <span>
-                                Today
-                            </span>
-                        </div>
-
-
-                        <div class="activity-list">
-
-                            <div class="activity-item">
-
-                                <div class="activity-icon">
-                                    ✓
-                                </div>
-
-                                <div>
-                                    <strong>
-                                        Privacy checklist
-                                    </strong>
-
-                                    <span>
-                                        Completed
-                                    </span>
-                                </div>
-
-                                <small>
-                                    10:42 AM
-                                </small>
-
-                            </div>
-
-
-                            <div class="activity-item">
-
-                                <div class="activity-icon">
-                                    ⌁
-                                </div>
-
-                                <div>
-                                    <strong>
-                                        Signal awareness
-                                    </strong>
-
-                                    <span>
-                                        Reviewed
-                                    </span>
-                                </div>
-
-                                <small>
-                                    10:35 AM
-                                </small>
-
-                            </div>
-
-
-                            <div class="activity-item">
-
-                                <div class="activity-icon">
-                                    ◉
-                                </div>
-
-                                <div>
-                                    <strong>
-                                        Visual inspection
-                                    </strong>
-
-                                    <span>
-                                        Pending
-                                    </span>
-                                </div>
-
-                                <small>
-                                    — 
-                                </small>
-
-                            </div>
-
-                        </div>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-        </section>
-
-
-        <!-- Safety Tips -->
-        <section class="section" id="tips">
-
-            <div class="section-heading">
-
-                <span class="section-label">
-                    SAFETY GUIDE
-                </span>
-
-                <h2>
-                    Small checks can make a difference.
-                </h2>
-
-                <p>
-                    Use these practical steps when entering an unfamiliar room.
-                </p>
-
-            </div>
-
-
-            <div class="tips-grid">
-
-                <article class="tip-card">
-
-                    <div class="tip-number">
-                        01
-                    </div>
-
-                    <div>
-                        <h3>Inspect unusual objects</h3>
-
-                        <p>
-                            Pay attention to unfamiliar electronics, modified
-                            objects or devices that seem out of place.
-                        </p>
-                    </div>
-
-                </article>
-
-
-                <article class="tip-card">
-
-                    <div class="tip-number">
-                        02
-                    </div>
-
-                    <div>
-                        <h3>Check private areas</h3>
-
-                        <p>
-                            Give extra attention to areas facing beds,
-                            bathrooms, changing spaces or work areas.
-                        </p>
-                    </div>
-
-                </article>
-
-
-                <article class="tip-card">
-
-                    <div class="tip-number">
-                        03
-                    </div>
-
-                    <div>
-                        <h3>Investigate concerns</h3>
-
-                        <p>
-                            If something appears suspicious, avoid tampering
-                            and consider contacting the property or authorities.
-                        </p>
-                    </div>
-
-                </article>
-
-
-                <article class="tip-card">
-
-                    <div class="tip-number">
-                        04
-                    </div>
-
-                    <div>
-                        <h3>Protect sensitive information</h3>
-
-                        <p>
-                            Keep passwords, financial details and private
-                            conversations away from unfamiliar environments.
-                        </p>
-                    </div>
-
-                </article>
-
-            </div>
-
-        </section>
-
-
-        <!-- Important Note -->
-        <section class="note-section">
-
-            <div class="note-container">
-
-                <div class="note-icon">
-                    !
-                </div>
-
-                <div>
-
-                    <span class="section-label">
-                        IMPORTANT
-                    </span>
-
-                    <h2>
-                        Technology should support your awareness.
-                    </h2>
-
                     <p>
-                        SafeScan is a front-end privacy-awareness interface.
-                        A browser application cannot reliably confirm that a
-                        hidden camera is present or absent. If you have a
-                        genuine safety concern, use appropriate professional
-                        inspection and report suspicious situations.
+                        A simple visual inspection can help identify
+                        unfamiliar objects or devices in private spaces.
                     </p>
 
                 </div>
 
+
+                <div class="checks-grid">
+
+                    <article class="check-card">
+
+                        <span class="check-number">
+                            01
+                        </span>
+
+                        <div class="check-icon">
+                            ◉
+                        </div>
+
+                        <h3>
+                            Smoke detectors
+                        </h3>
+
+                        <p>
+                            Look for unusual modifications,
+                            unexplained openings or unfamiliar hardware.
+                        </p>
+
+                        <button class="check-button">
+                            Inspect area →
+                        </button>
+
+                    </article>
+
+
+                    <article class="check-card featured">
+
+                        <span class="check-number">
+                            02
+                        </span>
+
+                        <div class="check-icon">
+                            ▣
+                        </div>
+
+                        <h3>
+                            Power adapters
+                        </h3>
+
+                        <p>
+                            Check unfamiliar chargers, adapters
+                            or electronics placed in the room.
+                        </p>
+
+                        <button class="check-button">
+                            Inspect area →
+                        </button>
+
+                    </article>
+
+
+                    <article class="check-card">
+
+                        <span class="check-number">
+                            03
+                        </span>
+
+                        <div class="check-icon">
+                            ◌
+                        </div>
+
+                        <h3>
+                            Clocks & devices
+                        </h3>
+
+                        <p>
+                            Pay attention to unfamiliar objects
+                            pointed toward beds or seating areas.
+                        </p>
+
+                        <button class="check-button">
+                            Inspect area →
+                        </button>
+
+                    </article>
+
+
+                    <article class="check-card">
+
+                        <span class="check-number">
+                            04
+                        </span>
+
+                        <div class="check-icon">
+                            ▤
+                        </div>
+
+                        <h3>
+                            Mirrors
+                        </h3>
+
+                        <p>
+                            Inspect mirrors and their surrounding
+                            fixtures if something appears unusual.
+                        </p>
+
+                        <button class="check-button">
+                            Inspect area →
+                        </button>
+
+                    </article>
+
+
+                    <article class="check-card">
+
+                        <span class="check-number">
+                            05
+                        </span>
+
+                        <div class="check-icon">
+                            ◇
+                        </div>
+
+                        <h3>
+                            Wall objects
+                        </h3>
+
+                        <p>
+                            Check decorations, vents and fixtures
+                            that have an unexplained line of sight.
+                        </p>
+
+                        <button class="check-button">
+                            Inspect area →
+                        </button>
+
+                    </article>
+
+
+                    <article class="check-card">
+
+                        <span class="check-number">
+                            06
+                        </span>
+
+                        <div class="check-icon">
+                            ◎
+                        </div>
+
+                        <h3>
+                            Electronics
+                        </h3>
+
+                        <p>
+                            Note unfamiliar electronics and verify
+                            their purpose before using them.
+                        </p>
+
+                        <button class="check-button">
+                            Inspect area →
+                        </button>
+
+                    </article>
+
+                </div>
+
             </div>
 
         </section>
 
 
-        <!-- CTA -->
-        <section class="cta">
+        <!-- ================= REAL IMAGE SECTION ================= -->
 
-            <span class="section-label">
-                STAY AWARE
-            </span>
+        <section class="visual-section">
 
-            <h2>
-                Check your space with confidence.
-            </h2>
+            <div class="section-container">
 
-            <p>
-                Build a simple privacy routine whenever you enter an unfamiliar
-                environment.
-            </p>
+                <div class="visual-grid">
 
-            <button class="primary-btn" id="ctaScan">
-                Start Safety Scan
-                <span>→</span>
-            </button>
+                    <div class="visual-content">
+
+                        <span class="eyebrow">
+                            VISUAL AWARENESS
+                        </span>
+
+                        <h2>
+                            Technology can be
+                            <span>small.</span>
+                        </h2>
+
+                        <p>
+                            Modern cameras and connected devices can be
+                            compact, which is why a careful visual inspection
+                            matters when entering an unfamiliar private space.
+                        </p>
+
+                        <div class="visual-points">
+
+                            <div class="visual-point">
+
+                                <span>01</span>
+
+                                <div>
+                                    <strong>
+                                        Check unfamiliar objects
+                                    </strong>
+
+                                    <p>
+                                        Know what devices are present
+                                        before using the space.
+                                    </p>
+                                </div>
+
+                            </div>
+
+
+                            <div class="visual-point">
+
+                                <span>02</span>
+
+                                <div>
+                                    <strong>
+                                        Follow the line of sight
+                                    </strong>
+
+                                    <p>
+                                        Consider whether an object points
+                                        toward a private area.
+                                    </p>
+
+                                </div>
+
+                            </div>
+
+
+                            <div class="visual-point">
+
+                                <span>03</span>
+
+                                <div>
+                                    <strong>
+                                        Trust unusual details
+                                    </strong>
+
+                                    <p>
+                                        Investigate unexplained equipment
+                                        rather than ignoring it.
+                                    </p>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="visual-image">
+
+                        <img
+                            src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1200&q=85"
+                            alt="Technology workstation"
+                        >
+
+                        <div class="camera-label">
+
+                            <span class="camera-pulse"></span>
+
+                            DEVICE MONITORING
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= HOTSPOTS ================= -->
+
+        <section
+            class="locations-section"
+            id="locations"
+        >
+
+            <div class="section-container">
+
+                <div class="section-heading">
+
+                    <div>
+
+                        <span class="eyebrow">
+                            INSPECTION ZONES
+                        </span>
+
+                        <h2>
+                            Prioritize the
+                            <span>right areas.</span>
+                        </h2>
+
+                    </div>
+
+                </div>
+
+
+                <div class="locations-grid">
+
+                    <div class="location-card">
+
+                        <div class="location-icon">
+                            🛏
+                        </div>
+
+                        <div>
+                            <h3>Sleeping area</h3>
+
+                            <p>
+                                High privacy priority
+                            </p>
+                        </div>
+
+                        <span class="priority high">
+                            HIGH
+                        </span>
+
+                    </div>
+
+
+                    <div class="location-card">
+
+                        <div class="location-icon">
+                            🚿
+                        </div>
+
+                        <div>
+                            <h3>Bathroom</h3>
+
+                            <p>
+                                High privacy priority
+                            </p>
+                        </div>
+
+                        <span class="priority high">
+                            HIGH
+                        </span>
+
+                    </div>
+
+
+                    <div class="location-card">
+
+                        <div class="location-icon">
+                            🛋
+                        </div>
+
+                        <div>
+                            <h3>Living area</h3>
+
+                            <p>
+                                Moderate privacy priority
+                            </p>
+                        </div>
+
+                        <span class="priority medium">
+                            MEDIUM
+                        </span>
+
+                    </div>
+
+
+                    <div class="location-card">
+
+                        <div class="location-icon">
+                            💻
+                        </div>
+
+                        <div>
+                            <h3>Work area</h3>
+
+                            <p>
+                                Moderate privacy priority
+                            </p>
+                        </div>
+
+                        <span class="priority medium">
+                            MEDIUM
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= GUIDE ================= -->
+
+        <section
+            class="guide-section"
+            id="guide"
+        >
+
+            <div class="section-container">
+
+                <div class="guide-card">
+
+                    <div>
+
+                        <span class="eyebrow">
+                            SAFETY PROTOCOL
+                        </span>
+
+                        <h2>
+                            Found something
+                            <span>unusual?</span>
+                        </h2>
+
+                        <p>
+                            Don't immediately dismantle or interfere with
+                            an unfamiliar device. Document what you observe,
+                            leave the area if necessary and contact the
+                            appropriate property manager or local authorities.
+                        </p>
+
+                    </div>
+
+                    <div class="protocol-steps">
+
+                        <div>
+                            <span>01</span>
+                            <strong>Document</strong>
+                        </div>
+
+                        <div>
+                            <span>02</span>
+                            <strong>Move away</strong>
+                        </div>
+
+                        <div>
+                            <span>03</span>
+                            <strong>Report</strong>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= CTA ================= -->
+
+        <section class="cta-section">
+
+            <div class="cta-container">
+
+                <div>
+
+                    <span class="eyebrow">
+                        PRIVACY AWARENESS
+                    </span>
+
+                    <h2>
+                        Scan smart.
+                        <span>Stay private.</span>
+                    </h2>
+
+                    <p>
+                        Make a quick privacy check part of your travel routine.
+                    </p>
+
+                </div>
+
+                <button
+                    class="scan-button"
+                    id="ctaScan"
+                >
+                    Start Room Scan
+                    <span>→</span>
+                </button>
+
+            </div>
 
         </section>
 
     </main>
 
 
-    <!-- Footer -->
-    <footer>
+    <!-- ================= FOOTER ================= -->
+
+    <footer class="footer">
 
         <div class="footer-container">
 
             <div class="footer-brand">
 
-                <a href="#" class="logo">
-                    <span class="logo-mark">◉</span>
-                    Safe<span>Scan</span>
+                <a href="#" class="brand">
+
+                    <span class="brand-mark">
+                        ◉
+                    </span>
+
+                    <span>
+                        EXO<span>SCAN</span>
+                    </span>
+
                 </a>
 
                 <p>
-                    A modern privacy-awareness interface for everyday spaces.
+                    A privacy-awareness interface for
+                    modern room safety.
                 </p>
 
             </div>
@@ -650,19 +849,10 @@
 
             <div class="footer-links">
 
-                <div>
-                    <strong>Safety</strong>
-                    <a href="#scanner">Scanner</a>
-                    <a href="#checks">Checks</a>
-                    <a href="#tips">Safety Tips</a>
-                </div>
-
-                <div>
-                    <strong>Company</strong>
-                    <a href="#about">About</a>
-                    <a href="#">Privacy</a>
-                    <a href="#">Contact</a>
-                </div>
+                <a href="#scanner">Scanner</a>
+                <a href="#checks">Safety Checks</a>
+                <a href="#locations">Hotspots</a>
+                <a href="#guide">Guide</a>
 
             </div>
 
@@ -672,11 +862,11 @@
         <div class="footer-bottom">
 
             <span>
-                © 2026 SafeScan. All rights reserved.
+                © 2026 EXO-SCAN
             </span>
 
             <span>
-                Privacy starts with awareness.
+                Digital Safety Hub
             </span>
 
         </div>
@@ -684,14 +874,28 @@
     </footer>
 
 
-    <!-- Toast -->
-    <div class="toast" id="toast">
+    <!-- ================= TOAST ================= -->
 
-        <span>✓</span>
+    <div
+        class="toast"
+        id="toast"
+    >
 
-        <p id="toastMessage">
-            Ready.
-        </p>
+        <span class="toast-icon">
+            ✓
+        </span>
+
+        <div>
+
+            <strong id="toastTitle">
+                EXO-SCAN
+            </strong>
+
+            <p id="toastMessage">
+                System ready.
+            </p>
+
+        </div>
 
     </div>
 

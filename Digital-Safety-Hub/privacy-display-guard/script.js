@@ -1,72 +1,69 @@
-/* =========================
-   NAVIGATION
-========================= */
-
-const menuBtn = document.getElementById("menuBtn");
-const navLinks = document.getElementById("navLinks");
-
-menuBtn.addEventListener("click", () => {
-    navLinks.classList.toggle("active");
-
-    if (navLinks.classList.contains("active")) {
-        menuBtn.textContent = "✕";
-    } else {
-        menuBtn.textContent = "☰";
-    }
-});
+/* =========================================================
+   PRIVACY DISPLAY GUARD
+   Interactive JavaScript
+========================================================= */
 
 
-/* Close mobile menu after clicking a link */
+/* ================= ELEMENTS ================= */
 
-document.querySelectorAll(".nav-links a").forEach(link => {
-    link.addEventListener("click", () => {
-        navLinks.classList.remove("active");
-        menuBtn.textContent = "☰";
-    });
-});
+const body = document.body;
+
+const themeToggle =
+    document.getElementById("themeToggle");
+
+const menuButton =
+    document.getElementById("menuButton");
+
+const navLinks =
+    document.getElementById("navLinks");
+
+const activateButton =
+    document.getElementById("activateButton");
+
+const ctaButton =
+    document.getElementById("ctaButton");
+
+const privacyModeButton =
+    document.getElementById("privacyModeButton");
+
+const privacySwitch =
+    document.getElementById("privacySwitch");
+
+const alertSwitch =
+    document.getElementById("alertSwitch");
+
+const monitorSwitch =
+    document.getElementById("monitorSwitch");
+
+const visibilityStatus =
+    document.getElementById("visibilityStatus");
+
+const privacyScore =
+    document.getElementById("privacyScore");
+
+const scoreNumber =
+    document.getElementById("scoreNumber");
+
+const alertsCount =
+    document.getElementById("alertsCount");
+
+const toast =
+    document.getElementById("toast");
+
+const toastTitle =
+    document.getElementById("toastTitle");
+
+const toastMessage =
+    document.getElementById("toastMessage");
 
 
-/* =========================
-   DARK MODE
-========================= */
-
-const themeBtn = document.getElementById("themeBtn");
-
-const savedTheme = localStorage.getItem("privacyGuardTheme");
-
-if (savedTheme === "dark") {
-    document.body.classList.add("dark");
-    themeBtn.textContent = "☀";
-}
-
-themeBtn.addEventListener("click", () => {
-
-    document.body.classList.toggle("dark");
-
-    if (document.body.classList.contains("dark")) {
-        themeBtn.textContent = "☀";
-        localStorage.setItem("privacyGuardTheme", "dark");
-
-        showToast("Dark mode enabled.");
-    } else {
-        themeBtn.textContent = "☾";
-        localStorage.setItem("privacyGuardTheme", "light");
-
-        showToast("Light mode enabled.");
-    }
-});
-
-
-/* =========================
-   TOAST
-========================= */
-
-const toast = document.getElementById("toast");
-const toastMessage = document.getElementById("toastMessage");
+/* ================= TOAST ================= */
 
 let toastTimer;
 
-function showToast(message) {
+function showToast(title, message) {
+
+    toastTitle.textContent = title;
 
     toastMessage.textContent = message;
 
@@ -75,154 +72,320 @@ function showToast(message) {
     clearTimeout(toastTimer);
 
     toastTimer = setTimeout(() => {
+
         toast.classList.remove("show");
-    }, 2800);
+
+    }, 3000);
 }
 
 
-/* =========================
-   PRIVACY PROTECTION
-========================= */
+/* ================= MOBILE MENU ================= */
 
-const protectBtn = document.getElementById("protectBtn");
-const aboutBtn = document.getElementById("aboutBtn");
-const ctaBtn = document.getElementById("ctaBtn");
-const privacyToggle = document.getElementById("privacyToggle");
+menuButton.addEventListener("click", () => {
 
+    navLinks.classList.toggle("open");
 
-function enableProtection() {
+    if (navLinks.classList.contains("open")) {
 
-    privacyToggle.checked = true;
+        menuButton.textContent = "×";
 
-    showToast("Privacy protection enabled.");
-
-    document.getElementById("protection").scrollIntoView({
-        behavior: "smooth"
-    });
-}
-
-
-protectBtn.addEventListener("click", enableProtection);
-aboutBtn.addEventListener("click", enableProtection);
-ctaBtn.addEventListener("click", enableProtection);
-
-
-/* =========================
-   MAIN PRIVACY TOGGLE
-========================= */
-
-privacyToggle.addEventListener("change", () => {
-
-    if (privacyToggle.checked) {
-        showToast("Screen privacy protection enabled.");
     } else {
-        showToast("Screen privacy protection paused.");
-    }
 
+        menuButton.textContent = "☰";
+    }
 });
 
 
-/* =========================
-   SETTINGS TOGGLES
-========================= */
+/* Close menu after clicking link */
 
-const settingToggles = document.querySelectorAll(".settingToggle");
+document
+    .querySelectorAll(".nav-links a")
+    .forEach(link => {
 
-settingToggles.forEach(toggle => {
+        link.addEventListener("click", () => {
 
-    toggle.addEventListener("change", () => {
+            navLinks.classList.remove("open");
 
-        const settingName =
-            toggle.closest(".setting")
-            .querySelector("strong")
-            .textContent;
+            menuButton.textContent = "☰";
 
-        if (toggle.checked) {
-            showToast(`${settingName} enabled.`);
+        });
+
+    });
+
+
+/* ================= DARK MODE ================= */
+
+themeToggle.addEventListener("click", () => {
+
+    body.classList.toggle("dark");
+
+    const darkMode =
+        body.classList.contains("dark");
+
+    themeToggle.textContent =
+        darkMode ? "☀" : "☾";
+
+    localStorage.setItem(
+        "privacyGuardTheme",
+        darkMode ? "dark" : "light"
+    );
+
+    showToast(
+        "Appearance updated",
+        darkMode
+            ? "Dark mode enabled."
+            : "Light mode enabled."
+    );
+});
+
+
+/* Load saved theme */
+
+const savedTheme =
+    localStorage.getItem(
+        "privacyGuardTheme"
+    );
+
+if (savedTheme === "dark") {
+
+    body.classList.add("dark");
+
+    themeToggle.textContent = "☀";
+}
+
+
+/* ================= PRIVACY MODE ================= */
+
+let privacyActive = true;
+
+function updatePrivacyMode() {
+
+    privacyActive =
+        privacySwitch.checked;
+
+    if (privacyActive) {
+
+        visibilityStatus.textContent =
+            "Private";
+
+        privacyScore.textContent =
+            "94%";
+
+        scoreNumber.textContent =
+            "94";
+
+        privacyModeButton.textContent =
+            "Privacy mode active";
+
+        showToast(
+            "Privacy Mode",
+            "Your display is protected."
+        );
+
+    } else {
+
+        visibilityStatus.textContent =
+            "Visible";
+
+        privacyScore.textContent =
+            "71%";
+
+        scoreNumber.textContent =
+            "71";
+
+        privacyModeButton.textContent =
+            "Enable privacy mode";
+
+        showToast(
+            "Privacy Mode",
+            "Display privacy protection is off."
+        );
+    }
+}
+
+
+privacySwitch.addEventListener(
+    "change",
+    updatePrivacyMode
+);
+
+
+privacyModeButton.addEventListener(
+    "click",
+    () => {
+
+        privacySwitch.checked =
+            !privacySwitch.checked;
+
+        updatePrivacyMode();
+
+    }
+);
+
+
+/* ================= ACTIVATE GUARD ================= */
+
+function activateGuard() {
+
+    privacySwitch.checked = true;
+
+    alertSwitch.checked = true;
+
+    monitorSwitch.checked = true;
+
+    privacyActive = true;
+
+    visibilityStatus.textContent =
+        "Private";
+
+    privacyScore.textContent =
+        "98%";
+
+    scoreNumber.textContent =
+        "98";
+
+    showToast(
+        "Privacy Guard activated",
+        "All protection layers are now active."
+    );
+}
+
+
+activateButton.addEventListener(
+    "click",
+    activateGuard
+);
+
+
+ctaButton.addEventListener(
+    "click",
+    activateGuard
+);
+
+
+/* ================= ALERT SETTINGS ================= */
+
+alertSwitch.addEventListener(
+    "change",
+    () => {
+
+        if (alertSwitch.checked) {
+
+            showToast(
+                "Exposure Alerts",
+                "Privacy alerts have been enabled."
+            );
+
         } else {
-            showToast(`${settingName} disabled.`);
+
+            showToast(
+                "Exposure Alerts",
+                "Privacy alerts have been disabled."
+            );
         }
 
-    });
-
-});
-
-
-/* =========================
-   FEATURE BUTTONS
-========================= */
-
-const learnButtons = document.querySelectorAll(".learn-btn");
-
-learnButtons.forEach(button => {
-
-    button.addEventListener("click", () => {
-
-        const featureName =
-            button.closest(".feature-card")
-            .querySelector("h3")
-            .textContent;
-
-        showToast(`${featureName} selected.`);
-
-    });
-
-});
-
-
-/* =========================
-   KEYBOARD SHORTCUT
-========================= */
-
-document.addEventListener("keydown", event => {
-
-    /* Press P to activate protection */
-
-    if (
-        event.key.toLowerCase() === "p" &&
-        !event.target.matches("input, textarea, button")
-    ) {
-        enableProtection();
     }
+);
 
-    /* Press D to toggle dark mode */
 
-    if (
-        event.key.toLowerCase() === "d" &&
-        !event.target.matches("input, textarea, button")
-    ) {
-        themeBtn.click();
+/* ================= MONITORING ================= */
+
+monitorSwitch.addEventListener(
+    "change",
+    () => {
+
+        if (monitorSwitch.checked) {
+
+            showToast(
+                "Smart Monitoring",
+                "Continuous monitoring is active."
+            );
+
+        } else {
+
+            showToast(
+                "Smart Monitoring",
+                "Continuous monitoring is paused."
+            );
+        }
+
     }
+);
+
+
+/* ================= SCROLL REVEAL ================= */
+
+const revealElements =
+    document.querySelectorAll(
+        ".security-card, .tip-card, .control-card, .protection-item"
+    );
+
+
+const revealObserver =
+    new IntersectionObserver(
+        entries => {
+
+            entries.forEach(entry => {
+
+                if (entry.isIntersecting) {
+
+                    entry.target.style.opacity = "1";
+
+                    entry.target.style.transform =
+                        "translateY(0)";
+
+                    revealObserver.unobserve(
+                        entry.target
+                    );
+                }
+
+            });
+
+        },
+        {
+            threshold: 0.12
+        }
+    );
+
+
+revealElements.forEach(element => {
+
+    element.style.opacity = "0";
+
+    element.style.transform =
+        "translateY(20px)";
+
+    element.style.transition =
+        "opacity 0.6s ease, transform 0.6s ease";
+
+    revealObserver.observe(element);
 
 });
 
 
-/* =========================
-   SCROLL EFFECT
-========================= */
+/* ================= KEYBOARD SHORTCUT ================= */
 
-window.addEventListener("scroll", () => {
+document.addEventListener(
+    "keydown",
+    event => {
 
-    const navbar = document.querySelector(".navbar");
+        if (
+            event.key.toLowerCase() === "p" &&
+            !event.ctrlKey &&
+            !event.altKey &&
+            !event.metaKey
+        ) {
 
-    if (window.scrollY > 30) {
-        navbar.style.boxShadow =
-            "0 8px 30px rgba(16, 24, 40, 0.06)";
-    } else {
-        navbar.style.boxShadow = "none";
+            privacySwitch.checked =
+                !privacySwitch.checked;
+
+            updatePrivacyMode();
+        }
+
     }
+);
 
-});
 
+/* ================= INITIAL STATE ================= */
 
-/* =========================
-   INITIAL MESSAGE
-========================= */
-
-window.addEventListener("load", () => {
-
-    setTimeout(() => {
-        showToast("PrivacyGuard is ready.");
-    }, 800);
-
-});
+updatePrivacyMode();

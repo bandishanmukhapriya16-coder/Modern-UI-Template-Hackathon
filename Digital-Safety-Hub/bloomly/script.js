@@ -1,243 +1,77 @@
-/* =========================
-   NAVIGATION
-========================= */
+/* =========================================================
+   BLOOMLY
+   Interactive JavaScript
+   ========================================================= */
+
+
+/* =========================================================
+   ELEMENTS
+   ========================================================= */
+
+const body = document.body;
 
 const menuBtn = document.getElementById("menuBtn");
 const navLinks = document.getElementById("navLinks");
 
-menuBtn.addEventListener("click", () => {
-
-    navLinks.classList.toggle("active");
-
-    menuBtn.textContent =
-        navLinks.classList.contains("active")
-            ? "✕"
-            : "☰";
-
-});
-
-
-document.querySelectorAll(".nav-links a").forEach(link => {
-
-    link.addEventListener("click", () => {
-
-        navLinks.classList.remove("active");
-
-        menuBtn.textContent = "☰";
-
-    });
-
-});
-
-
-/* =========================
-   DARK MODE
-========================= */
-
 const themeBtn = document.getElementById("themeBtn");
-
-if (localStorage.getItem("bloomlyTheme") === "dark") {
-
-    document.body.classList.add("dark");
-
-    themeBtn.textContent = "☀";
-
-}
-
-
-themeBtn.addEventListener("click", () => {
-
-    document.body.classList.toggle("dark");
-
-    const isDark =
-        document.body.classList.contains("dark");
-
-    themeBtn.textContent =
-        isDark ? "☀" : "☾";
-
-    localStorage.setItem(
-        "bloomlyTheme",
-        isDark ? "dark" : "light"
-    );
-
-    showToast(
-        isDark
-            ? "Dark mode enabled."
-            : "Light mode enabled."
-    );
-
-});
-
-
-/* =========================
-   SEARCH
-========================= */
 
 const searchBtn = document.getElementById("searchBtn");
 const searchPanel = document.getElementById("searchPanel");
 const closeSearch = document.getElementById("closeSearch");
 const searchInput = document.getElementById("searchInput");
 
-searchBtn.addEventListener("click", () => {
-
-    searchPanel.classList.add("active");
-
-    setTimeout(() => {
-        searchInput.focus();
-    }, 200);
-
-});
-
-
-closeSearch.addEventListener("click", () => {
-
-    searchPanel.classList.remove("active");
-
-});
-
-
-searchInput.addEventListener("keydown", event => {
-
-    if (event.key === "Enter") {
-
-        const value =
-            searchInput.value.trim();
-
-        if (value) {
-
-            showToast(
-                `Searching for "${value}"`
-            );
-
-            searchPanel.classList.remove("active");
-
-        }
-
-    }
-
-    if (event.key === "Escape") {
-
-        searchPanel.classList.remove("active");
-
-    }
-
-});
-
-
-/* =========================
-   TOAST
-========================= */
-
-const toast = document.getElementById("toast");
-const toastMessage =
-    document.getElementById("toastMessage");
-
-let toastTimer;
-
-function showToast(message) {
-
-    toastMessage.textContent = message;
-
-    toast.classList.add("show");
-
-    clearTimeout(toastTimer);
-
-    toastTimer = setTimeout(() => {
-
-        toast.classList.remove("show");
-
-    }, 2600);
-
-}
-
-
-/* =========================
-   CART
-========================= */
-
 const cartBtn = document.getElementById("cartBtn");
-const cartDrawer = document.getElementById("cartDrawer");
+const cartPanel = document.getElementById("cartPanel");
 const closeCart = document.getElementById("closeCart");
 const overlay = document.getElementById("overlay");
 
-const cartCount =
-    document.getElementById("cartCount");
+const cartCount = document.getElementById("cartCount");
+const cartItems = document.getElementById("cartItems");
+const cartTotal = document.getElementById("cartTotal");
 
-const cartItems =
-    document.getElementById("cartItems");
+const toast = document.getElementById("toast");
+const toastTitle = document.getElementById("toastTitle");
+const toastMessage = document.getElementById("toastMessage");
 
-const cartTotal =
-    document.getElementById("cartTotal");
+const newsletterForm = document.getElementById("newsletterForm");
 
-const checkoutBtn =
-    document.getElementById("checkoutBtn");
 
+/* =========================================================
+   PRODUCT DATA
+   ========================================================= */
+
+const products = {
+    "Blush Garden": {
+        price: 1499,
+        image:
+            "https://images.unsplash.com/photo-1490750967868-88aa4486c946?auto=format&fit=crop&w=600&q=85"
+    },
+
+    "Sunshine Mix": {
+        price: 1799,
+        image:
+            "https://images.unsplash.com/photo-1495231916356-a86217efff12?auto=format&fit=crop&w=600&q=85"
+    },
+
+    "Forever Roses": {
+        price: 1999,
+        image:
+            "https://images.unsplash.com/photo-1518709594023-6eab9bab7b23?auto=format&fit=crop&w=600&q=85"
+    },
+
+    "Pure Elegance": {
+        price: 2299,
+        image:
+            "https://images.unsplash.com/photo-1507504031003-b417219a0fde?auto=format&fit=crop&w=600&q=85"
+    }
+};
+
+
+/* =========================================================
+   CART
+   ========================================================= */
 
 let cart = [];
-
-
-function openCart() {
-
-    cartDrawer.classList.add("active");
-
-    overlay.classList.add("active");
-
-}
-
-
-function closeCartDrawer() {
-
-    cartDrawer.classList.remove("active");
-
-    overlay.classList.remove("active");
-
-}
-
-
-cartBtn.addEventListener(
-    "click",
-    openCart
-);
-
-closeCart.addEventListener(
-    "click",
-    closeCartDrawer
-);
-
-overlay.addEventListener(
-    "click",
-    closeCartDrawer
-);
-
-
-/* =========================
-   ADD TO CART
-========================= */
-
-document.querySelectorAll(".add-btn").forEach(button => {
-
-    button.addEventListener("click", () => {
-
-        const product =
-            button.dataset.product;
-
-        const price =
-            Number(button.dataset.price);
-
-        cart.push({
-            product,
-            price
-        });
-
-        updateCart();
-
-        showToast(
-            `${product} added to your bag.`
-        );
-
-    });
-
-});
 
 
 function updateCart() {
@@ -248,9 +82,15 @@ function updateCart() {
 
         cartItems.innerHTML = `
             <div class="empty-cart">
-                <span>🌷</span>
-                <h3>Your bag is empty</h3>
-                <p>Add something beautiful.</p>
+
+                <i class="fa-solid fa-bag-shopping"></i>
+
+                <h3>Your basket is empty</h3>
+
+                <p>
+                    Add a beautiful bouquet to get started.
+                </p>
+
             </div>
         `;
 
@@ -269,99 +109,256 @@ function updateCart() {
 
         total += item.price;
 
-        const itemElement =
-            document.createElement("div");
+        const element = document.createElement("div");
 
-        itemElement.className =
-            "cart-item";
+        element.className = "cart-item";
 
-        itemElement.innerHTML = `
+        element.innerHTML = `
 
-            <div class="cart-item-icon">
-                🌷
-            </div>
+            <img
+                src="${item.image}"
+                alt="${item.name}"
+            >
 
             <div class="cart-item-info">
 
-                <strong>
-                    ${item.product}
-                </strong>
+                <h4>${item.name}</h4>
 
-                <span>
-                    ₹${item.price.toLocaleString("en-IN")}
-                </span>
+                <span>₹${item.price.toLocaleString("en-IN")}</span>
 
             </div>
 
             <button
                 class="remove-item"
                 data-index="${index}"
+                title="Remove"
             >
-                Remove
+                <i class="fa-solid fa-trash"></i>
             </button>
         `;
 
-        cartItems.appendChild(itemElement);
+        cartItems.appendChild(element);
 
     });
 
 
     cartTotal.textContent =
-        `₹${total.toLocaleString("en-IN")}`;
+        "₹" + total.toLocaleString("en-IN");
 
 
-    document
-        .querySelectorAll(".remove-item")
-        .forEach(button => {
+    document.querySelectorAll(".remove-item").forEach(button => {
 
-            button.addEventListener("click", () => {
+        button.addEventListener("click", () => {
 
-                const index =
-                    Number(button.dataset.index);
+            const index = Number(button.dataset.index);
 
-                const removed =
-                    cart[index].product;
+            const removed = cart[index];
 
-                cart.splice(index, 1);
+            cart.splice(index, 1);
 
-                updateCart();
+            updateCart();
 
-                showToast(
-                    `${removed} removed.`
-                );
-
-            });
+            showToast(
+                "Removed from bag",
+                `${removed.name} was removed.`
+            );
 
         });
+
+    });
 
 }
 
 
-/* =========================
-   CHECKOUT
-========================= */
+/* =========================================================
+   ADD TO CART
+   ========================================================= */
 
-checkoutBtn.addEventListener("click", () => {
+document.querySelectorAll(".add-btn").forEach(button => {
 
-    if (cart.length === 0) {
+    button.addEventListener("click", () => {
+
+        const productName = button.dataset.product;
+
+        const product = products[productName];
+
+        cart.push({
+            name: productName,
+            price: product.price,
+            image: product.image
+        });
+
+        updateCart();
 
         showToast(
-            "Your bag is empty."
+            "Added to your bag",
+            `${productName} is ready for gifting.`
         );
 
-        return;
-    }
-
-    showToast(
-        "Checkout demo opened."
-    );
+    });
 
 });
 
 
-/* =========================
-   FAVORITES
-========================= */
+/* =========================================================
+   CART OPEN / CLOSE
+   ========================================================= */
+
+function openCart() {
+
+    cartPanel.classList.add("active");
+
+    overlay.classList.add("active");
+
+}
+
+function closeCartPanel() {
+
+    cartPanel.classList.remove("active");
+
+    overlay.classList.remove("active");
+
+}
+
+cartBtn.addEventListener("click", openCart);
+
+closeCart.addEventListener("click", closeCartPanel);
+
+overlay.addEventListener("click", closeCartPanel);
+
+
+/* =========================================================
+   MOBILE NAVIGATION
+   ========================================================= */
+
+menuBtn.addEventListener("click", () => {
+
+    navLinks.classList.toggle("active");
+
+    const icon = menuBtn.querySelector("i");
+
+    if (navLinks.classList.contains("active")) {
+
+        icon.classList.remove("fa-bars");
+        icon.classList.add("fa-xmark");
+
+    } else {
+
+        icon.classList.remove("fa-xmark");
+        icon.classList.add("fa-bars");
+
+    }
+
+});
+
+
+document.querySelectorAll(".nav-links a").forEach(link => {
+
+    link.addEventListener("click", () => {
+
+        navLinks.classList.remove("active");
+
+        const icon = menuBtn.querySelector("i");
+
+        icon.classList.remove("fa-xmark");
+        icon.classList.add("fa-bars");
+
+    });
+
+});
+
+
+/* =========================================================
+   DARK MODE
+   ========================================================= */
+
+const savedTheme = localStorage.getItem("bloomly-theme");
+
+if (savedTheme === "dark") {
+
+    body.classList.add("dark");
+
+    themeBtn.innerHTML =
+        '<i class="fa-regular fa-sun"></i>';
+
+}
+
+
+themeBtn.addEventListener("click", () => {
+
+    body.classList.toggle("dark");
+
+    const darkMode =
+        body.classList.contains("dark");
+
+    localStorage.setItem(
+        "bloomly-theme",
+        darkMode ? "dark" : "light"
+    );
+
+
+    themeBtn.innerHTML = darkMode
+        ? '<i class="fa-regular fa-sun"></i>'
+        : '<i class="fa-regular fa-moon"></i>';
+
+});
+
+
+/* =========================================================
+   SEARCH
+   ========================================================= */
+
+searchBtn.addEventListener("click", () => {
+
+    searchPanel.classList.toggle("active");
+
+    if (searchPanel.classList.contains("active")) {
+
+        searchInput.focus();
+
+    }
+
+});
+
+
+closeSearch.addEventListener("click", () => {
+
+    searchPanel.classList.remove("active");
+
+});
+
+
+searchInput.addEventListener("keydown", event => {
+
+    if (event.key === "Enter") {
+
+        const query =
+            searchInput.value.trim();
+
+        if (!query) {
+
+            showToast(
+                "Search",
+                "Please enter something to search."
+            );
+
+            return;
+        }
+
+
+        showToast(
+            "Searching Bloomly",
+            `Looking for "${query}"...`
+        );
+
+    }
+
+});
+
+
+/* =========================================================
+   HEART / WISHLIST
+   ========================================================= */
 
 document.querySelectorAll(".heart-btn").forEach(button => {
 
@@ -369,23 +366,31 @@ document.querySelectorAll(".heart-btn").forEach(button => {
 
         button.classList.toggle("active");
 
-        const product =
-            button.dataset.product;
+        const icon =
+            button.querySelector("i");
 
-        if (button.classList.contains("active")) {
+        const active =
+            button.classList.contains("active");
 
-            button.textContent = "♥";
+
+        if (active) {
+
+            icon.classList.remove("fa-regular");
+            icon.classList.add("fa-solid");
 
             showToast(
-                `${product} saved to favourites.`
+                "Saved to favourites",
+                `${button.dataset.product} was saved.`
             );
 
         } else {
 
-            button.textContent = "♡";
+            icon.classList.remove("fa-solid");
+            icon.classList.add("fa-regular");
 
             showToast(
-                `${product} removed from favourites.`
+                "Removed from favourites",
+                `${button.dataset.product} was removed.`
             );
 
         }
@@ -395,118 +400,234 @@ document.querySelectorAll(".heart-btn").forEach(button => {
 });
 
 
-/* =========================
-   OCCASION BUTTONS
-========================= */
+/* =========================================================
+   OCCASION CARDS
+   ========================================================= */
 
-document.querySelectorAll(".occasion-card")
-    .forEach(button => {
+document.querySelectorAll(".category-card").forEach(card => {
 
-        button.addEventListener("click", () => {
+    card.addEventListener("click", () => {
 
-            const category =
-                button.dataset.category;
+        const category = card.dataset.category;
 
-            showToast(
-                `${category} collection selected.`
-            );
+        showToast(
+            category,
+            `Showing beautiful gifts for ${category.toLowerCase()}.`
+        );
 
-            document
-                .getElementById("flowers")
-                .scrollIntoView({
-                    behavior: "smooth"
-                });
-
-        });
+        document
+            .getElementById("collections")
+            .scrollIntoView({
+                behavior: "smooth"
+            });
 
     });
-
-
-/* =========================
-   GIFT BUTTONS
-========================= */
-
-document.querySelectorAll(".gift-card button")
-    .forEach(button => {
-
-        button.addEventListener("click", () => {
-
-            const gift =
-                button.dataset.gift;
-
-            showToast(
-                `${gift} collection selected.`
-            );
-
-            document
-                .getElementById("gifts")
-                .scrollIntoView({
-                    behavior: "smooth"
-                });
-
-        });
-
-    });
-
-
-/* =========================
-   OFFER
-========================= */
-
-const offerBtn =
-    document.getElementById("offerBtn");
-
-offerBtn.addEventListener("click", () => {
-
-    document
-        .getElementById("gifts")
-        .scrollIntoView({
-            behavior: "smooth"
-        });
-
-    showToast(
-        "Exploring special gifts."
-    );
 
 });
 
 
-/* =========================
+/* =========================================================
+   SURPRISE ME
+   ========================================================= */
+
+const surpriseBtn =
+    document.getElementById("surpriseBtn");
+
+const surpriseProducts = [
+    "Blush Garden",
+    "Sunshine Mix",
+    "Forever Roses",
+    "Pure Elegance"
+];
+
+
+surpriseBtn.addEventListener("click", () => {
+
+    const randomProduct =
+        surpriseProducts[
+            Math.floor(
+                Math.random() *
+                surpriseProducts.length
+            )
+        ];
+
+    showToast(
+        "Bloomly picked for you",
+        `Try ${randomProduct} today.`
+    );
+
+    document
+        .getElementById("collections")
+        .scrollIntoView({
+            behavior: "smooth"
+        });
+
+});
+
+
+/* =========================================================
+   VIEW ALL
+   ========================================================= */
+
+document
+    .getElementById("viewAllBtn")
+    .addEventListener("click", () => {
+
+        showToast(
+            "Bloomly collection",
+            "You're already viewing our featured collection."
+        );
+
+    });
+
+
+/* =========================================================
+   STORY BUTTON
+   ========================================================= */
+
+document
+    .getElementById("storyBtn")
+    .addEventListener("click", () => {
+
+        showToast(
+            "Welcome to Bloomly",
+            "Thoughtful flowers for meaningful moments."
+        );
+
+    });
+
+
+/* =========================================================
+   CTA
+   ========================================================= */
+
+document
+    .getElementById("ctaBtn")
+    .addEventListener("click", () => {
+
+        document
+            .getElementById("collections")
+            .scrollIntoView({
+                behavior: "smooth"
+            });
+
+    });
+
+
+/* =========================================================
+   CHECKOUT
+   ========================================================= */
+
+document
+    .getElementById("checkoutBtn")
+    .addEventListener("click", () => {
+
+        if (cart.length === 0) {
+
+            showToast(
+                "Your bag is empty",
+                "Add a flower arrangement before checkout."
+            );
+
+            return;
+        }
+
+
+        showToast(
+            "Checkout",
+            "Checkout demo opened successfully."
+        );
+
+    });
+
+
+/* =========================================================
    NEWSLETTER
-========================= */
-
-const newsletterForm =
-    document.getElementById("newsletterForm");
-
-const emailInput =
-    document.getElementById("emailInput");
-
+   ========================================================= */
 
 newsletterForm.addEventListener("submit", event => {
 
     event.preventDefault();
 
     const email =
-        emailInput.value.trim();
+        document.getElementById("emailInput").value.trim();
+
 
     if (!email) {
+
         return;
+
     }
 
+
     showToast(
-        "Welcome to the Bloomly family!"
+        "You're in!",
+        "Bloomly updates will arrive in your inbox."
     );
 
-    emailInput.value = "";
+
+    newsletterForm.reset();
 
 });
 
 
-/* =========================
+/* =========================================================
+   FOOTER LINKS
+   ========================================================= */
+
+document
+    .querySelectorAll("[data-footer]")
+    .forEach(link => {
+
+        link.addEventListener("click", event => {
+
+            event.preventDefault();
+
+            showToast(
+                link.dataset.footer,
+                "This section is part of the Bloomly demo."
+            );
+
+        });
+
+    });
+
+
+/* =========================================================
+   TOAST
+   ========================================================= */
+
+let toastTimer;
+
+
+function showToast(title, message) {
+
+    toastTitle.textContent = title;
+
+    toastMessage.textContent = message;
+
+    toast.classList.add("show");
+
+
+    clearTimeout(toastTimer);
+
+
+    toastTimer = setTimeout(() => {
+
+        toast.classList.remove("show");
+
+    }, 3200);
+
+}
+
+
+/* =========================================================
    KEYBOARD SHORTCUTS
-========================= */
+   ========================================================= */
 
 document.addEventListener("keydown", event => {
+
+    /* Press / to search */
 
     if (
         event.key === "/" &&
@@ -521,52 +642,22 @@ document.addEventListener("keydown", event => {
 
     }
 
+
+    /* Escape closes panels */
+
     if (event.key === "Escape") {
 
         searchPanel.classList.remove("active");
 
-        closeCartDrawer();
+        closeCartPanel();
 
     }
 
 });
 
 
-/* =========================
-   SCROLL NAVBAR
-========================= */
+/* =========================================================
+   INITIALIZE
+   ========================================================= */
 
-window.addEventListener("scroll", () => {
-
-    const navbar =
-        document.querySelector(".navbar");
-
-    if (window.scrollY > 30) {
-
-        navbar.style.boxShadow =
-            "0 8px 30px rgba(55,38,33,0.06)";
-
-    } else {
-
-        navbar.style.boxShadow = "none";
-
-    }
-
-});
-
-
-/* =========================
-   WELCOME MESSAGE
-========================= */
-
-window.addEventListener("load", () => {
-
-    setTimeout(() => {
-
-        showToast(
-            "Welcome to Bloomly ✦"
-        );
-
-    }, 700);
-
-});
+updateCart();
