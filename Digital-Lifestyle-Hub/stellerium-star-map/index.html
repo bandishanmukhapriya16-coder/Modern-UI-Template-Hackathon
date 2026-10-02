@@ -5,60 +5,45 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Stellerium | Explore the Night Sky</title>
-
-    <meta
-        name="description"
-        content="Stellerium is a modern interactive star map for exploring stars, planets, constellations and upcoming sky events."
-    >
-
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-    <link
-        href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap"
-        rel="stylesheet"
-    >
+    <title>Stellerium | Interactive Star Map</title>
 
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-    <!-- =====================================================
-         NAVIGATION
-    ====================================================== -->
+    <!-- ============================= -->
+    <!-- NAVIGATION -->
+    <!-- ============================= -->
 
     <header class="navbar">
 
-        <a href="#home" class="logo">
-            <span class="logo-mark">✦</span>
-            <span>stellerium</span>
-        </a>
+        <div class="logo">
+            <span class="logo-icon">✦</span>
+            <span>Stellerium</span>
+        </div>
 
-        <nav class="nav-links">
-
+        <nav class="nav-links" id="navLinks">
             <a href="#home">Home</a>
             <a href="#explore">Explore</a>
             <a href="#constellations">Constellations</a>
-            <a href="#planets">Planets</a>
-            <a href="#events">Sky Events</a>
-
+            <a href="#missions">Missions</a>
         </nav>
 
         <div class="nav-actions">
 
             <button
-                class="theme-toggle"
-                id="themeToggle"
-                aria-label="Toggle dark mode"
-            >
-                <span id="themeIcon">☾</span>
+                class="icon-btn"
+                id="themeBtn"
+                title="Change theme">
+                ☾
             </button>
 
-            <button class="nav-button" id="locationButton">
-                <span>⌖</span>
-                My Sky
+            <button
+                class="menu-btn"
+                id="menuBtn"
+                aria-label="Open menu">
+                ☰
             </button>
 
         </div>
@@ -66,941 +51,762 @@
     </header>
 
 
-    <main>
+    <!-- ============================= -->
+    <!-- HERO -->
+    <!-- ============================= -->
 
-        <!-- =====================================================
-             HERO
-        ====================================================== -->
+    <section class="hero" id="home">
 
-        <section class="hero" id="home">
+        <div class="hero-content">
 
-            <div class="hero-content">
+            <span class="eyebrow">
+                ✦ EXPLORE THE NIGHT SKY
+            </span>
 
-                <div class="hero-badge">
-                    <span class="live-dot"></span>
-                    Your window to the universe
-                </div>
+            <h1>
+                Find your place
+                <span>among the stars.</span>
+            </h1>
 
-                <h1>
-                    Look up.
-                    <span>Wonder more.</span>
-                </h1>
+            <p>
+                Explore constellations, planets and deep-space objects
+                through an interactive astronomy experience.
+            </p>
 
-                <p class="hero-text">
-                    Explore stars, planets and constellations from anywhere
-                    on Earth with a beautiful interactive guide to the
-                    night sky.
-                </p>
+            <div class="hero-buttons">
 
-                <div class="hero-actions">
+                <button
+                    class="primary-btn"
+                    id="exploreBtn">
+                    Explore the Sky →
+                </button>
 
-                    <a href="#explore" class="primary-button">
-                        Explore the sky
-                        <span>→</span>
-                    </a>
-
-                    <a href="#constellations" class="secondary-button">
-                        Discover constellations
-                    </a>
-
-                </div>
-
-                <div class="hero-stats">
-
-                    <div>
-                        <strong>88</strong>
-                        <span>Constellations</span>
-                    </div>
-
-                    <div>
-                        <strong>5,000+</strong>
-                        <span>Visible stars</span>
-                    </div>
-
-                    <div>
-                        <strong>8</strong>
-                        <span>Planets</span>
-                    </div>
-
-                </div>
-
-            </div>
-
-
-            <!-- HERO STAR MAP -->
-
-            <div class="hero-map">
-
-                <div class="map-glow"></div>
-
-                <div class="star star-1"></div>
-                <div class="star star-2"></div>
-                <div class="star star-3"></div>
-                <div class="star star-4"></div>
-                <div class="star star-5"></div>
-                <div class="star star-6"></div>
-                <div class="star star-7"></div>
-                <div class="star star-8"></div>
-                <div class="star star-9"></div>
-                <div class="star star-10"></div>
-                <div class="star star-11"></div>
-                <div class="star star-12"></div>
-                <div class="star star-13"></div>
-                <div class="star star-14"></div>
-                <div class="star star-15"></div>
-
-                <div class="constellation-line line-1"></div>
-                <div class="constellation-line line-2"></div>
-                <div class="constellation-line line-3"></div>
-                <div class="constellation-line line-4"></div>
-                <div class="constellation-line line-5"></div>
-                <div class="constellation-line line-6"></div>
-
-                <div class="map-center">
-                    <span>✦</span>
-                </div>
-
-                <div class="map-label orion-label">
-                    <span class="label-dot"></span>
-                    Orion
-                </div>
-
-                <div class="map-label sirius-label">
-                    <span class="label-dot"></span>
-                    Sirius
-                </div>
-
-                <div class="map-label north-label">
-                    <span class="label-dot"></span>
-                    North
-                </div>
-
-                <div class="map-controls">
-
-                    <button id="zoomIn">+</button>
-                    <button id="zoomOut">−</button>
-                    <button id="resetMap">↻</button>
-
-                </div>
-
-            </div>
-
-        </section>
-
-
-        <!-- =====================================================
-             SEARCH
-        ====================================================== -->
-
-        <section class="search-section">
-
-            <div class="search-box">
-
-                <span class="search-icon">⌕</span>
-
-                <input
-                    type="text"
-                    id="starSearch"
-                    placeholder="Search stars, planets, constellations..."
-                >
-
-                <button id="searchButton">
-                    Search
+                <button
+                    class="secondary-btn"
+                    id="locationBtn">
+                    ◎ Detect Location
                 </button>
 
             </div>
 
-            <p id="searchResult">
-                Try searching for Orion, Mars, Sirius or Andromeda.
-            </p>
+            <div
+                class="location-status"
+                id="locationStatus">
 
-        </section>
+                <span class="status-dot"></span>
 
-
-        <!-- =====================================================
-             EXPLORE
-        ====================================================== -->
-
-        <section class="section explore-section" id="explore">
-
-            <div class="section-heading">
-
-                <div>
-                    <span class="eyebrow">EXPLORE THE UNIVERSE</span>
-
-                    <h2>
-                        Start your journey
-                    </h2>
-                </div>
-
-                <p>
-                    From nearby planets to distant galaxies,
-                    discover something new every time you look up.
-                </p>
+                Viewing: Northern Sky
 
             </div>
 
-
-            <div class="explore-grid">
-
-                <article class="explore-card large-card">
-
-                    <div class="explore-image galaxy-image">
-                        <img
-                            src="https://images.unsplash.com/photo-1462331940025-496dfbfc7564?auto=format&fit=crop&w=1200&q=85"
-                            alt="Colorful galaxy in deep space"
-                        >
-
-                        <span class="image-badge">
-                            Deep Space
-                        </span>
-                    </div>
-
-                    <div class="explore-content">
-
-                        <span class="card-kicker">COSMOS</span>
-
-                        <h3>
-                            Beyond our solar system
-                        </h3>
-
-                        <p>
-                            Travel through galaxies, nebulae and
-                            distant cosmic structures.
-                        </p>
-
-                        <button class="text-button">
-                            Explore deep space →
-                        </button>
-
-                    </div>
-
-                </article>
+        </div>
 
 
-                <article class="explore-card">
+        <!-- HERO SPACE VISUAL -->
 
-                    <div class="explore-icon">
-                        🪐
-                    </div>
+        <div class="hero-visual">
 
-                    <span class="card-kicker">
-                        SOLAR SYSTEM
-                    </span>
+            <div class="orbit orbit-one"></div>
 
-                    <h3>
-                        Meet the planets
-                    </h3>
+            <div class="orbit orbit-two"></div>
 
-                    <p>
-                        Learn about the worlds orbiting our Sun.
-                    </p>
+            <div class="planet">
 
-                    <a href="#planets" class="text-button">
-                        View planets →
-                    </a>
-
-                </article>
-
-
-                <article class="explore-card">
-
-                    <div class="explore-icon">
-                        ✧
-                    </div>
-
-                    <span class="card-kicker">
-                        NIGHT SKY
-                    </span>
-
-                    <h3>
-                        Find your stars
-                    </h3>
-
-                    <p>
-                        Identify bright stars and understand
-                        where they appear in the sky.
-                    </p>
-
-                    <a href="#constellations" class="text-button">
-                        Find constellations →
-                    </a>
-
-                </article>
+                <div class="planet-ring"></div>
 
             </div>
 
-        </section>
+            <div class="star star-one">✦</div>
 
+            <div class="star star-two">✦</div>
 
-        <!-- =====================================================
-             CONSTELLATIONS
-        ====================================================== -->
+            <div class="star star-three">✧</div>
 
-        <section class="section constellation-section" id="constellations">
+            <div class="star star-four">✦</div>
 
-            <div class="section-heading">
+            <div class="star star-five">·</div>
 
-                <div>
-                    <span class="eyebrow">STAR STORIES</span>
+        </div>
 
-                    <h2>
-                        Famous constellations
-                    </h2>
-                </div>
+    </section>
 
-                <p>
-                    Patterns of stars have guided travelers and
-                    inspired stories for thousands of years.
-                </p>
 
-            </div>
+    <!-- ============================= -->
+    <!-- SKY EXPLORER -->
+    <!-- ============================= -->
 
+    <section
+        class="section"
+        id="explore">
 
-            <div class="constellation-grid">
+        <div class="section-heading">
 
-                <article class="constellation-card">
+            <div>
 
-                    <div class="constellation-image">
-
-                        <img
-                            src="https://images.unsplash.com/photo-1534791547706-5c8c1c8a8e1e?auto=format&fit=crop&w=900&q=85"
-                            alt="Night sky full of stars"
-                        >
-
-                        <span class="constellation-symbol">
-                            ♈
-                        </span>
-
-                    </div>
-
-                    <div class="constellation-content">
-
-                        <span class="card-kicker">
-                            WINTER SKY
-                        </span>
-
-                        <h3>Orion</h3>
-
-                        <p>
-                            One of the easiest constellations to
-                            recognize, marked by its famous three-star belt.
-                        </p>
-
-                        <div class="card-meta">
-                            <span>⭐ 7 major stars</span>
-                            <span>•</span>
-                            <span>Visible worldwide</span>
-                        </div>
-
-                    </div>
-
-                </article>
-
-
-                <article class="constellation-card">
-
-                    <div class="constellation-image">
-
-                        <img
-                            src="https://images.unsplash.com/photo-1516339901601-2e1b62dc0c45?auto=format&fit=crop&w=900&q=85"
-                            alt="Stars across the night sky"
-                        >
-
-                        <span class="constellation-symbol">
-                            ♏
-                        </span>
-
-                    </div>
-
-                    <div class="constellation-content">
-
-                        <span class="card-kicker">
-                            SUMMER SKY
-                        </span>
-
-                        <h3>Scorpius</h3>
-
-                        <p>
-                            A distinctive constellation shaped like
-                            a scorpion and rich in bright stars.
-                        </p>
-
-                        <div class="card-meta">
-                            <span>⭐ Antares</span>
-                            <span>•</span>
-                            <span>Southern sky</span>
-                        </div>
-
-                    </div>
-
-                </article>
-
-
-                <article class="constellation-card">
-
-                    <div class="constellation-image">
-
-                        <img
-                            src="https://images.unsplash.com/photo-1444703686981-a3abbc4d4fe3?auto=format&fit=crop&w=900&q=85"
-                            alt="Milky Way night sky"
-                        >
-
-                        <span class="constellation-symbol">
-                            ✦
-                        </span>
-
-                    </div>
-
-                    <div class="constellation-content">
-
-                        <span class="card-kicker">
-                            NORTHERN SKY
-                        </span>
-
-                        <h3>Ursa Major</h3>
-
-                        <p>
-                            Home to the familiar Big Dipper pattern
-                            and several notable deep-sky objects.
-                        </p>
-
-                        <div class="card-meta">
-                            <span>⭐ Big Dipper</span>
-                            <span>•</span>
-                            <span>Year-round</span>
-                        </div>
-
-                    </div>
-
-                </article>
-
-            </div>
-
-        </section>
-
-
-        <!-- =====================================================
-             PLANETS
-        ====================================================== -->
-
-        <section class="section planets-section" id="planets">
-
-            <div class="section-heading">
-
-                <div>
-                    <span class="eyebrow">OUR SOLAR SYSTEM</span>
-
-                    <h2>
-                        Worlds nearby
-                    </h2>
-                </div>
-
-                <p>
-                    Eight unique planets. One incredible solar system.
-                </p>
-
-            </div>
-
-
-            <div class="planet-grid">
-
-                <article class="planet-card">
-
-                    <div class="planet-visual mercury">
-                        <div class="planet-orb"></div>
-                    </div>
-
-                    <div class="planet-info">
-                        <span>01</span>
-                        <h3>Mercury</h3>
-                        <p>
-                            The smallest planet and the closest
-                            world to the Sun.
-                        </p>
-                    </div>
-
-                </article>
-
-
-                <article class="planet-card">
-
-                    <div class="planet-visual venus">
-                        <div class="planet-orb"></div>
-                    </div>
-
-                    <div class="planet-info">
-                        <span>02</span>
-                        <h3>Venus</h3>
-                        <p>
-                            A hot, cloud-covered world with a
-                            thick atmosphere.
-                        </p>
-                    </div>
-
-                </article>
-
-
-                <article class="planet-card featured-planet">
-
-                    <div class="planet-visual earth">
-                        <div class="planet-orb"></div>
-                    </div>
-
-                    <div class="planet-info">
-                        <span>03 · HOME</span>
-                        <h3>Earth</h3>
-                        <p>
-                            Our blue planet, the only known world
-                            with life.
-                        </p>
-                    </div>
-
-                </article>
-
-
-                <article class="planet-card">
-
-                    <div class="planet-visual mars">
-                        <div class="planet-orb"></div>
-                    </div>
-
-                    <div class="planet-info">
-                        <span>04</span>
-                        <h3>Mars</h3>
-                        <p>
-                            The red planet with giant volcanoes,
-                            valleys and polar ice.
-                        </p>
-                    </div>
-
-                </article>
-
-
-                <article class="planet-card">
-
-                    <div class="planet-visual jupiter">
-                        <div class="planet-orb"></div>
-                    </div>
-
-                    <div class="planet-info">
-                        <span>05</span>
-                        <h3>Jupiter</h3>
-                        <p>
-                            The largest planet in our solar system.
-                        </p>
-                    </div>
-
-                </article>
-
-
-                <article class="planet-card">
-
-                    <div class="planet-visual saturn">
-                        <div class="planet-orb"></div>
-                    </div>
-
-                    <div class="planet-info">
-                        <span>06</span>
-                        <h3>Saturn</h3>
-                        <p>
-                            Famous for its spectacular system of rings.
-                        </p>
-                    </div>
-
-                </article>
-
-
-                <article class="planet-card">
-
-                    <div class="planet-visual uranus">
-                        <div class="planet-orb"></div>
-                    </div>
-
-                    <div class="planet-info">
-                        <span>07</span>
-                        <h3>Uranus</h3>
-                        <p>
-                            An icy giant rotating on an unusual tilt.
-                        </p>
-                    </div>
-
-                </article>
-
-
-                <article class="planet-card">
-
-                    <div class="planet-visual neptune">
-                        <div class="planet-orb"></div>
-                    </div>
-
-                    <div class="planet-info">
-                        <span>08</span>
-                        <h3>Neptune</h3>
-                        <p>
-                            A distant blue world with powerful winds.
-                        </p>
-                    </div>
-
-                </article>
-
-            </div>
-
-        </section>
-
-
-        <!-- =====================================================
-             SKY EVENTS
-        ====================================================== -->
-
-        <section class="section events-section" id="events">
-
-            <div class="section-heading">
-
-                <div>
-                    <span class="eyebrow">DON'T MISS THE SKY</span>
-
-                    <h2>
-                        Upcoming sky events
-                    </h2>
-                </div>
-
-                <p>
-                    Keep an eye on the calendar for spectacular
-                    moments above us.
-                </p>
-
-            </div>
-
-
-            <div class="events-list">
-
-                <article class="event-card">
-
-                    <div class="event-date">
-                        <strong>12</strong>
-                        <span>OCT</span>
-                    </div>
-
-                    <div class="event-content">
-
-                        <span class="event-type">
-                            METEOR SHOWER
-                        </span>
-
-                        <h3>
-                            Orionid Meteor Shower
-                        </h3>
-
-                        <p>
-                            Look toward the constellation Orion
-                            for streaks of light across the sky.
-                        </p>
-
-                    </div>
-
-                    <button class="event-button">
-                        Add reminder
-                    </button>
-
-                </article>
-
-
-                <article class="event-card">
-
-                    <div class="event-date">
-                        <strong>21</strong>
-                        <span>NOV</span>
-                    </div>
-
-                    <div class="event-content">
-
-                        <span class="event-type">
-                            METEOR SHOWER
-                        </span>
-
-                        <h3>
-                            Leonid Meteor Shower
-                        </h3>
-
-                        <p>
-                            A famous annual meteor shower associated
-                            with the constellation Leo.
-                        </p>
-
-                    </div>
-
-                    <button class="event-button">
-                        Add reminder
-                    </button>
-
-                </article>
-
-
-                <article class="event-card">
-
-                    <div class="event-date">
-                        <strong>14</strong>
-                        <span>DEC</span>
-                    </div>
-
-                    <div class="event-content">
-
-                        <span class="event-type">
-                            METEOR SHOWER
-                        </span>
-
-                        <h3>
-                            Geminid Meteor Shower
-                        </h3>
-
-                        <p>
-                            One of the most anticipated meteor showers
-                            of the year.
-                        </p>
-
-                    </div>
-
-                    <button class="event-button">
-                        Add reminder
-                    </button>
-
-                </article>
-
-            </div>
-
-        </section>
-
-
-        <!-- =====================================================
-             HOW IT WORKS
-        ====================================================== -->
-
-        <section class="section how-section">
-
-            <div class="section-heading centered">
-
-                <span class="eyebrow">
-                    YOUR NIGHT SKY
+                <span class="section-label">
+                    SKY EXPLORER
                 </span>
 
                 <h2>
-                    Explore in three simple steps
+                    Tonight's highlights
                 </h2>
 
+            </div>
+
+            <button
+                class="outline-btn"
+                id="refreshBtn">
+                ↻ Refresh Sky
+            </button>
+
+        </div>
+
+
+        <div class="highlight-grid">
+
+
+            <!-- ========================= -->
+            <!-- ANDROMEDA -->
+            <!-- ========================= -->
+
+            <article class="sky-card large-card">
+
+                <div class="card-image">
+
+                    <img
+                        src="https://images.unsplash.com/photo-1462331940025-496dfbfc7564?auto=format&fit=crop&w=1200&q=80"
+                        alt="Galaxy in deep space">
+
+                    <span class="image-tag">
+                        DEEP SPACE
+                    </span>
+
+                </div>
+
+                <div class="card-content">
+
+                    <span class="small-label">
+                        Featured Object
+                    </span>
+
+                    <h3>
+                        Andromeda Galaxy
+                    </h3>
+
+                    <p>
+                        Our closest major galactic neighbour,
+                        located approximately 2.5 million
+                        light-years away.
+                    </p>
+
+                    <div class="card-meta">
+
+                        <span>
+                            ◉ Magnitude 3.44
+                        </span>
+
+                        <span>
+                            ✦ 2.5M ly
+                        </span>
+
+                    </div>
+
+                    <button
+                        class="text-btn"
+                        data-object="Andromeda Galaxy">
+
+                        View Object →
+
+                    </button>
+
+                </div>
+
+            </article>
+
+
+            <!-- ========================= -->
+            <!-- ORION -->
+            <!-- ========================= -->
+
+            <article class="sky-card">
+
+                <div class="card-image small-image">
+
+                    <!-- VERIFIED NASA ORION IMAGE -->
+
+                    <img
+                        src="https://assets.science.nasa.gov/dynamicimage/assets/science/missions/hubble/releases/2006/01/STScI-01EVT7TPK68JNDV935N42F4N2K.jpg?crop=faces%2Cfocalpoint&fit=clip&h=911&w=728"
+                        alt="Orion constellation photographed by NASA"
+                        loading="lazy">
+
+                    <span class="image-tag">
+                        CONSTELLATION
+                    </span>
+
+                </div>
+
+                <div class="card-content">
+
+                    <span class="small-label">
+                        Tonight
+                    </span>
+
+                    <h3>
+                        Orion
+                    </h3>
+
+                    <p>
+                        One of the most recognizable constellations
+                        visible across the night sky.
+                    </p>
+
+                    <button
+                        class="text-btn"
+                        data-object="Orion">
+
+                        Explore Orion →
+
+                    </button>
+
+                </div>
+
+            </article>
+
+
+            <!-- ========================= -->
+            <!-- JUPITER -->
+            <!-- ========================= -->
+
+            <article class="sky-card">
+
+                <div class="card-image small-image">
+
+                    <!-- VERIFIED NASA JUPITER IMAGE -->
+
+                    <img
+                        src="https://assets.science.nasa.gov/dynamicimage/assets/science/missions/webb/science/2023/10/STScI-01HCX1B69H5ZEF6S18S0F6PM1V.png?crop=faces%2Cfocalpoint&fit=clip&h=1615&w=1603"
+                        alt="Jupiter observed by NASA's James Webb Space Telescope"
+                        loading="lazy">
+
+                    <span class="image-tag">
+                        PLANET
+                    </span>
+
+                </div>
+
+                <div class="card-content">
+
+                    <span class="small-label">
+                        Solar System
+                    </span>
+
+                    <h3>
+                        Jupiter
+                    </h3>
+
+                    <p>
+                        The largest planet in our solar system,
+                        surrounded by its famous moons.
+                    </p>
+
+                    <button
+                        class="text-btn"
+                        data-object="Jupiter">
+
+                        Explore Jupiter →
+
+                    </button>
+
+                </div>
+
+            </article>
+
+        </div>
+
+    </section>
+
+
+    <!-- ============================= -->
+    <!-- CONSTELLATION SECTION -->
+    <!-- ============================= -->
+
+    <section
+        class="constellation-section"
+        id="constellations">
+
+        <div class="section-heading">
+
+            <div>
+
+                <span class="section-label">
+                    CONSTELLATION LIBRARY
+                </span>
+
+                <h2>
+                    Trace the patterns
+                </h2>
+
+            </div>
+
+        </div>
+
+
+        <div class="constellation-layout">
+
+
+            <!-- STAR MAP -->
+
+            <div class="constellation-map">
+
+                <div class="map-header">
+
+                    <span>
+                        LIVE STAR MAP
+                    </span>
+
+                    <span id="mapTime">
+                        00:00 UTC
+                    </span>
+
+                </div>
+
+
+                <div
+                    class="star-map"
+                    id="starMap">
+
+                    <div class="map-star s1"></div>
+                    <div class="map-star s2"></div>
+                    <div class="map-star s3"></div>
+                    <div class="map-star s4"></div>
+                    <div class="map-star s5"></div>
+                    <div class="map-star s6"></div>
+                    <div class="map-star s7"></div>
+                    <div class="map-star s8"></div>
+                    <div class="map-star s9"></div>
+                    <div class="map-star s10"></div>
+                    <div class="map-star s11"></div>
+                    <div class="map-star s12"></div>
+                    <div class="map-star s13"></div>
+                    <div class="map-star s14"></div>
+
+                    <div class="constellation-line line-one"></div>
+                    <div class="constellation-line line-two"></div>
+                    <div class="constellation-line line-three"></div>
+                    <div class="constellation-line line-four"></div>
+
+                    <div class="constellation-name">
+                        ORION
+                    </div>
+
+                    <div class="map-center">
+                        ✦
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- ORION DETAILS -->
+
+            <div class="constellation-info">
+
+                <span class="section-label">
+                    SELECTED CONSTELLATION
+                </span>
+
+                <h3>
+                    Orion
+                </h3>
+
                 <p>
-                    Stellerium makes discovering the universe
-                    simple for everyone.
+                    Orion is one of the most recognizable
+                    constellations in the night sky. Its distinctive
+                    shape contains several bright stars and famous
+                    deep-sky objects.
                 </p>
 
-            </div>
 
+                <div class="info-list">
 
-            <div class="steps-grid">
+                    <div>
 
-                <article class="step-card">
+                        <span>
+                            Brightest Star
+                        </span>
 
-                    <div class="step-number">
-                        01
+                        <strong>
+                            Rigel
+                        </strong>
+
                     </div>
 
-                    <div class="step-icon">
-                        📍
+                    <div>
+
+                        <span>
+                            Visible Season
+                        </span>
+
+                        <strong>
+                            Winter
+                        </strong>
+
                     </div>
 
-                    <h3>
-                        Choose your location
-                    </h3>
+                    <div>
 
-                    <p>
-                        Set your location to see which stars,
-                        planets and constellations are above you.
-                    </p>
+                        <span>
+                            Major Stars
+                        </span>
 
-                </article>
+                        <strong>
+                            7
+                        </strong>
 
-
-                <article class="step-card">
-
-                    <div class="step-number">
-                        02
                     </div>
 
-                    <div class="step-icon">
-                        🔭
+                    <div>
+
+                        <span>
+                            Hemisphere
+                        </span>
+
+                        <strong>
+                            Both
+                        </strong>
+
                     </div>
 
-                    <h3>
-                        Point to the sky
-                    </h3>
-
-                    <p>
-                        Explore the interactive sky map and
-                        discover objects around you.
-                    </p>
-
-                </article>
+                </div>
 
 
-                <article class="step-card">
+                <button
+                    class="primary-btn"
+                    id="constellationBtn">
 
-                    <div class="step-number">
-                        03
-                    </div>
+                    View Details →
 
-                    <div class="step-icon">
-                        ✨
-                    </div>
-
-                    <h3>
-                        Learn something new
-                    </h3>
-
-                    <p>
-                        Read stories, facts and observations
-                        about everything you discover.
-                    </p>
-
-                </article>
+                </button>
 
             </div>
 
-        </section>
+        </div>
+
+    </section>
 
 
-        <!-- =====================================================
-             CTA
-        ====================================================== -->
+    <!-- ============================= -->
+    <!-- SPACE MISSIONS -->
+    <!-- ============================= -->
 
-        <section class="final-cta">
+    <section
+        class="section missions"
+        id="missions">
 
-            <div class="cta-stars">
-                ✦ &nbsp; · &nbsp; ✧ &nbsp; · &nbsp; ✦ &nbsp; · &nbsp; ✧
+        <div class="section-heading">
+
+            <div>
+
+                <span class="section-label">
+                    SPACE EXPLORATION
+                </span>
+
+                <h2>
+                    Humanity beyond Earth
+                </h2>
+
             </div>
 
-            <span class="eyebrow">
-                THE UNIVERSE IS WAITING
+        </div>
+
+
+        <div class="mission-grid">
+
+
+            <!-- MISSION 1 -->
+
+            <article class="mission-card">
+
+                <img
+                    src="https://images.unsplash.com/photo-1517976547714-720226b864c1?auto=format&fit=crop&w=1000&q=80"
+                    alt="Rocket launch"
+                    loading="lazy">
+
+                <div class="mission-content">
+
+                    <span>
+                        01 / EXPLORATION
+                    </span>
+
+                    <h3>
+                        Beyond the Moon
+                    </h3>
+
+                    <p>
+                        Modern missions are expanding humanity's
+                        understanding of the Moon and deep space.
+                    </p>
+
+                    <button
+                        class="text-btn"
+                        data-object="Beyond the Moon">
+
+                        Learn More →
+
+                    </button>
+
+                </div>
+
+            </article>
+
+
+            <!-- MISSION 2 -->
+
+            <article class="mission-card">
+
+                <img
+                    src="https://images.unsplash.com/photo-1446776811953-b23d57bd21aa?auto=format&fit=crop&w=1000&q=80"
+                    alt="Earth from space"
+                    loading="lazy">
+
+                <div class="mission-content">
+
+                    <span>
+                        02 / OBSERVATION
+                    </span>
+
+                    <h3>
+                        Eyes on the Universe
+                    </h3>
+
+                    <p>
+                        Space telescopes allow scientists to observe
+                        galaxies, stars and planets across the universe.
+                    </p>
+
+                    <button
+                        class="text-btn"
+                        data-object="Space Observation">
+
+                        Learn More →
+
+                    </button>
+
+                </div>
+
+            </article>
+
+
+            <!-- MISSION 3 -->
+
+            <article class="mission-card">
+
+                <img
+                    src="https://images.unsplash.com/photo-1614728263952-84ea256f9679?auto=format&fit=crop&w=1000&q=80"
+                    alt="Planet Earth"
+                    loading="lazy">
+
+                <div class="mission-content">
+
+                    <span>
+                        03 / DISCOVERY
+                    </span>
+
+                    <h3>
+                        Worlds Beyond
+                    </h3>
+
+                    <p>
+                        Thousands of planets have been identified
+                        beyond our solar system, opening new
+                        questions about life.
+                    </p>
+
+                    <button
+                        class="text-btn"
+                        data-object="Exoplanets">
+
+                        Explore →
+
+                    </button>
+
+                </div>
+
+            </article>
+
+        </div>
+
+    </section>
+
+
+    <!-- ============================= -->
+    <!-- STATISTICS -->
+    <!-- ============================= -->
+
+    <section class="stats-section">
+
+        <div class="stat">
+
+            <strong>
+                88
+            </strong>
+
+            <span>
+                Recognized Constellations
+            </span>
+
+        </div>
+
+
+        <div class="stat">
+
+            <strong>
+                5,000+
+            </strong>
+
+            <span>
+                Visible Stars
+            </span>
+
+        </div>
+
+
+        <div class="stat">
+
+            <strong>
+                5,500+
+            </strong>
+
+            <span>
+                Known Exoplanets
+            </span>
+
+        </div>
+
+
+        <div class="stat">
+
+            <strong>
+                ∞
+            </strong>
+
+            <span>
+                Questions to Explore
+            </span>
+
+        </div>
+
+    </section>
+
+
+    <!-- ============================= -->
+    <!-- CTA -->
+    <!-- ============================= -->
+
+    <section class="cta-section">
+
+        <div>
+
+            <span class="section-label">
+                KEEP LOOKING UP
             </span>
 
             <h2>
-                There is always
-                <span>more to discover.</span>
+                The universe is waiting.
             </h2>
 
             <p>
-                Step outside, look up and start exploring
-                the night sky with Stellerium.
+                Every point of light has a story.
             </p>
 
-            <a href="#explore" class="primary-button light-button">
-                Start exploring
-                <span>→</span>
+        </div>
+
+
+        <button
+            class="primary-btn"
+            id="startBtn">
+
+            Start Exploring ✦
+
+        </button>
+
+    </section>
+
+
+    <!-- ============================= -->
+    <!-- FOOTER -->
+    <!-- ============================= -->
+
+    <footer>
+
+        <div class="footer-brand">
+
+            <div class="logo">
+
+                <span class="logo-icon">
+                    ✦
+                </span>
+
+                <span>
+                    Stellerium
+                </span>
+
+            </div>
+
+            <p>
+                An interactive interface for exploring
+                the night sky.
+            </p>
+
+        </div>
+
+
+        <div class="footer-links">
+
+            <a href="#home">
+                Home
             </a>
 
-        </section>
+            <a href="#explore">
+                Explore
+            </a>
 
-    </main>
+            <a href="#constellations">
+                Constellations
+            </a>
 
-
-    <!-- =====================================================
-         FOOTER
-    ====================================================== -->
-
-    <footer class="footer">
-
-        <div class="footer-top">
-
-            <div class="footer-brand">
-
-                <a href="#home" class="logo footer-logo">
-                    <span class="logo-mark">✦</span>
-                    <span>stellerium</span>
-                </a>
-
-                <p>
-                    A modern guide to the night sky,
-                    made for curious minds.
-                </p>
-
-            </div>
-
-
-            <div class="footer-column">
-
-                <h4>Explore</h4>
-
-                <a href="#explore">Deep Space</a>
-                <a href="#planets">Planets</a>
-                <a href="#constellations">Constellations</a>
-                <a href="#events">Sky Events</a>
-
-            </div>
-
-
-            <div class="footer-column">
-
-                <h4>Discover</h4>
-
-                <a href="#home">Star Map</a>
-                <a href="#constellations">Star Stories</a>
-                <a href="#planets">Solar System</a>
-                <a href="#events">Calendar</a>
-
-            </div>
-
-
-            <div class="footer-column">
-
-                <h4>Stellerium</h4>
-
-                <a href="#home">About</a>
-                <a href="#home">Features</a>
-                <a href="#home">Community</a>
-                <a href="#home">Contact</a>
-
-            </div>
+            <a href="#missions">
+                Missions
+            </a>
 
         </div>
 
 
-        <div class="footer-bottom">
-
-            <span>
-                © 2026 Stellerium. Explore beyond.
-            </span>
-
-            <span>
-                Built with curiosity ✦
-            </span>
-
-        </div>
+        <p class="copyright">
+            © 2026 Stellerium. Designed for the stars.
+        </p>
 
     </footer>
 
 
-    <!-- =====================================================
-         TOAST
-    ====================================================== -->
+    <!-- ============================= -->
+    <!-- TOAST -->
+    <!-- ============================= -->
 
-    <div class="toast" id="toast">
-        <span>✦</span>
-        <p id="toastMessage">
-            Done!
+    <div
+        class="toast"
+        id="toast">
+
+        <span>
+            ✦
+        </span>
+
+        <p id="toastText">
+            Welcome to Stellerium
         </p>
+
     </div>
-
-
-    <!-- =====================================================
-         BACK TO TOP
-    ====================================================== -->
-
-    <button
-        class="back-to-top"
-        id="backToTop"
-        aria-label="Back to top"
-    >
-        ↑
-    </button>
 
 
     <script src="script.js"></script>
