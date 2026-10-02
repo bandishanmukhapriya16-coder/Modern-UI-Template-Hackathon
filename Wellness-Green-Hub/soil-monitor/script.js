@@ -1,232 +1,479 @@
-const body = document.body;
-const themeToggle = document.getElementById("themeToggle");
-const menuBtn = document.getElementById("menuBtn");
-const navLinks = document.getElementById("navLinks");
+/* =========================
+   IMAGE FALLBACK
+========================= */
 
-const toast = document.getElementById("toast");
-const toastMessage = document.getElementById("toastMessage");
+function imageFallback(img) {
 
-const scanBtn = document.getElementById("scanBtn");
-const insightBtn = document.getElementById("insightBtn");
-const historyBtn = document.getElementById("historyBtn");
+    if (img.dataset.fallbackUsed === "true") {
+        return;
+    }
 
+    img.dataset.fallbackUsed = "true";
 
-// -----------------------------------------
-// Toast
-// -----------------------------------------
+    img.src =
+        "https://commons.wikimedia.org/wiki/Special:Redirect/file/Soil%20moisture%20sensor.JPG";
 
-function showToast(message) {
-    toastMessage.textContent = message;
-
-    toast.classList.add("show");
-
-    setTimeout(() => {
-        toast.classList.remove("show");
-    }, 2500);
 }
 
 
-// -----------------------------------------
-// Theme
-// -----------------------------------------
+/* =========================
+   ELEMENTS
+========================= */
 
-const savedTheme = localStorage.getItem("soilsense-theme");
+const body = document.body;
+
+const themeToggle =
+    document.getElementById("themeToggle");
+
+const menuBtn =
+    document.getElementById("menuBtn");
+
+const navLinks =
+    document.getElementById("navLinks");
+
+const refreshBtn =
+    document.getElementById("refreshBtn");
+
+const checkSoilBtn =
+    document.getElementById("checkSoilBtn");
+
+const runCheckBtn =
+    document.getElementById("runCheckBtn");
+
+const quickCheckBtn =
+    document.getElementById("quickCheckBtn");
+
+const ctaBtn =
+    document.getElementById("ctaBtn");
+
+const addPlantBtn =
+    document.getElementById("addPlantBtn");
+
+const plantModal =
+    document.getElementById("plantModal");
+
+const closeModal =
+    document.getElementById("closeModal");
+
+const plantForm =
+    document.getElementById("plantForm");
+
+const toast =
+    document.getElementById("toast");
+
+const toastMessage =
+    document.getElementById("toastMessage");
+
+
+/* =========================
+   DARK MODE
+========================= */
+
+const savedTheme =
+    localStorage.getItem("soilSenseTheme");
 
 if (savedTheme === "dark") {
     body.classList.add("dark");
-    themeToggle.textContent = "🌙";
 }
 
 themeToggle.addEventListener("click", () => {
 
     body.classList.toggle("dark");
 
-    const darkMode = body.classList.contains("dark");
-
-    themeToggle.textContent = darkMode ? "🌙" : "☀️";
+    const isDark =
+        body.classList.contains("dark");
 
     localStorage.setItem(
-        "soilsense-theme",
-        darkMode ? "dark" : "light"
+        "soilSenseTheme",
+        isDark ? "dark" : "light"
     );
 
-    showToast(
-        darkMode
-            ? "Dark mode enabled"
-            : "Light mode enabled"
-    );
 });
 
 
-// -----------------------------------------
-// Mobile Menu
-// -----------------------------------------
+/* =========================
+   MOBILE MENU
+========================= */
 
 menuBtn.addEventListener("click", () => {
 
-    navLinks.classList.toggle("open");
-
-    menuBtn.textContent =
-        navLinks.classList.contains("open")
-            ? "✕"
-            : "☰";
-});
-
-
-document.querySelectorAll(".nav-links a").forEach(link => {
-
-    link.addEventListener("click", () => {
-
-        navLinks.classList.remove("open");
-
-        menuBtn.textContent = "☰";
-    });
+    navLinks.classList.toggle("show");
 
 });
 
 
-// -----------------------------------------
-// Soil Scan Simulation
-// -----------------------------------------
+document.querySelectorAll(".nav-links a")
+    .forEach(link => {
 
-scanBtn.addEventListener("click", () => {
+        link.addEventListener("click", () => {
 
-    scanBtn.disabled = true;
+            navLinks.classList.remove("show");
 
-    scanBtn.textContent = "Scanning...";
-
-    showToast("Scanning soil sensors...");
-
-    const moisture = document.getElementById("moistureValue");
-    const temperature = document.getElementById("temperatureValue");
-    const ph = document.getElementById("phValue");
-    const nutrients = document.getElementById("nutrientValue");
-
-    setTimeout(() => {
-
-        moisture.textContent =
-            Math.floor(64 + Math.random() * 8);
-
-        temperature.textContent =
-            Math.floor(22 + Math.random() * 5);
-
-        ph.textContent =
-            (6.3 + Math.random() * 0.7).toFixed(1);
-
-        nutrients.textContent =
-            Math.floor(68 + Math.random() * 10);
-
-    }, 900);
-
-
-    setTimeout(() => {
-
-        scanBtn.disabled = false;
-
-        scanBtn.textContent = "Scan soil";
-
-        showToast("Soil scan completed successfully 🌱");
-
-    }, 1800);
-
-});
-
-
-// -----------------------------------------
-// Refresh Insights
-// -----------------------------------------
-
-insightBtn.addEventListener("click", () => {
-
-    insightBtn.textContent = "Refreshing...";
-
-    setTimeout(() => {
-
-        insightBtn.textContent = "Refresh insights";
-
-        showToast("Soil insights updated");
-
-    }, 1200);
-
-});
-
-
-// -----------------------------------------
-// Detailed Report
-// -----------------------------------------
-
-historyBtn.addEventListener("click", () => {
-
-    showToast("Detailed soil report is being prepared");
-
-});
-
-
-// -----------------------------------------
-// Chart interaction
-// -----------------------------------------
-
-document.querySelectorAll(".bar").forEach(bar => {
-
-    bar.addEventListener("click", () => {
-
-        document.querySelectorAll(".bar").forEach(item => {
-            item.classList.remove("active-bar");
         });
 
-        bar.classList.add("active-bar");
+    });
 
-        showToast("Moisture reading selected");
+
+/* =========================
+   TOAST
+========================= */
+
+let toastTimer;
+
+function showToast(message) {
+
+    toastMessage.textContent = message;
+
+    toast.classList.add("show");
+
+    clearTimeout(toastTimer);
+
+    toastTimer = setTimeout(() => {
+
+        toast.classList.remove("show");
+
+    }, 2800);
+
+}
+
+
+/* =========================
+   SOIL DATA
+========================= */
+
+function generateSoilData() {
+
+    const moisture =
+        Math.floor(Math.random() * 31) + 50;
+
+    const temperature =
+        Math.floor(Math.random() * 7) + 21;
+
+    const ph =
+        (Math.random() * 1.2 + 5.9).toFixed(1);
+
+    return {
+        moisture,
+        temperature,
+        ph
+    };
+
+}
+
+
+function updateSoilData() {
+
+    const data =
+        generateSoilData();
+
+    const moistureValue =
+        document.getElementById("moistureValue");
+
+    const moistureBar =
+        document.getElementById("moistureBar");
+
+    const temperatureValue =
+        document.getElementById("temperatureValue");
+
+    const phValue =
+        document.getElementById("phValue");
+
+    const meterValue =
+        document.getElementById("meterValue");
+
+    const heroMoisture =
+        document.getElementById("heroMoisture");
+
+    moistureValue.textContent =
+        data.moisture;
+
+    moistureBar.style.width =
+        `${data.moisture}%`;
+
+    temperatureValue.textContent =
+        data.temperature;
+
+    phValue.textContent =
+        data.ph;
+
+    meterValue.textContent =
+        `${data.moisture}%`;
+
+    heroMoisture.textContent =
+        `${data.moisture}%`;
+
+    showToast(
+        `Soil data refreshed: ${data.moisture}% moisture`
+    );
+
+}
+
+
+/* =========================
+   CHECK BUTTONS
+========================= */
+
+checkSoilBtn.addEventListener(
+    "click",
+    updateSoilData
+);
+
+refreshBtn.addEventListener(
+    "click",
+    updateSoilData
+);
+
+runCheckBtn.addEventListener(
+    "click",
+    updateSoilData
+);
+
+quickCheckBtn.addEventListener(
+    "click",
+    updateSoilData
+);
+
+ctaBtn.addEventListener(
+    "click",
+    updateSoilData
+);
+
+
+/* =========================
+   FAVORITES
+========================= */
+
+document.querySelectorAll(".favorite-btn")
+    .forEach(button => {
+
+        button.addEventListener("click", () => {
+
+            button.classList.toggle("active");
+
+            if (
+                button.classList.contains("active")
+            ) {
+
+                button.textContent = "♥";
+
+                showToast(
+                    "Plant added to favorites."
+                );
+
+            } else {
+
+                button.textContent = "♡";
+
+                showToast(
+                    "Plant removed from favorites."
+                );
+
+            }
+
+        });
 
     });
+
+
+/* =========================
+   PLANT DETAILS
+========================= */
+
+document.querySelectorAll(".plant-btn")
+    .forEach(button => {
+
+        button.addEventListener("click", () => {
+
+            showToast(
+                "Plant details opened."
+            );
+
+        });
+
+    });
+
+
+/* =========================
+   ADD PLANT MODAL
+========================= */
+
+addPlantBtn.addEventListener("click", () => {
+
+    plantModal.classList.add("show");
 
 });
 
 
-// -----------------------------------------
-// Keyboard Shortcuts
-// -----------------------------------------
+closeModal.addEventListener("click", () => {
 
-document.addEventListener("keydown", event => {
+    plantModal.classList.remove("show");
 
-    const tag = document.activeElement.tagName;
+});
 
-    if (tag === "INPUT" || tag === "TEXTAREA") {
+
+plantModal.addEventListener("click", event => {
+
+    if (event.target === plantModal) {
+
+        plantModal.classList.remove("show");
+
+    }
+
+});
+
+
+/* =========================
+   ADD PLANT FORM
+========================= */
+
+plantForm.addEventListener("submit", event => {
+
+    event.preventDefault();
+
+    const plantName =
+        document.getElementById("plantName").value.trim();
+
+    const plantLocation =
+        document.getElementById("plantLocation").value.trim();
+
+    if (!plantName || !plantLocation) {
         return;
     }
 
+    plantModal.classList.remove("show");
 
-    // S = Scan soil
-    if (event.key.toLowerCase() === "s") {
-        scanBtn.click();
-    }
+    plantForm.reset();
 
+    showToast(
+        `${plantName} added to ${plantLocation}.`
+    );
 
-    // I = Insights
-    if (event.key.toLowerCase() === "i") {
-
-        document.getElementById("insights")
-            .scrollIntoView({
-                behavior: "smooth"
-            });
-
-    }
+});
 
 
-    // H = History
-    if (event.key.toLowerCase() === "h") {
+/* =========================
+   ESCAPE KEY
+========================= */
 
-        document.getElementById("history")
-            .scrollIntoView({
-                behavior: "smooth"
-            });
+document.addEventListener("keydown", event => {
 
-    }
+    if (event.key === "Escape") {
 
+        plantModal.classList.remove("show");
 
-    // T = Theme
-    if (event.key.toLowerCase() === "t") {
-        themeToggle.click();
+        navLinks.classList.remove("show");
+
     }
 
 });
+
+
+/* =========================
+   KEYBOARD SHORTCUT
+========================= */
+
+document.addEventListener("keydown", event => {
+
+    if (
+        event.key.toLowerCase() === "s" &&
+        !["INPUT", "TEXTAREA"].includes(
+            document.activeElement.tagName
+        )
+    ) {
+
+        updateSoilData();
+
+    }
+
+});
+
+
+/* =========================
+   SCROLL REVEAL
+========================= */
+
+const revealElements =
+    document.querySelectorAll(
+        ".metric-card, .plant-card, .gallery-card, .insight-card"
+    );
+
+const observer =
+    new IntersectionObserver(
+        entries => {
+
+            entries.forEach(entry => {
+
+                if (entry.isIntersecting) {
+
+                    entry.target.style.opacity = "1";
+
+                    entry.target.style.transform =
+                        "translateY(0)";
+
+                }
+
+            });
+
+        },
+        {
+            threshold: 0.1
+        }
+    );
+
+
+revealElements.forEach(element => {
+
+    element.style.opacity = "0";
+
+    element.style.transform =
+        "translateY(20px)";
+
+    element.style.transition =
+        "opacity 0.6s ease, transform 0.6s ease";
+
+    observer.observe(element);
+
+});
+
+
+/* =========================
+   INITIAL DATA
+========================= */
+
+updateInitialData();
+
+
+function updateInitialData() {
+
+    const moisture = 68;
+
+    document.getElementById(
+        "moistureValue"
+    ).textContent = moisture;
+
+    document.getElementById(
+        "moistureBar"
+    ).style.width = `${moisture}%`;
+
+    document.getElementById(
+        "meterValue"
+    ).textContent = `${moisture}%`;
+
+    document.getElementById(
+        "heroMoisture"
+    ).textContent = `${moisture}%`;
+
+}
+
+
+/* =========================
+   CONSOLE INFO
+========================= */
+
+console.log(
+    "SoilSense loaded successfully."
+);
+
+console.log(
+    "Press S to run a soil check."
+);
